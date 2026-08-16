@@ -169,7 +169,7 @@
             </div>
             <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
               <div class="text-xs font-bold uppercase text-slate-400">Total Payouts</div>
-              <div id="stat-payout" class="text-2xl font-black text-rose-600 mt-1">Rs 0</div>
+              <div id="stat-payout" class="text-2xl font-black text-black-600 mt-1">Rs 0</div>
             </div>
           </div>
 
@@ -1122,7 +1122,7 @@
         </div>
         <div class="grid grid-cols-2 gap-3">
           <div>
-            <label class="block font-bold uppercase text-slate-600 mb-1">Batch Number</label>
+            <label class="block font-bold uppercase text-slate-600 mb-1">Barcode</label>
             <input type="text" id="itemBatch" placeholder="B-9081" class="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-orange-500">
           </div>
           <div>
@@ -1732,8 +1732,14 @@
         if (el) el.addEventListener('input', calculateDebitTotal);
       });
     }
-
-    const PARTY_FIELDS = {"invCustName": "customers", "quoCustomer": "customers", "pinvSupplier": "suppliers", "purSupplier": "suppliers", "debParty": "both", "payoutRecipient": "both"};
+    const PARTY_FIELDS = {
+      "invCustName": "customers",
+      "quoCustomer": "customers",
+      "pinvSupplier": "suppliers",
+      "purSupplier": "suppliers",
+      "debParty": "both",
+      "payoutRecipient": "both"
+    };
 
     function setupPartySearchDropdowns() {
       Object.keys(PARTY_FIELDS).forEach(inputId => {
@@ -1743,7 +1749,6 @@
         if (!input || !dropdown) return;
         let active = -1;
         const icon = kind === 'suppliers' ? 'fa-truck-field' : 'fa-store';
-
         const render = () => {
           const q = input.value.trim().toLowerCase();
           const all = partyOptions(kind);
@@ -1762,22 +1767,32 @@
           }
           dropdown.classList.remove('hidden');
         };
-
         const highlight = () => {
           const opts = dropdown.querySelectorAll('.party-opt');
           opts.forEach((o, i) => o.classList.toggle('bg-orange-50', i === active));
-          if (opts[active]) opts[active].scrollIntoView({ block: 'nearest' });
+          if (opts[active]) opts[active].scrollIntoView({
+            block: 'nearest'
+          });
         };
-
         input.addEventListener('focus', render);
         input.addEventListener('input', render);
         input.addEventListener('keydown', (e) => {
           const opts = dropdown.querySelectorAll('.party-opt');
           if (dropdown.classList.contains('hidden') || opts.length === 0) return;
-          if (e.key === 'ArrowDown') { e.preventDefault(); active = (active + 1) % opts.length; highlight(); }
-          else if (e.key === 'ArrowUp') { e.preventDefault(); active = (active - 1 + opts.length) % opts.length; highlight(); }
-          else if (e.key === 'Enter' && active > -1) { e.preventDefault(); opts[active].dispatchEvent(new MouseEvent('mousedown')); }
-          else if (e.key === 'Escape') { dropdown.classList.add('hidden'); }
+          if (e.key === 'ArrowDown') {
+            e.preventDefault();
+            active = (active + 1) % opts.length;
+            highlight();
+          } else if (e.key === 'ArrowUp') {
+            e.preventDefault();
+            active = (active - 1 + opts.length) % opts.length;
+            highlight();
+          } else if (e.key === 'Enter' && active > -1) {
+            e.preventDefault();
+            opts[active].dispatchEvent(new MouseEvent('mousedown'));
+          } else if (e.key === 'Escape') {
+            dropdown.classList.add('hidden');
+          }
         });
         document.addEventListener('click', (e) => {
           if (e.target !== input && !dropdown.contains(e.target)) dropdown.classList.add('hidden');
@@ -1880,7 +1895,6 @@
       };
       const titleEl = document.getElementById('currentTabTitle');
       if (titleEl) titleEl.innerText = titles[tabId] || 'Dashboard';
-
       document.querySelectorAll('.nav-item').forEach(btn => {
         const isActive = btn.dataset.nav === tabId;
         btn.classList.toggle('bg-orange-500', isActive);
@@ -2355,12 +2369,14 @@
       if (!el) return;
       const c = (userData.customers || []).find(x => x.name === el.value);
       if (!c) return;
-      const set = (id, val) => { const f = document.getElementById(id); if (f && val) f.value = val; };
+      const set = (id, val) => {
+        const f = document.getElementById(id);
+        if (f && val) f.value = val;
+      };
       set('invCustNtnCnic', c.ntnCnic);
       set('invCustAddress', c.address);
       set('invCustPhone', c.contact);
     }
-
     document.addEventListener('input', (e) => {
       if (e.target && e.target.id === 'invCustName') autofillCustomer();
     });
