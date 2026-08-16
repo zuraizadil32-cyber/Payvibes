@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -51,76 +50,76 @@
 
   <div id="appContainer" class="hidden flex h-screen overflow-hidden">
 
-    <aside class="w-64 bg-slate-900 text-slate-300 flex flex-col shadow-xl z-20">
-      <div class="p-4 border-b border-slate-800 flex items-center space-x-3">
+    <aside class="w-64 bg-white text-slate-700 flex flex-col shadow-xl z-20 border-r border-slate-200">
+      <div class="p-4 border-b border-slate-200 flex items-center space-x-3">
         <div class="w-10 h-10 bg-orange-500 text-white rounded-lg flex items-center justify-center font-bold text-lg shadow">
           <i class="fa-solid fa-pills"></i>
         </div>
         <div>
-          <h2 class="font-extrabold text-white text-sm">Payvibes</h2>
-          <span class="text-[10px] text-orange-400 font-bold uppercase tracking-wider" id="userRoleDisplay">Admin</span>
+          <h2 class="font-extrabold text-slate-900 text-sm">Payvibes</h2>
+          <span class="text-[10px] text-orange-500 font-bold uppercase tracking-wider" id="userRoleDisplay">Admin</span>
         </div>
       </div>
 
       <nav class="flex-1 overflow-y-auto p-3 space-y-1 text-xs font-semibold">
-        <button onclick="showTab('dashboard')" class="w-full flex items-center space-x-3 px-3 py-2.5 rounded-lg hover:bg-slate-800 hover:text-white transition group">
-          <i class="fa-solid fa-chart-pie w-5 text-orange-500"></i><span>Dashboard</span>
+        <button data-nav="dashboard" onclick="showTab('dashboard')" class="nav-item w-full flex items-center space-x-3 px-3 py-2.5 rounded-lg text-slate-700 hover:bg-slate-100 hover:text-slate-900 transition group">
+          <i class="fa-solid fa-chart-pie w-5 text-black"></i><span>Dashboard</span>
         </button>
-        <button onclick="showTab('orders')" class="w-full flex items-center space-x-3 px-3 py-2.5 rounded-lg hover:bg-slate-800 hover:text-white transition group">
-          <i class="fa-solid fa-file-invoice-dollar w-5 text-orange-500"></i><span>Sales Invoices</span>
+        <button data-nav="orders" onclick="showTab('orders')" class="nav-item w-full flex items-center space-x-3 px-3 py-2.5 rounded-lg text-slate-700 hover:bg-slate-100 hover:text-slate-900 transition group">
+          <i class="fa-solid fa-file-invoice-dollar w-5 text-black-500"></i><span>Sales Invoices</span>
         </button>
-        <button onclick="showTab('purchaseinvoices')" class="w-full flex items-center space-x-3 px-3 py-2.5 rounded-lg hover:bg-slate-800 hover:text-white transition group">
-          <i class="fa-solid fa-file-invoice w-5 text-emerald-400"></i><span>Purchase Invoices</span>
+        <button data-nav="purchaseinvoices" onclick="showTab('purchaseinvoices')" class="nav-item w-full flex items-center space-x-3 px-3 py-2.5 rounded-lg text-slate-700 hover:bg-slate-100 hover:text-slate-900 transition group">
+          <i class="fa-solid fa-file-invoice w-5 text-Black-500"></i><span>Purchase Invoices</span>
         </button>
-        <button onclick="showTab('dailyreports')" class="w-full flex items-center space-x-3 px-3 py-2.5 rounded-lg hover:bg-slate-800 hover:text-white transition group">
-          <i class="fa-solid fa-chart-line w-5 text-cyan-400"></i><span>Daily Reports</span>
+        <button data-nav="dailyreports" onclick="showTab('dailyreports')" class="nav-item w-full flex items-center space-x-3 px-3 py-2.5 rounded-lg text-slate-700 hover:bg-slate-100 hover:text-slate-900 transition group">
+          <i class="fa-solid fa-chart-line w-5 text-black-500"></i><span>Daily Reports</span>
         </button>
-        <button onclick="showTab('quotations')" class="w-full flex items-center space-x-3 px-3 py-2.5 rounded-lg hover:bg-slate-800 hover:text-white transition group">
-          <i class="fa-solid fa-file-lines w-5 text-orange-500"></i><span>Quotations</span>
+        <button data-nav="quotations" onclick="showTab('quotations')" class="nav-item w-full flex items-center space-x-3 px-3 py-2.5 rounded-lg text-slate-700 hover:bg-slate-100 hover:text-slate-900 transition group">
+          <i class="fa-solid fa-file-lines w-5 text-black-500"></i><span>Quotations</span>
         </button>
-        <button onclick="showTab('patients')" class="w-full flex items-center space-x-3 px-3 py-2.5 rounded-lg hover:bg-slate-800 hover:text-white transition group">
-          <i class="fa-solid fa-hospital-user w-5 text-orange-500"></i><span>Patient Records</span>
+        <button data-nav="patients" onclick="showTab('patients')" class="nav-item w-full flex items-center space-x-3 px-3 py-2.5 rounded-lg text-slate-700 hover:bg-slate-100 hover:text-slate-900 transition group">
+          <i class="fa-solid fa-hospital-user w-5 text-black-500"></i><span>Patient Records</span>
         </button>
-        <button onclick="showTab('debitnotes')" class="w-full flex items-center space-x-3 px-3 py-2.5 rounded-lg hover:bg-slate-800 hover:text-white transition group">
-          <i class="fa-solid fa-rotate-left w-5 text-orange-500"></i><span>Debit Notes & Returns</span>
+        <button data-nav="debitnotes" onclick="showTab('debitnotes')" class="nav-item w-full flex items-center space-x-3 px-3 py-2.5 rounded-lg text-slate-700 hover:bg-slate-100 hover:text-slate-900 transition group">
+          <i class="fa-solid fa-rotate-left w-5 text-black-500"></i><span>Debit Notes & Returns</span>
         </button>
-        <button onclick="showTab('inventory')" class="w-full flex items-center space-x-3 px-3 py-2.5 rounded-lg hover:bg-slate-800 hover:text-white transition group">
-          <i class="fa-solid fa-boxes-stacked w-5 text-orange-500"></i><span>Inventory Stock</span>
+        <button data-nav="inventory" onclick="showTab('inventory')" class="nav-item w-full flex items-center space-x-3 px-3 py-2.5 rounded-lg text-slate-700 hover:bg-slate-100 hover:text-slate-900 transition group">
+          <i class="fa-solid fa-boxes-stacked w-5 text-black-500"></i><span>Inventory Stock</span>
         </button>
-        <button onclick="showTab('customers')" class="w-full flex items-center space-x-3 px-3 py-2.5 rounded-lg hover:bg-slate-800 hover:text-white transition group">
-          <i class="fa-solid fa-store w-5 text-orange-500"></i><span>Customer / Shops</span>
+        <button data-nav="customers" onclick="showTab('customers')" class="nav-item w-full flex items-center space-x-3 px-3 py-2.5 rounded-lg text-slate-700 hover:bg-slate-100 hover:text-slate-900 transition group">
+          <i class="fa-solid fa-store w-5 text-black-500"></i><span>Customer / Shops</span>
         </button>
-        <button onclick="showTab('suppliers')" class="w-full flex items-center space-x-3 px-3 py-2.5 rounded-lg hover:bg-slate-800 hover:text-white transition group">
-          <i class="fa-solid fa-truck-field w-5 text-orange-500"></i><span>Suppliers Directory</span>
+        <button data-nav="suppliers" onclick="showTab('suppliers')" class="nav-item w-full flex items-center space-x-3 px-3 py-2.5 rounded-lg text-slate-700 hover:bg-slate-100 hover:text-slate-900 transition group">
+          <i class="fa-solid fa-truck-field w-5 text-black-500"></i><span>Suppliers Directory</span>
         </button>
-        <button onclick="showTab('purchases')" class="w-full flex items-center space-x-3 px-3 py-2.5 rounded-lg hover:bg-slate-800 hover:text-white transition group">
-          <i class="fa-solid fa-cart-shopping w-5 text-orange-500"></i><span>Purchase Orders</span>
+        <button data-nav="purchases" onclick="showTab('purchases')" class="nav-item w-full flex items-center space-x-3 px-3 py-2.5 rounded-lg text-slate-700 hover:bg-slate-100 hover:text-slate-900 transition group">
+          <i class="fa-solid fa-cart-shopping w-5 text-black-500"></i><span>Purchase Orders</span>
         </button>
-        <button onclick="showTab('payouts')" class="w-full flex items-center space-x-3 px-3 py-2.5 rounded-lg hover:bg-slate-800 hover:text-white transition group">
-          <i class="fa-solid fa-money-bill-transfer w-5 text-orange-500"></i><span>Payment Out Vouchers</span>
+        <button data-nav="payouts" onclick="showTab('payouts')" class="nav-item w-full flex items-center space-x-3 px-3 py-2.5 rounded-lg text-slate-700 hover:bg-slate-100 hover:text-slate-900 transition group">
+          <i class="fa-solid fa-money-bill-transfer w-5 text-black-500"></i><span>Payment Out Vouchers</span>
         </button>
-        <div class="pt-2 mt-2 border-t border-slate-800"></div>
-        <button onclick="showTab('expenses')" class="w-full flex items-center space-x-3 px-3 py-2.5 rounded-lg hover:bg-slate-800 hover:text-white transition group">
-          <i class="fa-solid fa-receipt w-5 text-rose-400"></i><span>Expense</span>
+        <div class="pt-2 mt-2 border-t border-slate-200"></div>
+        <button data-nav="expenses" onclick="showTab('expenses')" class="nav-item w-full flex items-center space-x-3 px-3 py-2.5 rounded-lg text-slate-700 hover:bg-slate-100 hover:text-slate-900 transition group">
+          <i class="fa-solid fa-receipt w-5 text-black-500"></i><span>Expense</span>
         </button>
-        <button onclick="showTab('cashbank')" class="w-full flex items-center space-x-3 px-3 py-2.5 rounded-lg hover:bg-slate-800 hover:text-white transition group">
-          <i class="fa-solid fa-building-columns w-5 text-emerald-400"></i><span>Cash &amp; Bank</span>
+        <button data-nav="cashbank" onclick="showTab('cashbank')" class="nav-item w-full flex items-center space-x-3 px-3 py-2.5 rounded-lg text-slate-700 hover:bg-slate-100 hover:text-slate-900 transition group">
+          <i class="fa-solid fa-building-columns w-5 text-black-500"></i><span>Cash &amp; Bank</span>
         </button>
-        <button onclick="showTab('otherincome')" class="w-full flex items-center space-x-3 px-3 py-2.5 rounded-lg hover:bg-slate-800 hover:text-white transition group">
-          <i class="fa-solid fa-sack-dollar w-5 text-amber-400"></i><span>Other Income</span>
+        <button data-nav="otherincome" onclick="showTab('otherincome')" class="nav-item w-full flex items-center space-x-3 px-3 py-2.5 rounded-lg text-slate-700 hover:bg-slate-100 hover:text-slate-900 transition group">
+          <i class="fa-solid fa-sack-dollar w-5 text-black-500"></i><span>Other Income</span>
         </button>
-        <button onclick="showTab('barcode')" class="w-full flex items-center space-x-3 px-3 py-2.5 rounded-lg hover:bg-slate-800 hover:text-white transition group">
-          <i class="fa-solid fa-barcode w-5 text-cyan-400"></i><span>Barcode Scanner</span>
+        <button data-nav="barcode" onclick="showTab('barcode')" class="nav-item w-full flex items-center space-x-3 px-3 py-2.5 rounded-lg text-slate-700 hover:bg-slate-100 hover:text-slate-900 transition group">
+          <i class="fa-solid fa-barcode w-5 text-black-500"></i><span>Barcode Scanner</span>
         </button>
-        <button onclick="showTab('settings')" class="w-full flex items-center space-x-3 px-3 py-2.5 rounded-lg hover:bg-slate-800 hover:text-white transition group">
-          <i class="fa-solid fa-gear w-5 text-slate-300"></i><span>Settings</span>
+        <button data-nav="settings" onclick="showTab('settings')" class="nav-item w-full flex items-center space-x-3 px-3 py-2.5 rounded-lg text-slate-700 hover:bg-slate-100 hover:text-slate-900 transition group">
+          <i class="fa-solid fa-gear w-5 text-black-500"></i><span>Settings</span>
         </button>
-        <button onclick="showTab('help')" class="w-full flex items-center space-x-3 px-3 py-2.5 rounded-lg hover:bg-slate-800 hover:text-white transition group">
-          <i class="fa-solid fa-circle-question w-5 text-orange-500"></i><span>Help &amp; Support</span>
+        <button data-nav="help" onclick="showTab('help')" class="nav-item w-full flex items-center space-x-3 px-3 py-2.5 rounded-lg text-slate-700 hover:bg-slate-100 hover:text-slate-900 transition group">
+          <i class="fa-solid fa-circle-question w-5 text-black-500"></i><span>Help &amp; Support</span>
         </button>
       </nav>
 
-      <div class="p-3 border-t border-slate-800">
+      <div class="p-3 border-t border-slate-200">
         <button onclick="logout()" class="w-full flex items-center justify-center space-x-2 px-3 py-2 bg-rose-600 hover:bg-rose-700 text-white rounded-lg font-bold transition text-xs">
           <i class="fa-solid fa-right-from-bracket"></i><span>Logout</span>
         </button>
@@ -536,7 +535,9 @@
                 </tr>
               </thead>
               <tbody id="expensesTableBody">
-                <tr><td colspan="8" class="p-4 text-center text-slate-400">No expenses recorded yet.</td></tr>
+                <tr>
+                  <td colspan="8" class="p-4 text-center text-slate-400">No expenses recorded yet.</td>
+                </tr>
               </tbody>
             </table>
           </div>
@@ -575,7 +576,9 @@
                 </tr>
               </thead>
               <tbody id="cashbankTableBody">
-                <tr><td colspan="7" class="p-4 text-center text-slate-400">No cash or bank transactions yet.</td></tr>
+                <tr>
+                  <td colspan="7" class="p-4 text-center text-slate-400">No cash or bank transactions yet.</td>
+                </tr>
               </tbody>
             </table>
           </div>
@@ -609,7 +612,9 @@
                 </tr>
               </thead>
               <tbody id="incomeTableBody">
-                <tr><td colspan="7" class="p-4 text-center text-slate-400">No other income recorded yet.</td></tr>
+                <tr>
+                  <td colspan="7" class="p-4 text-center text-slate-400">No other income recorded yet.</td>
+                </tr>
               </tbody>
             </table>
           </div>
@@ -620,8 +625,7 @@
             <h4 class="text-sm font-bold text-slate-800 mb-1">Barcode Scanner</h4>
             <p class="text-[11px] text-slate-500 mb-4">Place the cursor in the box and scan with your USB/Bluetooth barcode gun, or type the code and press Enter.</p>
             <div class="flex gap-2">
-              <input type="text" id="barcodeInput" placeholder="Scan or type barcode / item name..." autocomplete="off"
-                class="flex-1 px-3 py-3 border rounded-lg text-sm font-mono focus:outline-none focus:ring-2 focus:ring-cyan-500">
+              <input type="text" id="barcodeInput" placeholder="Scan or type barcode / item name..." autocomplete="off" class="flex-1 px-3 py-3 border rounded-lg text-sm font-mono focus:outline-none focus:ring-2 focus:ring-cyan-500">
               <button onclick="handleBarcodeScan()" class="px-4 py-3 bg-cyan-600 hover:bg-cyan-700 text-white rounded-lg font-bold text-xs shadow transition">
                 <i class="fa-solid fa-magnifying-glass mr-1"></i> Find Item
               </button>
@@ -644,7 +648,9 @@
                 </tr>
               </thead>
               <tbody id="scanTableBody">
-                <tr><td colspan="5" class="p-4 text-center text-slate-400">No scans yet.</td></tr>
+                <tr>
+                  <td colspan="5" class="p-4 text-center text-slate-400">No scans yet.</td>
+                </tr>
               </tbody>
             </table>
           </div>
@@ -803,7 +809,10 @@
         <div class="grid grid-cols-2 gap-3">
           <div>
             <label class="block font-bold uppercase text-slate-600 mb-1">Customer / Shop Name *</label>
-            <input type="text" id="invCustName" placeholder="e.g. Al-Madina Medical Store" class="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-orange-500">
+            <div class="relative">
+              <input type="text" id="invCustName" autocomplete="off" placeholder="e.g. Al-Madina Medical Store" class="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-orange-500">
+              <div id="dropdown-invCustName" class="hidden absolute left-0 right-0 bg-white border border-slate-200 rounded-lg shadow-xl max-h-48 overflow-y-auto z-40 mt-1"></div>
+            </div>
           </div>
           <div>
             <label class="block font-bold uppercase text-slate-600 mb-1">NTN / CNIC</label>
@@ -896,7 +905,10 @@
         </div>
         <div>
           <label class="block font-bold uppercase text-slate-600 mb-1">Supplier / Pharma Company Name *</label>
-          <input type="text" id="pinvSupplier" placeholder="e.g. Getz Pharma / Searle" class="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-emerald-500">
+          <div class="relative">
+            <input type="text" id="pinvSupplier" autocomplete="off" placeholder="e.g. Getz Pharma / Searle" class="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-emerald-500">
+            <div id="dropdown-pinvSupplier" class="hidden absolute left-0 right-0 bg-white border border-slate-200 rounded-lg shadow-xl max-h-48 overflow-y-auto z-40 mt-1"></div>
+          </div>
         </div>
         <div class="relative">
           <label class="block font-bold uppercase text-slate-600 mb-1">Item / Medicine Name *</label>
@@ -930,7 +942,10 @@
       <div class="space-y-4 text-xs">
         <div>
           <label class="block font-bold uppercase text-slate-600 mb-1">Customer / Shop Name *</label>
-          <input type="text" id="quoCustomer" placeholder="Customer name" class="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-orange-500">
+          <div class="relative">
+            <input type="text" id="quoCustomer" autocomplete="off" placeholder="Customer name" class="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-orange-500">
+            <div id="dropdown-quoCustomer" class="hidden absolute left-0 right-0 bg-white border border-slate-200 rounded-lg shadow-xl max-h-48 overflow-y-auto z-40 mt-1"></div>
+          </div>
         </div>
         <div class="relative">
           <label class="block font-bold uppercase text-slate-600 mb-1">Product Name *</label>
@@ -1043,7 +1058,10 @@
         <div class="grid grid-cols-2 gap-3">
           <div>
             <label class="block font-bold uppercase text-slate-600 mb-1">Party Name *</label>
-            <input type="text" id="debParty" placeholder="Customer / Supplier name" class="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-orange-500">
+            <div class="relative">
+              <input type="text" id="debParty" autocomplete="off" placeholder="Customer / Supplier name" class="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-orange-500">
+              <div id="dropdown-debParty" class="hidden absolute left-0 right-0 bg-white border border-slate-200 rounded-lg shadow-xl max-h-48 overflow-y-auto z-40 mt-1"></div>
+            </div>
           </div>
           <div>
             <label class="block font-bold uppercase text-slate-600 mb-1">Original Invoice Ref</label>
@@ -1253,7 +1271,10 @@
       <div class="space-y-4 text-xs">
         <div>
           <label class="block font-bold uppercase text-slate-600 mb-1">Supplier Name *</label>
-          <input type="text" id="purSupplier" placeholder="Supplier company" class="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-orange-500">
+          <div class="relative">
+            <input type="text" id="purSupplier" autocomplete="off" placeholder="Supplier company" class="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-orange-500">
+            <div id="dropdown-purSupplier" class="hidden absolute left-0 right-0 bg-white border border-slate-200 rounded-lg shadow-xl max-h-48 overflow-y-auto z-40 mt-1"></div>
+          </div>
         </div>
         <div class="relative">
           <label class="block font-bold uppercase text-slate-600 mb-1">Item Name *</label>
@@ -1281,7 +1302,10 @@
       <div class="space-y-4 text-xs">
         <div>
           <label class="block font-bold uppercase text-slate-600 mb-1">Recipient Name *</label>
-          <input type="text" id="payoutRecipient" placeholder="Recipient / Vendor" class="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-orange-500">
+          <div class="relative">
+            <input type="text" id="payoutRecipient" autocomplete="off" placeholder="Recipient / Vendor" class="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-orange-500">
+            <div id="dropdown-payoutRecipient" class="hidden absolute left-0 right-0 bg-white border border-slate-200 rounded-lg shadow-xl max-h-48 overflow-y-auto z-40 mt-1"></div>
+          </div>
         </div>
         <div>
           <label class="block font-bold uppercase text-slate-600 mb-1">Payment Mode</label>
@@ -1324,15 +1348,24 @@
           <div>
             <label class="block font-bold uppercase text-slate-600 mb-1">Category *</label>
             <select id="expCategory" class="w-full px-3 py-2 border rounded-lg bg-white">
-              <option>Rent</option><option>Utilities (Bills)</option><option>Salaries</option>
-              <option>Transport / Delivery</option><option>Marketing</option><option>Repair &amp; Maintenance</option>
-              <option>Office Supplies</option><option>Tax / Government Fee</option><option>Other</option>
+              <option>Rent</option>
+              <option>Utilities (Bills)</option>
+              <option>Salaries</option>
+              <option>Transport / Delivery</option>
+              <option>Marketing</option>
+              <option>Repair &amp; Maintenance</option>
+              <option>Office Supplies</option>
+              <option>Tax / Government Fee</option>
+              <option>Other</option>
             </select>
           </div>
           <div>
             <label class="block font-bold uppercase text-slate-600 mb-1">Payment Mode</label>
             <select id="expMode" class="w-full px-3 py-2 border rounded-lg bg-white">
-              <option>Cash</option><option>Bank</option><option>Cheque</option><option>Easypaisa / JazzCash</option>
+              <option>Cash</option>
+              <option>Bank</option>
+              <option>Cheque</option>
+              <option>Easypaisa / JazzCash</option>
             </select>
           </div>
         </div>
@@ -1377,7 +1410,8 @@
           <div>
             <label class="block font-bold uppercase text-slate-600 mb-1">Account</label>
             <select id="cbAccount" class="w-full px-3 py-2 border rounded-lg bg-white">
-              <option>Cash in Hand</option><option>Bank Account</option>
+              <option>Cash in Hand</option>
+              <option>Bank Account</option>
             </select>
           </div>
           <div>
@@ -1425,14 +1459,19 @@
           <div>
             <label class="block font-bold uppercase text-slate-600 mb-1">Income Source *</label>
             <select id="incSource" class="w-full px-3 py-2 border rounded-lg bg-white">
-              <option>Rent Received</option><option>Commission</option><option>Scrap / Empty Sale</option>
-              <option>Interest / Profit</option><option>Discount Received</option><option>Other</option>
+              <option>Rent Received</option>
+              <option>Commission</option>
+              <option>Scrap / Empty Sale</option>
+              <option>Interest / Profit</option>
+              <option>Discount Received</option>
+              <option>Other</option>
             </select>
           </div>
           <div>
             <label class="block font-bold uppercase text-slate-600 mb-1">Received In</label>
             <select id="incAccount" class="w-full px-3 py-2 border rounded-lg bg-white">
-              <option>Cash in Hand</option><option>Bank Account</option>
+              <option>Cash in Hand</option>
+              <option>Bank Account</option>
             </select>
           </div>
         </div>
@@ -1611,6 +1650,7 @@
       loadData();
       setupEventListeners();
       setupProductSearchDropdowns();
+      setupPartySearchDropdowns();
       const savedRole = sessionStorage.getItem('bizManagerRole');
       if (savedRole) {
         currentUserRole = savedRole;
@@ -1618,6 +1658,7 @@
         document.getElementById('appContainer').classList.remove('hidden');
         updateRoleUI();
         renderAllData();
+        showTab('dashboard');
       }
     });
 
@@ -1639,6 +1680,7 @@
       document.getElementById('appContainer').classList.remove('hidden');
       updateRoleUI();
       renderAllData();
+      showTab('dashboard');
     }
 
     function logout() {
@@ -1689,6 +1731,69 @@
         const el = document.getElementById(id);
         if (el) el.addEventListener('input', calculateDebitTotal);
       });
+    }
+
+    const PARTY_FIELDS = {"invCustName": "customers", "quoCustomer": "customers", "pinvSupplier": "suppliers", "purSupplier": "suppliers", "debParty": "both", "payoutRecipient": "both"};
+
+    function setupPartySearchDropdowns() {
+      Object.keys(PARTY_FIELDS).forEach(inputId => {
+        const kind = PARTY_FIELDS[inputId];
+        const input = document.getElementById(inputId);
+        const dropdown = document.getElementById('dropdown-' + inputId);
+        if (!input || !dropdown) return;
+        let active = -1;
+        const icon = kind === 'suppliers' ? 'fa-truck-field' : 'fa-store';
+
+        const render = () => {
+          const q = input.value.trim().toLowerCase();
+          const all = partyOptions(kind);
+          const list = q ? all.filter(n => n.toLowerCase().includes(q)) : all;
+          active = -1;
+          if (all.length === 0) {
+            dropdown.innerHTML = `<div class="p-2 text-slate-400 text-center">No ${kind === 'suppliers' ? 'suppliers' : 'records'} added yet</div>`;
+          } else if (list.length === 0) {
+            dropdown.innerHTML = `<div class="p-2 text-slate-400 text-center">No match found</div>`;
+          } else {
+            dropdown.innerHTML = list.slice(0, 50).map((n, i) => {
+              const safe = n.replace(/'/g, "\\'");
+              const hl = n.replace(new RegExp('(' + q.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + ')', 'ig'), '<mark class="bg-orange-100 text-orange-700 p-0">$1</mark>');
+              return `<div data-idx="${i}" class="party-opt p-2 hover:bg-orange-50 hover:text-orange-600 cursor-pointer border-b border-slate-100 last:border-none font-medium" onmousedown="selectParty('${inputId}', '${safe}')"><i class="fa-solid ${icon} mr-1.5 text-orange-500"></i> ${q ? hl : n}</div>`;
+            }).join('');
+          }
+          dropdown.classList.remove('hidden');
+        };
+
+        const highlight = () => {
+          const opts = dropdown.querySelectorAll('.party-opt');
+          opts.forEach((o, i) => o.classList.toggle('bg-orange-50', i === active));
+          if (opts[active]) opts[active].scrollIntoView({ block: 'nearest' });
+        };
+
+        input.addEventListener('focus', render);
+        input.addEventListener('input', render);
+        input.addEventListener('keydown', (e) => {
+          const opts = dropdown.querySelectorAll('.party-opt');
+          if (dropdown.classList.contains('hidden') || opts.length === 0) return;
+          if (e.key === 'ArrowDown') { e.preventDefault(); active = (active + 1) % opts.length; highlight(); }
+          else if (e.key === 'ArrowUp') { e.preventDefault(); active = (active - 1 + opts.length) % opts.length; highlight(); }
+          else if (e.key === 'Enter' && active > -1) { e.preventDefault(); opts[active].dispatchEvent(new MouseEvent('mousedown')); }
+          else if (e.key === 'Escape') { dropdown.classList.add('hidden'); }
+        });
+        document.addEventListener('click', (e) => {
+          if (e.target !== input && !dropdown.contains(e.target)) dropdown.classList.add('hidden');
+        });
+      });
+    }
+
+    function selectParty(inputId, name) {
+      const input = document.getElementById(inputId);
+      const dropdown = document.getElementById('dropdown-' + inputId);
+      if (input) {
+        input.value = name;
+        input.dispatchEvent(new Event('change'));
+      }
+      if (dropdown) dropdown.classList.add('hidden');
+      if (inputId === 'invCustName') autofillCustomer();
     }
 
     function setupProductSearchDropdowns() {
@@ -1775,6 +1880,16 @@
       };
       const titleEl = document.getElementById('currentTabTitle');
       if (titleEl) titleEl.innerText = titles[tabId] || 'Dashboard';
+
+      document.querySelectorAll('.nav-item').forEach(btn => {
+        const isActive = btn.dataset.nav === tabId;
+        btn.classList.toggle('bg-orange-500', isActive);
+        btn.classList.toggle('text-white', isActive);
+        btn.classList.toggle('hover:bg-orange-600', isActive);
+        btn.classList.toggle('text-slate-700', !isActive);
+        btn.classList.toggle('hover:bg-slate-100', !isActive);
+        btn.classList.toggle('hover:text-slate-900', !isActive);
+      });
     }
 
     function openModal(modalId) {
@@ -2106,7 +2221,8 @@
       for (let key in dataObj) {
         html += `<tr><td class="label">${key}:</td><td>${dataObj[key]}</td></tr>`;
       }
-      html += `</table><script>window.print();${autoClose ? 'window.close();' : ''}<\/script></body></html>`;
+      html += `</table><script>window.print();${autoClose ? 'window.close();' : ''}<\/script>
+</body></html>`;
       const w = window.open('', '_blank');
       w.document.write(html);
       w.document.close();
@@ -2225,6 +2341,29 @@
         });
       }
     }
+
+    function partyOptions(kind) {
+      const custs = (userData.customers || []).map(c => c.name).filter(Boolean);
+      const sups = (userData.suppliers || []).map(x => x.name).filter(Boolean);
+      if (kind === 'customers') return [...new Set(custs)];
+      if (kind === 'suppliers') return [...new Set(sups)];
+      return [...new Set([...custs, ...sups])];
+    }
+
+    function autofillCustomer() {
+      const el = document.getElementById('invCustName');
+      if (!el) return;
+      const c = (userData.customers || []).find(x => x.name === el.value);
+      if (!c) return;
+      const set = (id, val) => { const f = document.getElementById(id); if (f && val) f.value = val; };
+      set('invCustNtnCnic', c.ntnCnic);
+      set('invCustAddress', c.address);
+      set('invCustPhone', c.contact);
+    }
+
+    document.addEventListener('input', (e) => {
+      if (e.target && e.target.id === 'invCustName') autofillCustomer();
+    });
 
     function renderAllData() {
       const totalRev = (userData.orders || []).reduce((s, o) => s + (o.amount || 0), 0);
@@ -2565,7 +2704,6 @@
     /* =========================================================
        PAYVIBES - Settings, Auto Numbering, New Modules & Printing
        ========================================================= */
-
     const DEFAULT_SETTINGS = {
       company: 'Payvibes Pharma & General Store',
       tagline: 'Invoicematic & Inventory Management',
@@ -2581,13 +2719,18 @@
       invPrefix: 'INV-',
       quoPrefix: 'QT-'
     };
-
     const SUPPORT_PHONE = '+92 3086707676';
-
     const COUNTER_DEFAULTS = {
-      inv: 1, pinv: 1, quo: 1, dn: 1, po: 1, pv: 1, exp: 1, cb: 1, inc: 1
+      inv: 1,
+      pinv: 1,
+      quo: 1,
+      dn: 1,
+      po: 1,
+      pv: 1,
+      exp: 1,
+      cb: 1,
+      inc: 1
     };
-
     const COUNTER_PREFIX = {
       inv: () => getSettings().invPrefix || 'INV-',
       pinv: () => 'PINV-',
@@ -2624,12 +2767,19 @@
       if (!iso) return todayISO();
       const d = new Date(iso);
       if (isNaN(d.getTime())) return iso;
-      return d.toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' });
+      return d.toLocaleDateString('en-GB', {
+        day: '2-digit',
+        month: 'short',
+        year: 'numeric'
+      });
     }
 
     function money(v) {
       const n = parseFloat(v) || 0;
-      return (getSettings().currency || 'Rs') + ' ' + n.toLocaleString('en-PK', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+      return (getSettings().currency || 'Rs') + ' ' + n.toLocaleString('en-PK', {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2
+      });
     }
 
     function peekNumber(key) {
@@ -2653,16 +2803,23 @@
       loadSettingsForm();
       alert('All document numbering has been reset to 1.');
     }
-
     /* ---------------- Settings form ---------------- */
-
     function loadSettingsForm() {
       const s = getSettings();
       const map = {
-        setCompany: s.company, setTagline: s.tagline, setAddress: s.address, setPhone: s.phone,
-        setEmail: s.email, setNtn: s.ntn, setStrn: s.strn, setCurrency: s.currency,
-        setTax: s.tax, setBank: s.bank, setFooter: s.footer,
-        setInvPrefix: s.invPrefix, setQuoPrefix: s.quoPrefix
+        setCompany: s.company,
+        setTagline: s.tagline,
+        setAddress: s.address,
+        setPhone: s.phone,
+        setEmail: s.email,
+        setNtn: s.ntn,
+        setStrn: s.strn,
+        setCurrency: s.currency,
+        setTax: s.tax,
+        setBank: s.bank,
+        setFooter: s.footer,
+        setInvPrefix: s.invPrefix,
+        setQuoPrefix: s.quoPrefix
       };
       Object.keys(map).forEach(id => {
         const el = document.getElementById(id);
@@ -2708,14 +2865,13 @@
         setTimeout(() => flag.classList.add('hidden'), 3000);
       }
     }
-
     /* ---------------- Amount in words ---------------- */
-
     function numberToWords(num) {
       num = Math.floor(Math.abs(parseFloat(num) || 0));
       if (num === 0) return 'Zero';
       const ones = ['', 'One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Ten',
-        'Eleven', 'Twelve', 'Thirteen', 'Fourteen', 'Fifteen', 'Sixteen', 'Seventeen', 'Eighteen', 'Nineteen'];
+        'Eleven', 'Twelve', 'Thirteen', 'Fourteen', 'Fifteen', 'Sixteen', 'Seventeen', 'Eighteen', 'Nineteen'
+      ];
       const tens = ['', '', 'Twenty', 'Thirty', 'Forty', 'Fifty', 'Sixty', 'Seventy', 'Eighty', 'Ninety'];
       const below1000 = n => {
         let str = '';
@@ -2731,7 +2887,11 @@
         return str;
       };
       let words = '';
-      const units = [[10000000, 'Crore'], [100000, 'Lac'], [1000, 'Thousand']];
+      const units = [
+        [10000000, 'Crore'],
+        [100000, 'Lac'],
+        [1000, 'Thousand']
+      ];
       units.forEach(([div, name]) => {
         if (num >= div) {
           words += below1000(Math.floor(num / div)) + name + ' ';
@@ -2741,9 +2901,7 @@
       words += below1000(num);
       return words.replace(/\s+/g, ' ').trim();
     }
-
     /* ---------------- Professional print engine ---------------- */
-
     function escapeHtml(str) {
       return String(str == null ? '' : str)
         .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
@@ -2766,36 +2924,32 @@
     function printUniversalSlip(title, dataObj, autoClose = false) {
       const s = getSettings();
       const data = Object.assign({}, dataObj);
-
       const numKey = matchKey(data, [/#$/, /^Ref/i, /Voucher/i, /Receipt/i, /Number/i]);
       const dateKey = matchKey(data, [/date/i]);
       const docNumber = numKey ? data[numKey] : '';
       const docDate = dateKey ? data[dateKey] : todayISO();
       if (numKey) delete data[numKey];
       if (dateKey) delete data[dateKey];
-
       const partyPatterns = [/customer/i, /client/i, /party/i, /supplier/i, /patient/i, /recipient/i, /shop/i, /vendor/i, /company name/i, /ntn/i, /cnic/i, /province/i, /address/i, /contact/i, /phone/i, /email/i, /doctor/i, /age/i, /gender/i, /category/i, /owner/i];
       const itemPatterns = [/product/i, /item/i, /medicine/i, /service/i, /description/i, /hs code/i, /batch/i, /expiry/i, /uom/i, /unit/i, /mode/i, /reason/i, /scheme/i, /status/i, /source/i, /account/i];
       const amountPatterns = [/total/i, /amount/i, /rate/i, /price/i, /fee/i, /tax/i, /gst/i, /discount/i, /balance/i, /credit/i, /quantity/i, /qty/i, /stock/i];
-
-      const party = {}, itemInfo = {}, amounts = {}, others = {};
+      const party = {},
+        itemInfo = {},
+        amounts = {},
+        others = {};
       Object.keys(data).forEach(k => {
         if (partyPatterns.some(p => p.test(k))) party[k] = data[k];
         else if (amountPatterns.some(p => p.test(k))) amounts[k] = data[k];
         else if (itemPatterns.some(p => p.test(k))) itemInfo[k] = data[k];
         else others[k] = data[k];
       });
-
       const descKey = matchKey(itemInfo, [/^product/i, /^item/i, /medicine/i, /^service/i, /description/i]);
       const qtyKey = matchKey(amounts, [/quantity/i, /^qty/i, /stock/i]);
       const rateKey = matchKey(amounts, [/^rate/i, /price/i]);
       const totalKey = matchKey(amounts, [/total amount/i, /^total/i, /^amount/i, /fee amount/i, /^fee/i]);
-
       const totalVal = totalKey ? toAmount(amounts[totalKey]) : (qtyKey && rateKey ? toAmount(amounts[qtyKey]) * toAmount(amounts[rateKey]) : 0);
-
       const rowsFrom = obj => Object.keys(obj).map(k =>
         `<tr><td class="k">${escapeHtml(k)}</td><td class="v">${escapeHtml(obj[k])}</td></tr>`).join('');
-
       let itemsTable = '';
       if (descKey) {
         const sub = Object.keys(itemInfo)
@@ -2817,18 +2971,14 @@
             </tbody>
           </table>`;
       }
-
       let subtotalRow = '';
       if (descKey && qtyKey && rateKey) {
         subtotalRow = `<tr><td>Subtotal</td><td class="r">${money(toAmount(amounts[qtyKey]) * toAmount(amounts[rateKey]))}</td></tr>`;
       }
-
       const summaryRows = Object.keys(amounts)
         .filter(k => k !== totalKey && (!descKey || (k !== qtyKey && k !== rateKey)))
         .map(k => `<tr><td class="k">${escapeHtml(k)}</td><td class="v r">${escapeHtml(amounts[k])}</td></tr>`).join('');
-
       const detailRows = rowsFrom(Object.assign({}, descKey ? {} : itemInfo, others));
-
       const html = `<!DOCTYPE html><html><head><meta charset="utf-8"><title>${escapeHtml(title)} ${escapeHtml(docNumber)}</title>
       <style>
         *{box-sizing:border-box}
@@ -2932,7 +3082,6 @@
       </div>
       <script>window.onload=function(){window.print();${autoClose ? 'window.close();' : ''}}<\/script>
       </body></html>`;
-
       const w = window.open('', '_blank');
       if (!w) {
         alert('Please allow pop-ups for this site so invoices can be printed.');
@@ -2941,9 +3090,7 @@
       w.document.write(html);
       w.document.close();
     }
-
     /* ---------------- Expense / Cash & Bank / Other Income ---------------- */
-
     function saveExpense() {
       const amount = parseFloat(document.getElementById('expAmount').value) || 0;
       const category = document.getElementById('expCategory').value;
@@ -3015,9 +3162,7 @@
       document.getElementById('incAmount').value = '';
       document.getElementById('incDesc').value = '';
     }
-
     /* ---------------- Barcode scanner ---------------- */
-
     function handleBarcodeScan() {
       const input = document.getElementById('barcodeInput');
       const box = document.getElementById('barcodeResult');
@@ -3030,7 +3175,6 @@
         (it.barcode && String(it.barcode).toLowerCase() === code.toLowerCase()) ||
         (it.batch && String(it.batch).toLowerCase() === code.toLowerCase()) ||
         (it.name && it.name.toLowerCase().includes(code.toLowerCase())));
-
       if (item) {
         box.innerHTML = `
           <div class="p-4 rounded-xl border border-emerald-200 bg-emerald-50">
@@ -3048,7 +3192,6 @@
       } else {
         box.innerHTML = `<div class="p-4 rounded-xl border border-rose-200 bg-rose-50 font-bold text-rose-700">No stock item matched "${code}". Add it in Inventory first.</div>`;
       }
-
       userData.scans.unshift({
         time: new Date().toLocaleString('en-GB'),
         code: code,
@@ -3078,20 +3221,20 @@
       saveData();
       renderExtras();
     }
-
     /* ---------------- Rendering for new modules ---------------- */
-
     function renderExtras() {
       ensureExtraData();
       const s = getSettings();
-
       const expTotal = userData.expenses.reduce((a, e) => a + (e.amount || 0), 0);
       const incTotal = userData.otherincome.reduce((a, e) => a + (e.amount || 0), 0);
-      const setTxt = (id, txt) => { const el = document.getElementById(id); if (el) el.innerText = txt; };
+      const setTxt = (id, txt) => {
+        const el = document.getElementById(id);
+        if (el) el.innerText = txt;
+      };
       setTxt('stat-expenseTotal', money(expTotal));
       setTxt('stat-incomeTotal', money(incTotal));
-
-      let cash = 0, bank = 0;
+      let cash = 0,
+        bank = 0;
       userData.cashbank.forEach(t => {
         const sign = t.type === 'Withdraw / Out' ? -1 : 1;
         if (t.account === 'Bank Account') bank += sign * (t.amount || 0);
@@ -3108,7 +3251,6 @@
       setTxt('stat-cashBalance', money(cash));
       setTxt('stat-bankBalance', money(bank));
       setTxt('stat-totalBalance', money(cash + bank));
-
       const expBody = document.getElementById('expensesTableBody');
       if (expBody) {
         expBody.innerHTML = userData.expenses.map((e, i) => `
@@ -3130,7 +3272,6 @@
             </td>
           </tr>`).join('') || `<tr><td colspan="8" class="p-4 text-center text-slate-400">No expenses recorded yet.</td></tr>`;
       }
-
       const cbBody = document.getElementById('cashbankTableBody');
       if (cbBody) {
         cbBody.innerHTML = userData.cashbank.map((t, i) => `
@@ -3150,7 +3291,6 @@
             </td>
           </tr>`).join('') || `<tr><td colspan="7" class="p-4 text-center text-slate-400">No cash or bank transactions yet.</td></tr>`;
       }
-
       const incBody = document.getElementById('incomeTableBody');
       if (incBody) {
         incBody.innerHTML = userData.otherincome.map((r, i) => `
@@ -3170,7 +3310,6 @@
             </td>
           </tr>`).join('') || `<tr><td colspan="7" class="p-4 text-center text-slate-400">No other income recorded yet.</td></tr>`;
       }
-
       const scanBody = document.getElementById('scanTableBody');
       if (scanBody) {
         scanBody.innerHTML = userData.scans.map(sc => `
@@ -3182,22 +3321,18 @@
             <td class="p-2 font-bold text-orange-600">${sc.price}</td>
           </tr>`).join('') || `<tr><td colspan="5" class="p-4 text-center text-slate-400">No scans yet.</td></tr>`;
       }
-
       const brand = document.querySelector('#appContainer aside h2');
       if (brand && s.company) brand.innerText = s.company;
     }
-
     /* ---------------- Hooks into the existing app ---------------- */
-
     const __origRenderAllData = renderAllData;
-    renderAllData = function () {
+    renderAllData = function() {
       ensureExtraData();
       __origRenderAllData();
       renderExtras();
     };
-
     const __origShowTab = showTab;
-    showTab = function (tabId) {
+    showTab = function(tabId) {
       __origShowTab(tabId);
       const extraTitles = {
         expenses: 'Expense Management',
@@ -3217,20 +3352,45 @@
         if (b) b.focus();
       }, 50);
     };
-
     // Auto number + today's date whenever a document modal is opened
     const MODAL_SETUP = {
-      orderModal: { numField: 'invNum', counter: 'inv', dateField: 'invDate' },
-      purchaseInvoiceModal: { numField: 'pinvNum', counter: 'pinv', dateField: 'pinvDate' },
-      quotationModal: { counter: 'quo', dateField: 'quoDate' },
-      debitModal: { numField: 'debNum', counter: 'dn', dateField: 'debDate' },
-      expenseModal: { numField: 'expNum', counter: 'exp', dateField: 'expDate' },
-      cashbankModal: { numField: 'cbNum', counter: 'cb', dateField: 'cbDate' },
-      incomeModal: { numField: 'incNum', counter: 'inc', dateField: 'incDate' }
+      orderModal: {
+        numField: 'invNum',
+        counter: 'inv',
+        dateField: 'invDate'
+      },
+      purchaseInvoiceModal: {
+        numField: 'pinvNum',
+        counter: 'pinv',
+        dateField: 'pinvDate'
+      },
+      quotationModal: {
+        counter: 'quo',
+        dateField: 'quoDate'
+      },
+      debitModal: {
+        numField: 'debNum',
+        counter: 'dn',
+        dateField: 'debDate'
+      },
+      expenseModal: {
+        numField: 'expNum',
+        counter: 'exp',
+        dateField: 'expDate'
+      },
+      cashbankModal: {
+        numField: 'cbNum',
+        counter: 'cb',
+        dateField: 'cbDate'
+      },
+      incomeModal: {
+        numField: 'incNum',
+        counter: 'inc',
+        dateField: 'incDate'
+      }
     };
-
     const __origOpenModal = openModal;
-    openModal = function (modalId) {
+    openModal = function(modalId) {
       ensureExtraData();
       const cfg = MODAL_SETUP[modalId];
       if (cfg) {
@@ -3250,12 +3410,11 @@
       }
       __origOpenModal(modalId);
     };
-
     // Make every saved document take the next sequential number (1, 2, 3, ...)
     function wrapSaveWithNumbering(fnName, collection, field, counter) {
       const orig = window[fnName];
       if (typeof orig !== 'function') return;
-      window[fnName] = function () {
+      window[fnName] = function() {
         ensureExtraData();
         const before = (userData[collection] || []).length;
         orig.apply(this, arguments);
@@ -3267,14 +3426,12 @@
         }
       };
     }
-
     wrapSaveWithNumbering('saveOrder', 'orders', 'inv', 'inv');
     wrapSaveWithNumbering('savePurchaseInvoice', 'purchaseinvoices', 'ref', 'pinv');
     wrapSaveWithNumbering('saveQuotation', 'quotations', 'qno', 'quo');
     wrapSaveWithNumbering('saveDebitNote', 'debitnotes', 'ref', 'dn');
     wrapSaveWithNumbering('savePurchase', 'purchases', 'ref', 'po');
     wrapSaveWithNumbering('savePayout', 'payouts', 'voucher', 'pv');
-
     document.addEventListener('DOMContentLoaded', () => {
       ensureExtraData();
       loadSettingsForm();
@@ -3291,7 +3448,6 @@
         if (el && !el.value) el.value = todayISO();
       });
     });
-
   </script>
 </body>
 
