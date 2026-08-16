@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -97,6 +98,25 @@
         </button>
         <button onclick="showTab('payouts')" class="w-full flex items-center space-x-3 px-3 py-2.5 rounded-lg hover:bg-slate-800 hover:text-white transition group">
           <i class="fa-solid fa-money-bill-transfer w-5 text-orange-500"></i><span>Payment Out Vouchers</span>
+        </button>
+        <div class="pt-2 mt-2 border-t border-slate-800"></div>
+        <button onclick="showTab('expenses')" class="w-full flex items-center space-x-3 px-3 py-2.5 rounded-lg hover:bg-slate-800 hover:text-white transition group">
+          <i class="fa-solid fa-receipt w-5 text-rose-400"></i><span>Expense</span>
+        </button>
+        <button onclick="showTab('cashbank')" class="w-full flex items-center space-x-3 px-3 py-2.5 rounded-lg hover:bg-slate-800 hover:text-white transition group">
+          <i class="fa-solid fa-building-columns w-5 text-emerald-400"></i><span>Cash &amp; Bank</span>
+        </button>
+        <button onclick="showTab('otherincome')" class="w-full flex items-center space-x-3 px-3 py-2.5 rounded-lg hover:bg-slate-800 hover:text-white transition group">
+          <i class="fa-solid fa-sack-dollar w-5 text-amber-400"></i><span>Other Income</span>
+        </button>
+        <button onclick="showTab('barcode')" class="w-full flex items-center space-x-3 px-3 py-2.5 rounded-lg hover:bg-slate-800 hover:text-white transition group">
+          <i class="fa-solid fa-barcode w-5 text-cyan-400"></i><span>Barcode Scanner</span>
+        </button>
+        <button onclick="showTab('settings')" class="w-full flex items-center space-x-3 px-3 py-2.5 rounded-lg hover:bg-slate-800 hover:text-white transition group">
+          <i class="fa-solid fa-gear w-5 text-slate-300"></i><span>Settings</span>
+        </button>
+        <button onclick="showTab('help')" class="w-full flex items-center space-x-3 px-3 py-2.5 rounded-lg hover:bg-slate-800 hover:text-white transition group">
+          <i class="fa-solid fa-circle-question w-5 text-orange-500"></i><span>Help &amp; Support</span>
         </button>
       </nav>
 
@@ -484,6 +504,278 @@
                 </tr>
               </tbody>
             </table>
+          </div>
+        </div>
+
+        <div id="tab-expenses" class="tab-content hidden space-y-4">
+          <div class="flex justify-between items-center bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
+            <div>
+              <h4 class="text-sm font-bold text-slate-800">Business Expenses</h4>
+              <p class="text-[11px] text-slate-500">Rent, utilities, salaries, transport and other running costs.</p>
+            </div>
+            <div class="flex items-center gap-3">
+              <div class="text-right">
+                <div class="text-[10px] uppercase font-bold text-slate-500">Total Expense</div>
+                <div id="stat-expenseTotal" class="text-lg font-black text-rose-600">Rs 0</div>
+              </div>
+              <button onclick="openModal('expenseModal')" class="px-3 py-1.5 bg-rose-600 hover:bg-rose-700 text-white rounded-lg font-bold text-xs shadow transition">Add Expense</button>
+            </div>
+          </div>
+          <div class="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden">
+            <table class="w-full text-xs text-left border-collapse">
+              <thead class="bg-slate-50 text-slate-600 uppercase border-b border-slate-200 font-bold">
+                <tr>
+                  <th class="p-3">Voucher #</th>
+                  <th class="p-3">Date</th>
+                  <th class="p-3">Category</th>
+                  <th class="p-3">Description</th>
+                  <th class="p-3">Paid To</th>
+                  <th class="p-3">Mode</th>
+                  <th class="p-3">Amount</th>
+                  <th class="p-3 text-right">Actions</th>
+                </tr>
+              </thead>
+              <tbody id="expensesTableBody">
+                <tr><td colspan="8" class="p-4 text-center text-slate-400">No expenses recorded yet.</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div id="tab-cashbank" class="tab-content hidden space-y-4">
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
+              <div class="text-[10px] uppercase font-bold text-slate-500">Cash in Hand</div>
+              <div id="stat-cashBalance" class="text-2xl font-black text-emerald-600 mt-1">Rs 0</div>
+            </div>
+            <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
+              <div class="text-[10px] uppercase font-bold text-slate-500">Bank Balance</div>
+              <div id="stat-bankBalance" class="text-2xl font-black text-blue-600 mt-1">Rs 0</div>
+            </div>
+            <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
+              <div class="text-[10px] uppercase font-bold text-slate-500">Total Available</div>
+              <div id="stat-totalBalance" class="text-2xl font-black text-slate-900 mt-1">Rs 0</div>
+            </div>
+          </div>
+          <div class="flex justify-between items-center bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
+            <h4 class="text-sm font-bold text-slate-800">Cash &amp; Bank Transactions</h4>
+            <button onclick="openModal('cashbankModal')" class="px-3 py-1.5 bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg font-bold text-xs shadow transition">New Transaction</button>
+          </div>
+          <div class="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden">
+            <table class="w-full text-xs text-left border-collapse">
+              <thead class="bg-slate-50 text-slate-600 uppercase border-b border-slate-200 font-bold">
+                <tr>
+                  <th class="p-3">Ref #</th>
+                  <th class="p-3">Date</th>
+                  <th class="p-3">Account</th>
+                  <th class="p-3">Type</th>
+                  <th class="p-3">Description</th>
+                  <th class="p-3">Amount</th>
+                  <th class="p-3 text-right">Actions</th>
+                </tr>
+              </thead>
+              <tbody id="cashbankTableBody">
+                <tr><td colspan="7" class="p-4 text-center text-slate-400">No cash or bank transactions yet.</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div id="tab-otherincome" class="tab-content hidden space-y-4">
+          <div class="flex justify-between items-center bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
+            <div>
+              <h4 class="text-sm font-bold text-slate-800">Other Income</h4>
+              <p class="text-[11px] text-slate-500">Non-sales income such as rent received, commission, scrap sale or interest.</p>
+            </div>
+            <div class="flex items-center gap-3">
+              <div class="text-right">
+                <div class="text-[10px] uppercase font-bold text-slate-500">Total Other Income</div>
+                <div id="stat-incomeTotal" class="text-lg font-black text-emerald-600">Rs 0</div>
+              </div>
+              <button onclick="openModal('incomeModal')" class="px-3 py-1.5 bg-amber-500 hover:bg-amber-600 text-white rounded-lg font-bold text-xs shadow transition">Add Income</button>
+            </div>
+          </div>
+          <div class="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden">
+            <table class="w-full text-xs text-left border-collapse">
+              <thead class="bg-slate-50 text-slate-600 uppercase border-b border-slate-200 font-bold">
+                <tr>
+                  <th class="p-3">Receipt #</th>
+                  <th class="p-3">Date</th>
+                  <th class="p-3">Source</th>
+                  <th class="p-3">Description</th>
+                  <th class="p-3">Received In</th>
+                  <th class="p-3">Amount</th>
+                  <th class="p-3 text-right">Actions</th>
+                </tr>
+              </thead>
+              <tbody id="incomeTableBody">
+                <tr><td colspan="7" class="p-4 text-center text-slate-400">No other income recorded yet.</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div id="tab-barcode" class="tab-content hidden space-y-4">
+          <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
+            <h4 class="text-sm font-bold text-slate-800 mb-1">Barcode Scanner</h4>
+            <p class="text-[11px] text-slate-500 mb-4">Place the cursor in the box and scan with your USB/Bluetooth barcode gun, or type the code and press Enter.</p>
+            <div class="flex gap-2">
+              <input type="text" id="barcodeInput" placeholder="Scan or type barcode / item name..." autocomplete="off"
+                class="flex-1 px-3 py-3 border rounded-lg text-sm font-mono focus:outline-none focus:ring-2 focus:ring-cyan-500">
+              <button onclick="handleBarcodeScan()" class="px-4 py-3 bg-cyan-600 hover:bg-cyan-700 text-white rounded-lg font-bold text-xs shadow transition">
+                <i class="fa-solid fa-magnifying-glass mr-1"></i> Find Item
+              </button>
+            </div>
+            <div id="barcodeResult" class="mt-4 text-xs"></div>
+          </div>
+          <div class="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden">
+            <div class="p-4 border-b border-slate-100 flex justify-between items-center">
+              <h4 class="text-sm font-bold text-slate-800">Recent Scans</h4>
+              <button onclick="clearScanLog()" class="px-2.5 py-1 border rounded-lg text-[11px] font-bold text-slate-600 hover:bg-slate-100">Clear</button>
+            </div>
+            <table class="w-full text-xs text-left border-collapse">
+              <thead class="bg-slate-50 text-slate-600 uppercase border-b border-slate-200 font-bold">
+                <tr>
+                  <th class="p-3">Time</th>
+                  <th class="p-3">Scanned Code</th>
+                  <th class="p-3">Matched Item</th>
+                  <th class="p-3">Stock</th>
+                  <th class="p-3">Sale Price</th>
+                </tr>
+              </thead>
+              <tbody id="scanTableBody">
+                <tr><td colspan="5" class="p-4 text-center text-slate-400">No scans yet.</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div id="tab-settings" class="tab-content hidden space-y-4">
+          <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
+            <h4 class="text-sm font-bold text-slate-800 mb-1">Business Settings</h4>
+            <p class="text-[11px] text-slate-500 mb-4">Everything saved here is printed on every invoice, quotation, voucher and slip.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+              <div>
+                <label class="block font-bold uppercase text-slate-600 mb-1">Business / Company Name</label>
+                <input type="text" id="setCompany" class="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-orange-500">
+              </div>
+              <div>
+                <label class="block font-bold uppercase text-slate-600 mb-1">Tagline / Business Type</label>
+                <input type="text" id="setTagline" class="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-orange-500">
+              </div>
+              <div class="md:col-span-2">
+                <label class="block font-bold uppercase text-slate-600 mb-1">Business Address</label>
+                <input type="text" id="setAddress" class="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-orange-500">
+              </div>
+              <div>
+                <label class="block font-bold uppercase text-slate-600 mb-1">Phone Number</label>
+                <input type="text" id="setPhone" class="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-orange-500">
+              </div>
+              <div>
+                <label class="block font-bold uppercase text-slate-600 mb-1">Email Address</label>
+                <input type="text" id="setEmail" class="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-orange-500">
+              </div>
+              <div>
+                <label class="block font-bold uppercase text-slate-600 mb-1">NTN Number</label>
+                <input type="text" id="setNtn" class="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-orange-500">
+              </div>
+              <div>
+                <label class="block font-bold uppercase text-slate-600 mb-1">STRN / Sales Tax Reg #</label>
+                <input type="text" id="setStrn" class="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-orange-500">
+              </div>
+              <div>
+                <label class="block font-bold uppercase text-slate-600 mb-1">Currency Symbol</label>
+                <input type="text" id="setCurrency" class="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-orange-500">
+              </div>
+              <div>
+                <label class="block font-bold uppercase text-slate-600 mb-1">Default GST / Tax %</label>
+                <input type="number" id="setTax" class="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-orange-500">
+              </div>
+              <div class="md:col-span-2">
+                <label class="block font-bold uppercase text-slate-600 mb-1">Bank Account Details (printed on invoice)</label>
+                <input type="text" id="setBank" placeholder="Bank name, Title, Account / IBAN" class="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-orange-500">
+              </div>
+              <div class="md:col-span-2">
+                <label class="block font-bold uppercase text-slate-600 mb-1">Invoice Footer / Terms</label>
+                <textarea id="setFooter" rows="2" class="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-orange-500"></textarea>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
+            <h4 class="text-sm font-bold text-slate-800 mb-1">Document Numbering</h4>
+            <p class="text-[11px] text-slate-500 mb-4">Numbers start at 1 and continue automatically 2, 3, 4 ... for every new document.</p>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-xs">
+              <div>
+                <label class="block font-bold uppercase text-slate-600 mb-1">Invoice Prefix</label>
+                <input type="text" id="setInvPrefix" class="w-full px-3 py-2 border rounded-lg">
+              </div>
+              <div>
+                <label class="block font-bold uppercase text-slate-600 mb-1">Next Invoice #</label>
+                <input type="number" id="setInvNext" min="1" class="w-full px-3 py-2 border rounded-lg">
+              </div>
+              <div>
+                <label class="block font-bold uppercase text-slate-600 mb-1">Quotation Prefix</label>
+                <input type="text" id="setQuoPrefix" class="w-full px-3 py-2 border rounded-lg">
+              </div>
+              <div>
+                <label class="block font-bold uppercase text-slate-600 mb-1">Next Quotation #</label>
+                <input type="number" id="setQuoNext" min="1" class="w-full px-3 py-2 border rounded-lg">
+              </div>
+            </div>
+            <div class="flex justify-end gap-2 mt-5">
+              <button onclick="resetNumbering()" class="px-4 py-2 border rounded-lg font-bold text-xs text-slate-600 hover:bg-slate-100">Reset All Numbering to 1</button>
+              <button onclick="saveSettings()" class="px-5 py-2 bg-orange-500 hover:bg-orange-600 text-white rounded-lg font-bold text-xs shadow">Save Settings</button>
+            </div>
+            <div id="settingsSaved" class="hidden mt-3 text-[11px] font-bold text-emerald-600 text-right">Settings saved. They will now appear on all printed documents.</div>
+          </div>
+        </div>
+
+        <div id="tab-help" class="tab-content hidden space-y-4">
+          <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+            <h4 class="text-base font-extrabold text-slate-900">Help &amp; Support</h4>
+            <p class="text-xs text-slate-500 mt-1">Need help with invoices, stock or printing? Our support team is available 7 days a week.</p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-5 text-xs">
+              <a href="tel:+923086707676" class="block p-4 rounded-xl border border-slate-200 hover:border-orange-400 hover:shadow transition">
+                <i class="fa-solid fa-phone text-orange-500 text-lg"></i>
+                <div class="font-bold uppercase text-slate-500 text-[10px] mt-2">Call Support</div>
+                <div class="font-black text-slate-900 text-sm mt-1">+92 3086707676</div>
+              </a>
+              <a href="https://wa.me/923086707676" target="_blank" rel="noopener" class="block p-4 rounded-xl border border-slate-200 hover:border-emerald-400 hover:shadow transition">
+                <i class="fa-brands fa-whatsapp text-emerald-500 text-lg"></i>
+                <div class="font-bold uppercase text-slate-500 text-[10px] mt-2">WhatsApp</div>
+                <div class="font-black text-slate-900 text-sm mt-1">+92 3086707676</div>
+              </a>
+              <div class="p-4 rounded-xl border border-slate-200">
+                <i class="fa-solid fa-clock text-cyan-500 text-lg"></i>
+                <div class="font-bold uppercase text-slate-500 text-[10px] mt-2">Support Hours</div>
+                <div class="font-black text-slate-900 text-sm mt-1">9:00 AM - 9:00 PM (PKT)</div>
+              </div>
+            </div>
+          </div>
+          <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm text-xs">
+            <h4 class="text-sm font-bold text-slate-800 mb-3">Frequently Asked Questions</h4>
+            <div class="space-y-3">
+              <div class="p-3 rounded-lg bg-slate-50 border border-slate-100">
+                <div class="font-bold text-slate-800">How do invoice numbers work?</div>
+                <p class="text-slate-600 mt-1">Numbering starts at 1 and increases automatically (2, 3, 4 ...). You can change the prefix or the next number in Settings.</p>
+              </div>
+              <div class="p-3 rounded-lg bg-slate-50 border border-slate-100">
+                <div class="font-bold text-slate-800">My business name is not showing on the print.</div>
+                <p class="text-slate-600 mt-1">Open Settings, fill in your business name, address, phone, NTN and save. Every print then uses that information.</p>
+              </div>
+              <div class="p-3 rounded-lg bg-slate-50 border border-slate-100">
+                <div class="font-bold text-slate-800">Which barcode scanners are supported?</div>
+                <p class="text-slate-600 mt-1">Any USB or Bluetooth scanner that types like a keyboard. Just focus the scan box and scan.</p>
+              </div>
+              <div class="p-3 rounded-lg bg-slate-50 border border-slate-100">
+                <div class="font-bold text-slate-800">Is my data safe?</div>
+                <p class="text-slate-600 mt-1">All records are stored on this device in your browser storage. Do not clear browser data without a backup.</p>
+              </div>
+            </div>
+            <div class="mt-5 pt-4 border-t border-slate-100 text-center text-[11px] text-slate-500">
+              Still stuck? Call or WhatsApp <span class="font-black text-slate-800">+92 3086707676</span>
+            </div>
           </div>
         </div>
 
@@ -1011,9 +1303,158 @@
     </div>
   </div>
 
+  <div id="expenseModal" class="hidden fixed inset-0 bg-slate-900/50 backdrop-blur-sm z-50 flex items-center justify-center p-4 overflow-y-auto">
+    <div class="bg-white rounded-xl shadow-2xl max-w-lg w-full p-6 border border-slate-200">
+      <div class="flex justify-between items-center pb-3 border-b border-slate-100 mb-4">
+        <h3 class="font-extrabold text-slate-900 text-base">Record Expense</h3>
+        <button onclick="closeModal('expenseModal')" class="text-slate-400 hover:text-slate-600"><i class="fa-solid fa-xmark text-lg"></i></button>
+      </div>
+      <div class="space-y-4 text-xs">
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block font-bold uppercase text-slate-600 mb-1">Voucher #</label>
+            <input type="text" id="expNum" class="w-full px-3 py-2 border rounded-lg bg-slate-50 font-mono" readonly>
+          </div>
+          <div>
+            <label class="block font-bold uppercase text-slate-600 mb-1">Date</label>
+            <input type="date" id="expDate" class="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-rose-500">
+          </div>
+        </div>
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block font-bold uppercase text-slate-600 mb-1">Category *</label>
+            <select id="expCategory" class="w-full px-3 py-2 border rounded-lg bg-white">
+              <option>Rent</option><option>Utilities (Bills)</option><option>Salaries</option>
+              <option>Transport / Delivery</option><option>Marketing</option><option>Repair &amp; Maintenance</option>
+              <option>Office Supplies</option><option>Tax / Government Fee</option><option>Other</option>
+            </select>
+          </div>
+          <div>
+            <label class="block font-bold uppercase text-slate-600 mb-1">Payment Mode</label>
+            <select id="expMode" class="w-full px-3 py-2 border rounded-lg bg-white">
+              <option>Cash</option><option>Bank</option><option>Cheque</option><option>Easypaisa / JazzCash</option>
+            </select>
+          </div>
+        </div>
+        <div>
+          <label class="block font-bold uppercase text-slate-600 mb-1">Paid To</label>
+          <input type="text" id="expPaidTo" placeholder="e.g. WAPDA / Landlord / Staff" class="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-rose-500">
+        </div>
+        <div>
+          <label class="block font-bold uppercase text-slate-600 mb-1">Description</label>
+          <input type="text" id="expDesc" placeholder="Short detail of expense" class="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-rose-500">
+        </div>
+        <div>
+          <label class="block font-bold uppercase text-slate-600 mb-1">Amount (Rs) *</label>
+          <input type="number" id="expAmount" placeholder="0.00" class="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-rose-500">
+        </div>
+        <div class="flex justify-end space-x-2 pt-2">
+          <button type="button" onclick="closeModal('expenseModal')" class="px-4 py-2 border rounded-lg font-bold text-slate-600 hover:bg-slate-100">Cancel</button>
+          <button type="button" onclick="saveExpense()" class="px-4 py-2 bg-rose-600 hover:bg-rose-700 text-white rounded-lg font-bold shadow">Save Expense</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="cashbankModal" class="hidden fixed inset-0 bg-slate-900/50 backdrop-blur-sm z-50 flex items-center justify-center p-4 overflow-y-auto">
+    <div class="bg-white rounded-xl shadow-2xl max-w-lg w-full p-6 border border-slate-200">
+      <div class="flex justify-between items-center pb-3 border-b border-slate-100 mb-4">
+        <h3 class="font-extrabold text-slate-900 text-base">Cash / Bank Transaction</h3>
+        <button onclick="closeModal('cashbankModal')" class="text-slate-400 hover:text-slate-600"><i class="fa-solid fa-xmark text-lg"></i></button>
+      </div>
+      <div class="space-y-4 text-xs">
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block font-bold uppercase text-slate-600 mb-1">Ref #</label>
+            <input type="text" id="cbNum" class="w-full px-3 py-2 border rounded-lg bg-slate-50 font-mono" readonly>
+          </div>
+          <div>
+            <label class="block font-bold uppercase text-slate-600 mb-1">Date</label>
+            <input type="date" id="cbDate" class="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-emerald-500">
+          </div>
+        </div>
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block font-bold uppercase text-slate-600 mb-1">Account</label>
+            <select id="cbAccount" class="w-full px-3 py-2 border rounded-lg bg-white">
+              <option>Cash in Hand</option><option>Bank Account</option>
+            </select>
+          </div>
+          <div>
+            <label class="block font-bold uppercase text-slate-600 mb-1">Type</label>
+            <select id="cbType" class="w-full px-3 py-2 border rounded-lg bg-white">
+              <option value="Deposit / In">Deposit / In</option>
+              <option value="Withdraw / Out">Withdraw / Out</option>
+            </select>
+          </div>
+        </div>
+        <div>
+          <label class="block font-bold uppercase text-slate-600 mb-1">Description</label>
+          <input type="text" id="cbDesc" placeholder="e.g. Cash deposited into bank" class="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-emerald-500">
+        </div>
+        <div>
+          <label class="block font-bold uppercase text-slate-600 mb-1">Amount (Rs) *</label>
+          <input type="number" id="cbAmount" placeholder="0.00" class="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-emerald-500">
+        </div>
+        <div class="flex justify-end space-x-2 pt-2">
+          <button type="button" onclick="closeModal('cashbankModal')" class="px-4 py-2 border rounded-lg font-bold text-slate-600 hover:bg-slate-100">Cancel</button>
+          <button type="button" onclick="saveCashBank()" class="px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg font-bold shadow">Save Transaction</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="incomeModal" class="hidden fixed inset-0 bg-slate-900/50 backdrop-blur-sm z-50 flex items-center justify-center p-4 overflow-y-auto">
+    <div class="bg-white rounded-xl shadow-2xl max-w-lg w-full p-6 border border-slate-200">
+      <div class="flex justify-between items-center pb-3 border-b border-slate-100 mb-4">
+        <h3 class="font-extrabold text-slate-900 text-base">Record Other Income</h3>
+        <button onclick="closeModal('incomeModal')" class="text-slate-400 hover:text-slate-600"><i class="fa-solid fa-xmark text-lg"></i></button>
+      </div>
+      <div class="space-y-4 text-xs">
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block font-bold uppercase text-slate-600 mb-1">Receipt #</label>
+            <input type="text" id="incNum" class="w-full px-3 py-2 border rounded-lg bg-slate-50 font-mono" readonly>
+          </div>
+          <div>
+            <label class="block font-bold uppercase text-slate-600 mb-1">Date</label>
+            <input type="date" id="incDate" class="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-amber-500">
+          </div>
+        </div>
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block font-bold uppercase text-slate-600 mb-1">Income Source *</label>
+            <select id="incSource" class="w-full px-3 py-2 border rounded-lg bg-white">
+              <option>Rent Received</option><option>Commission</option><option>Scrap / Empty Sale</option>
+              <option>Interest / Profit</option><option>Discount Received</option><option>Other</option>
+            </select>
+          </div>
+          <div>
+            <label class="block font-bold uppercase text-slate-600 mb-1">Received In</label>
+            <select id="incAccount" class="w-full px-3 py-2 border rounded-lg bg-white">
+              <option>Cash in Hand</option><option>Bank Account</option>
+            </select>
+          </div>
+        </div>
+        <div>
+          <label class="block font-bold uppercase text-slate-600 mb-1">Description</label>
+          <input type="text" id="incDesc" placeholder="Short detail" class="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-amber-500">
+        </div>
+        <div>
+          <label class="block font-bold uppercase text-slate-600 mb-1">Amount (Rs) *</label>
+          <input type="number" id="incAmount" placeholder="0.00" class="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-amber-500">
+        </div>
+        <div class="flex justify-end space-x-2 pt-2">
+          <button type="button" onclick="closeModal('incomeModal')" class="px-4 py-2 border rounded-lg font-bold text-slate-600 hover:bg-slate-100">Cancel</button>
+          <button type="button" onclick="saveIncome()" class="px-4 py-2 bg-amber-500 hover:bg-amber-600 text-white rounded-lg font-bold shadow">Save Income</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <script>
     const masterMedicinesList = [
-      "Xanprol","Mecobalamin Injection", "Pyridoxine Tablet", "Thiamine Injection",
+      "Xanprol", "Mecobalamin Injection", "Pyridoxine Tablet", "Thiamine Injection",
       "Magnesium 10mg", "Riboflavin Tablet", "Biotin Tablet", "Ascorbic Acid Tablet", "Cholecalciferol Capsule", "Ergocalciferol Capsule",
       "Calcium Carbonate Tablet", "Calcium Citrate Tablet", "Magnesium Oxide Tablet", "Potassium Citrate Syrup",
       "Sodium Chloride Tablets", "Oral Rehydration Salts", "Acetylsalicylic Acid Tablet", "Dipyridamole Tablet",
@@ -1908,7 +2349,8 @@
             <td class="p-2 font-semibold text-slate-600">${q.discount || 'N/A'}</td>
             <td class="p-2 font-semibold text-slate-600">${q.date || 'N/A'}</td>
             <td class="p-2 text-right space-x-1 whitespace-nowrap">
-              <button type="button" onclick='printUniversalSlip("QUOTATION SLIP", {
+              <button type="button" onclick='printUniversalSlip("QUOTATION", {
+                "Quotation #": "${q.qno || ''}", "Date": "${q.date}",
                 "Customer/Shop Name": "${q.customer}", "Product/Item Name": "${q.product}",
                 "Rate/Price": "Rs ${q.rate}", "Discount/Scheme": "${q.discount}", "Date": "${q.date}"
               }, false)' class="px-2 py-0.5 bg-orange-50 text-orange-600 hover:bg-orange-500 hover:text-white rounded font-bold transition text-[10px]"><i class="fa-solid fa-print"></i> Print</button>
@@ -2120,6 +2562,736 @@
         `).join('') || `<tr><td colspan="2" class="p-4 text-center text-slate-400">No activity recorded yet.</td></tr>`;
       }
     }
+    /* =========================================================
+       PAYVIBES - Settings, Auto Numbering, New Modules & Printing
+       ========================================================= */
+
+    const DEFAULT_SETTINGS = {
+      company: 'Payvibes Pharma & General Store',
+      tagline: 'Invoicematic & Inventory Management',
+      address: 'Main Bazar, Lahore, Punjab, Pakistan',
+      phone: '+92 3086707676',
+      email: 'info@payvibes.pk',
+      ntn: '',
+      strn: '',
+      currency: 'Rs',
+      tax: 0,
+      bank: '',
+      footer: 'Goods once sold will not be taken back or exchanged without original invoice.',
+      invPrefix: 'INV-',
+      quoPrefix: 'QT-'
+    };
+
+    const SUPPORT_PHONE = '+92 3086707676';
+
+    const COUNTER_DEFAULTS = {
+      inv: 1, pinv: 1, quo: 1, dn: 1, po: 1, pv: 1, exp: 1, cb: 1, inc: 1
+    };
+
+    const COUNTER_PREFIX = {
+      inv: () => getSettings().invPrefix || 'INV-',
+      pinv: () => 'PINV-',
+      quo: () => getSettings().quoPrefix || 'QT-',
+      dn: () => 'DN-',
+      po: () => 'PO-',
+      pv: () => 'PV-',
+      exp: () => 'EXP-',
+      cb: () => 'CB-',
+      inc: () => 'INC-'
+    };
+
+    function ensureExtraData() {
+      if (!userData.settings) userData.settings = Object.assign({}, DEFAULT_SETTINGS);
+      else userData.settings = Object.assign({}, DEFAULT_SETTINGS, userData.settings);
+      if (!userData.counters) userData.counters = Object.assign({}, COUNTER_DEFAULTS);
+      else userData.counters = Object.assign({}, COUNTER_DEFAULTS, userData.counters);
+      ['expenses', 'cashbank', 'otherincome', 'scans'].forEach(k => {
+        if (!Array.isArray(userData[k])) userData[k] = [];
+      });
+    }
+
+    function getSettings() {
+      ensureExtraData();
+      return userData.settings;
+    }
+
+    function todayISO() {
+      const d = new Date();
+      return new Date(d.getTime() - d.getTimezoneOffset() * 60000).toISOString().split('T')[0];
+    }
+
+    function prettyDate(iso) {
+      if (!iso) return todayISO();
+      const d = new Date(iso);
+      if (isNaN(d.getTime())) return iso;
+      return d.toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' });
+    }
+
+    function money(v) {
+      const n = parseFloat(v) || 0;
+      return (getSettings().currency || 'Rs') + ' ' + n.toLocaleString('en-PK', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    }
+
+    function peekNumber(key) {
+      ensureExtraData();
+      return (COUNTER_PREFIX[key] ? COUNTER_PREFIX[key]() : '') + (userData.counters[key] || 1);
+    }
+
+    function takeNumber(key) {
+      ensureExtraData();
+      const val = peekNumber(key);
+      userData.counters[key] = (userData.counters[key] || 1) + 1;
+      saveData();
+      return val;
+    }
+
+    function resetNumbering() {
+      if (!confirm('Reset every document number back to 1?')) return;
+      ensureExtraData();
+      userData.counters = Object.assign({}, COUNTER_DEFAULTS);
+      saveData();
+      loadSettingsForm();
+      alert('All document numbering has been reset to 1.');
+    }
+
+    /* ---------------- Settings form ---------------- */
+
+    function loadSettingsForm() {
+      const s = getSettings();
+      const map = {
+        setCompany: s.company, setTagline: s.tagline, setAddress: s.address, setPhone: s.phone,
+        setEmail: s.email, setNtn: s.ntn, setStrn: s.strn, setCurrency: s.currency,
+        setTax: s.tax, setBank: s.bank, setFooter: s.footer,
+        setInvPrefix: s.invPrefix, setQuoPrefix: s.quoPrefix
+      };
+      Object.keys(map).forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.value = map[id] == null ? '' : map[id];
+      });
+      const invNext = document.getElementById('setInvNext');
+      const quoNext = document.getElementById('setQuoNext');
+      if (invNext) invNext.value = userData.counters.inv;
+      if (quoNext) quoNext.value = userData.counters.quo;
+    }
+
+    function saveSettings() {
+      ensureExtraData();
+      const val = id => {
+        const el = document.getElementById(id);
+        return el ? el.value.trim() : '';
+      };
+      userData.settings = {
+        company: val('setCompany') || DEFAULT_SETTINGS.company,
+        tagline: val('setTagline'),
+        address: val('setAddress'),
+        phone: val('setPhone'),
+        email: val('setEmail'),
+        ntn: val('setNtn'),
+        strn: val('setStrn'),
+        currency: val('setCurrency') || 'Rs',
+        tax: parseFloat(val('setTax')) || 0,
+        bank: val('setBank'),
+        footer: val('setFooter'),
+        invPrefix: val('setInvPrefix') || 'INV-',
+        quoPrefix: val('setQuoPrefix') || 'QT-'
+      };
+      const invNext = parseInt(val('setInvNext'), 10);
+      const quoNext = parseInt(val('setQuoNext'), 10);
+      if (invNext > 0) userData.counters.inv = invNext;
+      if (quoNext > 0) userData.counters.quo = quoNext;
+      saveData();
+      logActivity('Updated business settings');
+      renderAllData();
+      const flag = document.getElementById('settingsSaved');
+      if (flag) {
+        flag.classList.remove('hidden');
+        setTimeout(() => flag.classList.add('hidden'), 3000);
+      }
+    }
+
+    /* ---------------- Amount in words ---------------- */
+
+    function numberToWords(num) {
+      num = Math.floor(Math.abs(parseFloat(num) || 0));
+      if (num === 0) return 'Zero';
+      const ones = ['', 'One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Ten',
+        'Eleven', 'Twelve', 'Thirteen', 'Fourteen', 'Fifteen', 'Sixteen', 'Seventeen', 'Eighteen', 'Nineteen'];
+      const tens = ['', '', 'Twenty', 'Thirty', 'Forty', 'Fifty', 'Sixty', 'Seventy', 'Eighty', 'Ninety'];
+      const below1000 = n => {
+        let str = '';
+        if (n >= 100) {
+          str += ones[Math.floor(n / 100)] + ' Hundred ';
+          n %= 100;
+        }
+        if (n >= 20) {
+          str += tens[Math.floor(n / 10)] + ' ';
+          n %= 10;
+        }
+        if (n > 0) str += ones[n] + ' ';
+        return str;
+      };
+      let words = '';
+      const units = [[10000000, 'Crore'], [100000, 'Lac'], [1000, 'Thousand']];
+      units.forEach(([div, name]) => {
+        if (num >= div) {
+          words += below1000(Math.floor(num / div)) + name + ' ';
+          num %= div;
+        }
+      });
+      words += below1000(num);
+      return words.replace(/\s+/g, ' ').trim();
+    }
+
+    /* ---------------- Professional print engine ---------------- */
+
+    function escapeHtml(str) {
+      return String(str == null ? '' : str)
+        .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+    }
+
+    function matchKey(obj, patterns) {
+      for (const key in obj) {
+        for (const p of patterns) {
+          if (p.test(key)) return key;
+        }
+      }
+      return null;
+    }
+
+    function toAmount(v) {
+      const n = parseFloat(String(v).replace(/[^0-9.\-]/g, ''));
+      return isNaN(n) ? 0 : n;
+    }
+
+    function printUniversalSlip(title, dataObj, autoClose = false) {
+      const s = getSettings();
+      const data = Object.assign({}, dataObj);
+
+      const numKey = matchKey(data, [/#$/, /^Ref/i, /Voucher/i, /Receipt/i, /Number/i]);
+      const dateKey = matchKey(data, [/date/i]);
+      const docNumber = numKey ? data[numKey] : '';
+      const docDate = dateKey ? data[dateKey] : todayISO();
+      if (numKey) delete data[numKey];
+      if (dateKey) delete data[dateKey];
+
+      const partyPatterns = [/customer/i, /client/i, /party/i, /supplier/i, /patient/i, /recipient/i, /shop/i, /vendor/i, /company name/i, /ntn/i, /cnic/i, /province/i, /address/i, /contact/i, /phone/i, /email/i, /doctor/i, /age/i, /gender/i, /category/i, /owner/i];
+      const itemPatterns = [/product/i, /item/i, /medicine/i, /service/i, /description/i, /hs code/i, /batch/i, /expiry/i, /uom/i, /unit/i, /mode/i, /reason/i, /scheme/i, /status/i, /source/i, /account/i];
+      const amountPatterns = [/total/i, /amount/i, /rate/i, /price/i, /fee/i, /tax/i, /gst/i, /discount/i, /balance/i, /credit/i, /quantity/i, /qty/i, /stock/i];
+
+      const party = {}, itemInfo = {}, amounts = {}, others = {};
+      Object.keys(data).forEach(k => {
+        if (partyPatterns.some(p => p.test(k))) party[k] = data[k];
+        else if (amountPatterns.some(p => p.test(k))) amounts[k] = data[k];
+        else if (itemPatterns.some(p => p.test(k))) itemInfo[k] = data[k];
+        else others[k] = data[k];
+      });
+
+      const descKey = matchKey(itemInfo, [/^product/i, /^item/i, /medicine/i, /^service/i, /description/i]);
+      const qtyKey = matchKey(amounts, [/quantity/i, /^qty/i, /stock/i]);
+      const rateKey = matchKey(amounts, [/^rate/i, /price/i]);
+      const totalKey = matchKey(amounts, [/total amount/i, /^total/i, /^amount/i, /fee amount/i, /^fee/i]);
+
+      const totalVal = totalKey ? toAmount(amounts[totalKey]) : (qtyKey && rateKey ? toAmount(amounts[qtyKey]) * toAmount(amounts[rateKey]) : 0);
+
+      const rowsFrom = obj => Object.keys(obj).map(k =>
+        `<tr><td class="k">${escapeHtml(k)}</td><td class="v">${escapeHtml(obj[k])}</td></tr>`).join('');
+
+      let itemsTable = '';
+      if (descKey) {
+        const sub = Object.keys(itemInfo)
+          .filter(k => k !== descKey)
+          .map(k => escapeHtml(k) + ': ' + escapeHtml(itemInfo[k])).join(' &nbsp;|&nbsp; ');
+        itemsTable = `
+          <table class="items">
+            <thead>
+              <tr><th style="width:38px">#</th><th>Description</th><th style="width:90px" class="r">Qty</th><th style="width:110px" class="r">Rate</th><th style="width:130px" class="r">Amount</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td><strong>${escapeHtml(itemInfo[descKey])}</strong>${sub ? `<div class="sub">${sub}</div>` : ''}</td>
+                <td class="r">${qtyKey ? escapeHtml(amounts[qtyKey]) : '1'}</td>
+                <td class="r">${rateKey ? escapeHtml(amounts[rateKey]) : '-'}</td>
+                <td class="r"><strong>${money(totalVal)}</strong></td>
+              </tr>
+            </tbody>
+          </table>`;
+      }
+
+      let subtotalRow = '';
+      if (descKey && qtyKey && rateKey) {
+        subtotalRow = `<tr><td>Subtotal</td><td class="r">${money(toAmount(amounts[qtyKey]) * toAmount(amounts[rateKey]))}</td></tr>`;
+      }
+
+      const summaryRows = Object.keys(amounts)
+        .filter(k => k !== totalKey && (!descKey || (k !== qtyKey && k !== rateKey)))
+        .map(k => `<tr><td class="k">${escapeHtml(k)}</td><td class="v r">${escapeHtml(amounts[k])}</td></tr>`).join('');
+
+      const detailRows = rowsFrom(Object.assign({}, descKey ? {} : itemInfo, others));
+
+      const html = `<!DOCTYPE html><html><head><meta charset="utf-8"><title>${escapeHtml(title)} ${escapeHtml(docNumber)}</title>
+      <style>
+        *{box-sizing:border-box}
+        body{font-family:Arial,Helvetica,sans-serif;color:#0f172a;margin:0;padding:24px;font-size:12px;}
+        .sheet{max-width:800px;margin:0 auto;}
+        .top{display:flex;justify-content:space-between;align-items:flex-start;border-bottom:3px solid #f97316;padding-bottom:14px;}
+        .co-name{font-size:22px;font-weight:800;letter-spacing:.3px;}
+        .co-tag{font-size:11px;color:#f97316;font-weight:700;text-transform:uppercase;}
+        .co-line{font-size:11px;color:#475569;margin-top:4px;line-height:1.6;}
+        .doc{text-align:right;}
+        .doc-title{font-size:20px;font-weight:800;text-transform:uppercase;color:#f97316;}
+        .doc-meta{margin-top:8px;font-size:11px;color:#334155;line-height:1.8;}
+        .doc-meta b{color:#0f172a;}
+        .panels{display:flex;gap:14px;margin-top:18px;}
+        .panel{flex:1;border:1px solid #e2e8f0;border-radius:8px;padding:10px 12px;}
+        .panel h4{margin:0 0 6px;font-size:10px;text-transform:uppercase;letter-spacing:.6px;color:#64748b;}
+        table{width:100%;border-collapse:collapse;}
+        .kv td{padding:3px 0;font-size:11px;vertical-align:top;}
+        .kv td.k{color:#64748b;width:46%;}
+        .kv td.v{font-weight:700;}
+        .items{margin-top:18px;border:1px solid #e2e8f0;}
+        .items th{background:#0f172a;color:#fff;font-size:10px;text-transform:uppercase;letter-spacing:.5px;padding:8px;text-align:left;}
+        .items td{padding:10px 8px;border-bottom:1px solid #e2e8f0;font-size:11px;vertical-align:top;}
+        .items .sub{color:#64748b;font-size:10px;margin-top:3px;}
+        .r{text-align:right;}
+        .bottom{display:flex;gap:14px;margin-top:16px;align-items:flex-start;}
+        .words{flex:1;border:1px dashed #cbd5e1;border-radius:8px;padding:10px 12px;font-size:11px;}
+        .words span{display:block;color:#64748b;font-size:10px;text-transform:uppercase;margin-bottom:4px;}
+        .totals{width:290px;border:1px solid #e2e8f0;border-radius:8px;overflow:hidden;}
+        .totals td{padding:7px 12px;font-size:11px;}
+        .totals tr:not(:last-child) td{border-bottom:1px solid #f1f5f9;}
+        .totals .grand td{background:#f97316;color:#fff;font-weight:800;font-size:13px;}
+        .notes{margin-top:18px;font-size:10.5px;color:#475569;border-top:1px solid #e2e8f0;padding-top:10px;line-height:1.7;}
+        .signs{display:flex;justify-content:space-between;margin-top:46px;font-size:11px;}
+        .sign{width:200px;border-top:1px solid #94a3b8;padding-top:5px;text-align:center;color:#475569;}
+        .foot{margin-top:22px;text-align:center;font-size:10.5px;color:#64748b;border-top:1px solid #e2e8f0;padding-top:10px;}
+        .foot b{color:#0f172a;}
+        @media print{body{padding:0}@page{margin:14mm}}
+      </style></head><body><div class="sheet">
+        <div class="top">
+          <div>
+            <div class="co-name">${escapeHtml(s.company)}</div>
+            ${s.tagline ? `<div class="co-tag">${escapeHtml(s.tagline)}</div>` : ''}
+            <div class="co-line">
+              ${s.address ? escapeHtml(s.address) + '<br>' : ''}
+              ${s.phone ? 'Phone: ' + escapeHtml(s.phone) : ''}${s.email ? ' &nbsp;|&nbsp; ' + escapeHtml(s.email) : ''}
+              ${(s.ntn || s.strn) ? '<br>' : ''}${s.ntn ? 'NTN: ' + escapeHtml(s.ntn) : ''}${s.strn ? ' &nbsp;|&nbsp; STRN: ' + escapeHtml(s.strn) : ''}
+            </div>
+          </div>
+          <div class="doc">
+            <div class="doc-title">${escapeHtml(title)}</div>
+            <div class="doc-meta">
+              ${docNumber ? `${escapeHtml(numKey || 'Document #')}: <b>${escapeHtml(docNumber)}</b><br>` : ''}
+              Date: <b>${escapeHtml(prettyDate(docDate))}</b>
+            </div>
+          </div>
+        </div>
+
+        <div class="panels">
+          <div class="panel">
+            <h4>Bill To / Party Details</h4>
+            <table class="kv">${Object.keys(party).length ? rowsFrom(party) : '<tr><td class="v">Walk-in / Not specified</td></tr>'}</table>
+          </div>
+          <div class="panel">
+            <h4>Document Details</h4>
+            <table class="kv">
+              ${docNumber ? `<tr><td class="k">${escapeHtml(numKey || 'Document #')}</td><td class="v">${escapeHtml(docNumber)}</td></tr>` : ''}
+              <tr><td class="k">Date</td><td class="v">${escapeHtml(prettyDate(docDate))}</td></tr>
+              <tr><td class="k">Issued By</td><td class="v">${escapeHtml(currentUserRole)}</td></tr>
+              ${detailRows}
+            </table>
+          </div>
+        </div>
+
+        ${itemsTable}
+
+        <div class="bottom">
+          <div class="words">
+            <span>Amount in words</span>
+            <b>${escapeHtml(getSettings().currency || 'Rs')} ${escapeHtml(numberToWords(totalVal))} Only</b>
+          </div>
+          <table class="totals">
+            ${subtotalRow}
+            ${summaryRows}
+            <tr class="grand"><td>Grand Total</td><td class="r">${money(totalVal)}</td></tr>
+          </table>
+        </div>
+
+        ${s.bank ? `<div class="notes"><b>Bank Details:</b> ${escapeHtml(s.bank)}</div>` : ''}
+        ${s.footer ? `<div class="notes"><b>Terms &amp; Conditions:</b> ${escapeHtml(s.footer)}</div>` : ''}
+
+        <div class="signs">
+          <div class="sign">Customer Signature</div>
+          <div class="sign">For ${escapeHtml(s.company)}</div>
+        </div>
+
+        <div class="foot">
+          Thank you for your business! &nbsp;|&nbsp; Help &amp; Support: <b>${escapeHtml(SUPPORT_PHONE)}</b><br>
+          Printed on ${escapeHtml(new Date().toLocaleString('en-GB'))} &nbsp;|&nbsp; Powered by Payvibes
+        </div>
+      </div>
+      <script>window.onload=function(){window.print();${autoClose ? 'window.close();' : ''}}<\/script>
+      </body></html>`;
+
+      const w = window.open('', '_blank');
+      if (!w) {
+        alert('Please allow pop-ups for this site so invoices can be printed.');
+        return;
+      }
+      w.document.write(html);
+      w.document.close();
+    }
+
+    /* ---------------- Expense / Cash & Bank / Other Income ---------------- */
+
+    function saveExpense() {
+      const amount = parseFloat(document.getElementById('expAmount').value) || 0;
+      const category = document.getElementById('expCategory').value;
+      if (!amount) {
+        alert('Please enter the expense amount.');
+        return;
+      }
+      ensureExtraData();
+      userData.expenses.unshift({
+        ref: takeNumber('exp'),
+        date: document.getElementById('expDate').value || todayISO(),
+        category: category,
+        desc: document.getElementById('expDesc').value.trim(),
+        paidTo: document.getElementById('expPaidTo').value.trim(),
+        mode: document.getElementById('expMode').value,
+        amount: amount
+      });
+      logActivity(`Recorded ${category} expense of Rs ${amount}`);
+      saveData();
+      renderAllData();
+      closeModal('expenseModal');
+      document.getElementById('expAmount').value = '';
+      document.getElementById('expDesc').value = '';
+      document.getElementById('expPaidTo').value = '';
+    }
+
+    function saveCashBank() {
+      const amount = parseFloat(document.getElementById('cbAmount').value) || 0;
+      if (!amount) {
+        alert('Please enter the transaction amount.');
+        return;
+      }
+      ensureExtraData();
+      userData.cashbank.unshift({
+        ref: takeNumber('cb'),
+        date: document.getElementById('cbDate').value || todayISO(),
+        account: document.getElementById('cbAccount').value,
+        type: document.getElementById('cbType').value,
+        desc: document.getElementById('cbDesc').value.trim(),
+        amount: amount
+      });
+      logActivity(`Cash & Bank entry of Rs ${amount}`);
+      saveData();
+      renderAllData();
+      closeModal('cashbankModal');
+      document.getElementById('cbAmount').value = '';
+      document.getElementById('cbDesc').value = '';
+    }
+
+    function saveIncome() {
+      const amount = parseFloat(document.getElementById('incAmount').value) || 0;
+      if (!amount) {
+        alert('Please enter the income amount.');
+        return;
+      }
+      ensureExtraData();
+      userData.otherincome.unshift({
+        ref: takeNumber('inc'),
+        date: document.getElementById('incDate').value || todayISO(),
+        source: document.getElementById('incSource').value,
+        desc: document.getElementById('incDesc').value.trim(),
+        account: document.getElementById('incAccount').value,
+        amount: amount
+      });
+      logActivity(`Received other income of Rs ${amount}`);
+      saveData();
+      renderAllData();
+      closeModal('incomeModal');
+      document.getElementById('incAmount').value = '';
+      document.getElementById('incDesc').value = '';
+    }
+
+    /* ---------------- Barcode scanner ---------------- */
+
+    function handleBarcodeScan() {
+      const input = document.getElementById('barcodeInput');
+      const box = document.getElementById('barcodeResult');
+      if (!input || !box) return;
+      const code = input.value.trim();
+      if (!code) return;
+      ensureExtraData();
+      const list = userData.inventory || [];
+      const item = list.find(it =>
+        (it.barcode && String(it.barcode).toLowerCase() === code.toLowerCase()) ||
+        (it.batch && String(it.batch).toLowerCase() === code.toLowerCase()) ||
+        (it.name && it.name.toLowerCase().includes(code.toLowerCase())));
+
+      if (item) {
+        box.innerHTML = `
+          <div class="p-4 rounded-xl border border-emerald-200 bg-emerald-50">
+            <div class="font-black text-slate-900 text-sm">${item.name}</div>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-3 mt-3">
+              <div><div class="text-[10px] uppercase font-bold text-slate-500">Batch</div><div class="font-bold">${item.batch || 'N/A'}</div></div>
+              <div><div class="text-[10px] uppercase font-bold text-slate-500">Stock</div><div class="font-bold ${item.stock <= 5 ? 'text-rose-600' : 'text-emerald-700'}">${item.stock} ${item.unit || 'Pcs'}</div></div>
+              <div><div class="text-[10px] uppercase font-bold text-slate-500">Expiry</div><div class="font-bold">${item.expiry || 'N/A'}</div></div>
+              <div><div class="text-[10px] uppercase font-bold text-slate-500">Sale Price</div><div class="font-black text-orange-600">Rs ${item.salePrice || 0}</div></div>
+            </div>
+            <div class="mt-3 flex gap-2">
+              <button onclick="scanToInvoice('${(item.name || '').replace(/'/g, "\\'")}', ${item.salePrice || 0})" class="px-3 py-1.5 bg-orange-500 hover:bg-orange-600 text-white rounded-lg font-bold text-[11px] shadow">Create Invoice for this Item</button>
+            </div>
+          </div>`;
+      } else {
+        box.innerHTML = `<div class="p-4 rounded-xl border border-rose-200 bg-rose-50 font-bold text-rose-700">No stock item matched "${code}". Add it in Inventory first.</div>`;
+      }
+
+      userData.scans.unshift({
+        time: new Date().toLocaleString('en-GB'),
+        code: code,
+        item: item ? item.name : 'Not found',
+        stock: item ? `${item.stock} ${item.unit || 'Pcs'}` : '-',
+        price: item ? `Rs ${item.salePrice || 0}` : '-'
+      });
+      if (userData.scans.length > 30) userData.scans.pop();
+      saveData();
+      renderExtras();
+      input.value = '';
+      input.focus();
+    }
+
+    function scanToInvoice(name, price) {
+      openModal('orderModal');
+      const p = document.getElementById('invProdName');
+      const r = document.getElementById('invRate');
+      if (p) p.value = name;
+      if (r) r.value = price;
+      calculateInvoiceTotal();
+    }
+
+    function clearScanLog() {
+      ensureExtraData();
+      userData.scans = [];
+      saveData();
+      renderExtras();
+    }
+
+    /* ---------------- Rendering for new modules ---------------- */
+
+    function renderExtras() {
+      ensureExtraData();
+      const s = getSettings();
+
+      const expTotal = userData.expenses.reduce((a, e) => a + (e.amount || 0), 0);
+      const incTotal = userData.otherincome.reduce((a, e) => a + (e.amount || 0), 0);
+      const setTxt = (id, txt) => { const el = document.getElementById(id); if (el) el.innerText = txt; };
+      setTxt('stat-expenseTotal', money(expTotal));
+      setTxt('stat-incomeTotal', money(incTotal));
+
+      let cash = 0, bank = 0;
+      userData.cashbank.forEach(t => {
+        const sign = t.type === 'Withdraw / Out' ? -1 : 1;
+        if (t.account === 'Bank Account') bank += sign * (t.amount || 0);
+        else cash += sign * (t.amount || 0);
+      });
+      userData.otherincome.forEach(i => {
+        if (i.account === 'Bank Account') bank += (i.amount || 0);
+        else cash += (i.amount || 0);
+      });
+      userData.expenses.forEach(e => {
+        if (e.mode === 'Bank' || e.mode === 'Cheque') bank -= (e.amount || 0);
+        else cash -= (e.amount || 0);
+      });
+      setTxt('stat-cashBalance', money(cash));
+      setTxt('stat-bankBalance', money(bank));
+      setTxt('stat-totalBalance', money(cash + bank));
+
+      const expBody = document.getElementById('expensesTableBody');
+      if (expBody) {
+        expBody.innerHTML = userData.expenses.map((e, i) => `
+          <tr class="border-b hover:bg-slate-50">
+            <td class="p-2 font-bold text-rose-600 font-mono">${e.ref}</td>
+            <td class="p-2 font-semibold text-slate-600">${e.date}</td>
+            <td class="p-2"><span class="bg-slate-100 text-slate-700 px-1.5 py-0.5 rounded font-bold text-[9px]">${e.category}</span></td>
+            <td class="p-2 text-slate-700">${e.desc || '-'}</td>
+            <td class="p-2 font-semibold text-slate-700">${e.paidTo || '-'}</td>
+            <td class="p-2 text-slate-600">${e.mode}</td>
+            <td class="p-2 font-black text-slate-900">${money(e.amount)}</td>
+            <td class="p-2 text-right space-x-1 whitespace-nowrap">
+              <button type="button" onclick='printUniversalSlip("EXPENSE VOUCHER", {
+                "Voucher #": "${e.ref}", "Date": "${e.date}", "Category": "${e.category}",
+                "Description": "${(e.desc || '-').replace(/"/g, "")}", "Paid To": "${(e.paidTo || '-').replace(/"/g, "")}",
+                "Payment Mode": "${e.mode}", "Total Amount": "${e.amount}"
+              }, false)' class="px-2 py-0.5 bg-rose-50 text-rose-600 hover:bg-rose-600 hover:text-white rounded font-bold transition text-[10px]"><i class="fa-solid fa-print"></i> Print</button>
+              ${getDeleteBtnHtml('expenses', i)}
+            </td>
+          </tr>`).join('') || `<tr><td colspan="8" class="p-4 text-center text-slate-400">No expenses recorded yet.</td></tr>`;
+      }
+
+      const cbBody = document.getElementById('cashbankTableBody');
+      if (cbBody) {
+        cbBody.innerHTML = userData.cashbank.map((t, i) => `
+          <tr class="border-b hover:bg-slate-50">
+            <td class="p-2 font-bold text-emerald-600 font-mono">${t.ref}</td>
+            <td class="p-2 font-semibold text-slate-600">${t.date}</td>
+            <td class="p-2 font-bold text-slate-800">${t.account}</td>
+            <td class="p-2"><span class="${t.type === 'Withdraw / Out' ? 'bg-rose-100 text-rose-700' : 'bg-emerald-100 text-emerald-700'} px-1.5 py-0.5 rounded font-bold text-[9px]">${t.type}</span></td>
+            <td class="p-2 text-slate-700">${t.desc || '-'}</td>
+            <td class="p-2 font-black text-slate-900">${money(t.amount)}</td>
+            <td class="p-2 text-right space-x-1 whitespace-nowrap">
+              <button type="button" onclick='printUniversalSlip("CASH / BANK VOUCHER", {
+                "Ref #": "${t.ref}", "Date": "${t.date}", "Account": "${t.account}", "Type": "${t.type}",
+                "Description": "${(t.desc || '-').replace(/"/g, "")}", "Total Amount": "${t.amount}"
+              }, false)' class="px-2 py-0.5 bg-emerald-50 text-emerald-600 hover:bg-emerald-600 hover:text-white rounded font-bold transition text-[10px]"><i class="fa-solid fa-print"></i> Print</button>
+              ${getDeleteBtnHtml('cashbank', i)}
+            </td>
+          </tr>`).join('') || `<tr><td colspan="7" class="p-4 text-center text-slate-400">No cash or bank transactions yet.</td></tr>`;
+      }
+
+      const incBody = document.getElementById('incomeTableBody');
+      if (incBody) {
+        incBody.innerHTML = userData.otherincome.map((r, i) => `
+          <tr class="border-b hover:bg-slate-50">
+            <td class="p-2 font-bold text-amber-600 font-mono">${r.ref}</td>
+            <td class="p-2 font-semibold text-slate-600">${r.date}</td>
+            <td class="p-2 font-bold text-slate-800">${r.source}</td>
+            <td class="p-2 text-slate-700">${r.desc || '-'}</td>
+            <td class="p-2 text-slate-600">${r.account}</td>
+            <td class="p-2 font-black text-emerald-600">${money(r.amount)}</td>
+            <td class="p-2 text-right space-x-1 whitespace-nowrap">
+              <button type="button" onclick='printUniversalSlip("INCOME RECEIPT", {
+                "Receipt #": "${r.ref}", "Date": "${r.date}", "Income Source": "${r.source}",
+                "Description": "${(r.desc || '-').replace(/"/g, "")}", "Received In": "${r.account}", "Total Amount": "${r.amount}"
+              }, false)' class="px-2 py-0.5 bg-amber-50 text-amber-700 hover:bg-amber-500 hover:text-white rounded font-bold transition text-[10px]"><i class="fa-solid fa-print"></i> Print</button>
+              ${getDeleteBtnHtml('otherincome', i)}
+            </td>
+          </tr>`).join('') || `<tr><td colspan="7" class="p-4 text-center text-slate-400">No other income recorded yet.</td></tr>`;
+      }
+
+      const scanBody = document.getElementById('scanTableBody');
+      if (scanBody) {
+        scanBody.innerHTML = userData.scans.map(sc => `
+          <tr class="border-b hover:bg-slate-50">
+            <td class="p-2 font-mono text-slate-500">${sc.time}</td>
+            <td class="p-2 font-mono font-bold text-slate-800">${sc.code}</td>
+            <td class="p-2 font-semibold text-slate-700">${sc.item}</td>
+            <td class="p-2 text-slate-600">${sc.stock}</td>
+            <td class="p-2 font-bold text-orange-600">${sc.price}</td>
+          </tr>`).join('') || `<tr><td colspan="5" class="p-4 text-center text-slate-400">No scans yet.</td></tr>`;
+      }
+
+      const brand = document.querySelector('#appContainer aside h2');
+      if (brand && s.company) brand.innerText = s.company;
+    }
+
+    /* ---------------- Hooks into the existing app ---------------- */
+
+    const __origRenderAllData = renderAllData;
+    renderAllData = function () {
+      ensureExtraData();
+      __origRenderAllData();
+      renderExtras();
+    };
+
+    const __origShowTab = showTab;
+    showTab = function (tabId) {
+      __origShowTab(tabId);
+      const extraTitles = {
+        expenses: 'Expense Management',
+        cashbank: 'Cash & Bank',
+        otherincome: 'Other Income',
+        barcode: 'Barcode Scanner',
+        settings: 'Business Settings',
+        help: 'Help & Support'
+      };
+      if (extraTitles[tabId]) {
+        const t = document.getElementById('currentTabTitle');
+        if (t) t.innerText = extraTitles[tabId];
+      }
+      if (tabId === 'settings') loadSettingsForm();
+      if (tabId === 'barcode') setTimeout(() => {
+        const b = document.getElementById('barcodeInput');
+        if (b) b.focus();
+      }, 50);
+    };
+
+    // Auto number + today's date whenever a document modal is opened
+    const MODAL_SETUP = {
+      orderModal: { numField: 'invNum', counter: 'inv', dateField: 'invDate' },
+      purchaseInvoiceModal: { numField: 'pinvNum', counter: 'pinv', dateField: 'pinvDate' },
+      quotationModal: { counter: 'quo', dateField: 'quoDate' },
+      debitModal: { numField: 'debNum', counter: 'dn', dateField: 'debDate' },
+      expenseModal: { numField: 'expNum', counter: 'exp', dateField: 'expDate' },
+      cashbankModal: { numField: 'cbNum', counter: 'cb', dateField: 'cbDate' },
+      incomeModal: { numField: 'incNum', counter: 'inc', dateField: 'incDate' }
+    };
+
+    const __origOpenModal = openModal;
+    openModal = function (modalId) {
+      ensureExtraData();
+      const cfg = MODAL_SETUP[modalId];
+      if (cfg) {
+        if (cfg.numField) {
+          const el = document.getElementById(cfg.numField);
+          if (el) el.value = peekNumber(cfg.counter);
+        }
+        if (cfg.dateField) {
+          const d = document.getElementById(cfg.dateField);
+          if (d && !d.value) d.value = todayISO();
+        }
+        const taxEl = modalId === 'orderModal' ? document.getElementById('invTaxPct') : null;
+        if (taxEl && !parseFloat(taxEl.value)) {
+          taxEl.value = getSettings().tax || 0;
+          if (typeof calculateInvoiceTotal === 'function') calculateInvoiceTotal();
+        }
+      }
+      __origOpenModal(modalId);
+    };
+
+    // Make every saved document take the next sequential number (1, 2, 3, ...)
+    function wrapSaveWithNumbering(fnName, collection, field, counter) {
+      const orig = window[fnName];
+      if (typeof orig !== 'function') return;
+      window[fnName] = function () {
+        ensureExtraData();
+        const before = (userData[collection] || []).length;
+        orig.apply(this, arguments);
+        const list = userData[collection] || [];
+        if (list.length > before) {
+          list[0][field] = takeNumber(counter);
+          saveData();
+          renderAllData();
+        }
+      };
+    }
+
+    wrapSaveWithNumbering('saveOrder', 'orders', 'inv', 'inv');
+    wrapSaveWithNumbering('savePurchaseInvoice', 'purchaseinvoices', 'ref', 'pinv');
+    wrapSaveWithNumbering('saveQuotation', 'quotations', 'qno', 'quo');
+    wrapSaveWithNumbering('saveDebitNote', 'debitnotes', 'ref', 'dn');
+    wrapSaveWithNumbering('savePurchase', 'purchases', 'ref', 'po');
+    wrapSaveWithNumbering('savePayout', 'payouts', 'voucher', 'pv');
+
+    document.addEventListener('DOMContentLoaded', () => {
+      ensureExtraData();
+      loadSettingsForm();
+      renderExtras();
+      const bc = document.getElementById('barcodeInput');
+      if (bc) bc.addEventListener('keydown', e => {
+        if (e.key === 'Enter') {
+          e.preventDefault();
+          handleBarcodeScan();
+        }
+      });
+      ['invDate', 'pinvDate', 'quoDate', 'debDate', 'expDate', 'cbDate', 'incDate'].forEach(id => {
+        const el = document.getElementById(id);
+        if (el && !el.value) el.value = todayISO();
+      });
+    });
+
   </script>
 </body>
 
