@@ -50,76 +50,77 @@
 
   <div id="appContainer" class="hidden flex h-screen overflow-hidden">
 
-    <aside class="w-64 bg-white text-slate-700 flex flex-col shadow-xl z-20 border-r border-slate-200">
-      <div class="p-4 border-b border-slate-200 flex items-center space-x-3">
+    <aside class="w-64 bg-slate-900 text-slate-300 flex flex-col shadow-xl z-20">
+      <div class="p-4 border-b border-slate-800 flex items-center space-x-3">
         <div class="w-10 h-10 bg-orange-500 text-white rounded-lg flex items-center justify-center font-bold text-lg shadow">
           <i class="fa-solid fa-pills"></i>
         </div>
         <div>
-          <h2 class="font-extrabold text-slate-900 text-sm">Payvibes</h2>
-          <span class="text-[10px] text-orange-500 font-bold uppercase tracking-wider" id="userRoleDisplay">Admin</span>
+          <h2 class="font-extrabold text-white text-sm">Payvibes</h2>
+          <span class="text-[10px] text-orange-400 font-bold uppercase tracking-wider" id="userRoleDisplay">Admin</span>
         </div>
       </div>
 
       <nav class="flex-1 overflow-y-auto p-3 space-y-1 text-xs font-semibold">
-        <button data-nav="dashboard" onclick="showTab('dashboard')" class="nav-item w-full flex items-center space-x-3 px-3 py-2.5 rounded-lg text-slate-700 hover:bg-slate-100 hover:text-slate-900 transition group">
-          <i class="fa-solid fa-chart-pie w-5 text-black"></i><span>Dashboard</span>
+        <button onclick="showTab('dashboard')" class="w-full flex items-center space-x-3 px-3 py-2.5 rounded-lg hover:bg-slate-800 hover:text-white transition group">
+          <i class="fa-solid fa-chart-pie w-5 text-orange-500"></i><span>Dashboard</span>
         </button>
-        <button data-nav="orders" onclick="showTab('orders')" class="nav-item w-full flex items-center space-x-3 px-3 py-2.5 rounded-lg text-slate-700 hover:bg-slate-100 hover:text-slate-900 transition group">
-          <i class="fa-solid fa-file-invoice-dollar w-5 text-black-500"></i><span>Sales Invoices</span>
+        <button onclick="showTab('orders')" class="w-full flex items-center space-x-3 px-3 py-2.5 rounded-lg hover:bg-slate-800 hover:text-white transition group">
+          <i class="fa-solid fa-file-invoice-dollar w-5 text-orange-500"></i><span>Sales Invoices</span>
         </button>
-        <button data-nav="purchaseinvoices" onclick="showTab('purchaseinvoices')" class="nav-item w-full flex items-center space-x-3 px-3 py-2.5 rounded-lg text-slate-700 hover:bg-slate-100 hover:text-slate-900 transition group">
-          <i class="fa-solid fa-file-invoice w-5 text-Black-500"></i><span>Purchase Invoices</span>
+        <button onclick="showTab('purchaseinvoices')" class="w-full flex items-center space-x-3 px-3 py-2.5 rounded-lg hover:bg-slate-800 hover:text-white transition group">
+          <i class="fa-solid fa-file-invoice w-5 text-emerald-400"></i><span>Purchase Invoices</span>
         </button>
-        <button data-nav="dailyreports" onclick="showTab('dailyreports')" class="nav-item w-full flex items-center space-x-3 px-3 py-2.5 rounded-lg text-slate-700 hover:bg-slate-100 hover:text-slate-900 transition group">
-          <i class="fa-solid fa-chart-line w-5 text-black-500"></i><span>Daily Reports</span>
+        <button onclick="showTab('dailyreports')" class="w-full flex items-center space-x-3 px-3 py-2.5 rounded-lg hover:bg-slate-800 hover:text-white transition group">
+          <i class="fa-solid fa-chart-line w-5 text-cyan-400"></i><span>Daily Reports</span>
         </button>
-        <button data-nav="quotations" onclick="showTab('quotations')" class="nav-item w-full flex items-center space-x-3 px-3 py-2.5 rounded-lg text-slate-700 hover:bg-slate-100 hover:text-slate-900 transition group">
-          <i class="fa-solid fa-file-lines w-5 text-black-500"></i><span>Quotations</span>
+        <div id="reportsNav" class="space-y-1"></div>
+        <button onclick="showTab('quotations')" class="w-full flex items-center space-x-3 px-3 py-2.5 rounded-lg hover:bg-slate-800 hover:text-white transition group">
+          <i class="fa-solid fa-file-lines w-5 text-orange-500"></i><span>Quotations</span>
         </button>
-        <button data-nav="patients" onclick="showTab('patients')" class="nav-item w-full flex items-center space-x-3 px-3 py-2.5 rounded-lg text-slate-700 hover:bg-slate-100 hover:text-slate-900 transition group">
-          <i class="fa-solid fa-hospital-user w-5 text-black-500"></i><span>Patient Records</span>
+        <button onclick="showTab('patients')" class="w-full flex items-center space-x-3 px-3 py-2.5 rounded-lg hover:bg-slate-800 hover:text-white transition group">
+          <i class="fa-solid fa-hospital-user w-5 text-orange-500"></i><span>Patient Records</span>
         </button>
-        <button data-nav="debitnotes" onclick="showTab('debitnotes')" class="nav-item w-full flex items-center space-x-3 px-3 py-2.5 rounded-lg text-slate-700 hover:bg-slate-100 hover:text-slate-900 transition group">
-          <i class="fa-solid fa-rotate-left w-5 text-black-500"></i><span>Debit Notes & Returns</span>
+        <button onclick="showTab('debitnotes')" class="w-full flex items-center space-x-3 px-3 py-2.5 rounded-lg hover:bg-slate-800 hover:text-white transition group">
+          <i class="fa-solid fa-rotate-left w-5 text-orange-500"></i><span>Debit Notes & Returns</span>
         </button>
-        <button data-nav="inventory" onclick="showTab('inventory')" class="nav-item w-full flex items-center space-x-3 px-3 py-2.5 rounded-lg text-slate-700 hover:bg-slate-100 hover:text-slate-900 transition group">
-          <i class="fa-solid fa-boxes-stacked w-5 text-black-500"></i><span>Inventory Stock</span>
+        <button onclick="showTab('inventory')" class="w-full flex items-center space-x-3 px-3 py-2.5 rounded-lg hover:bg-slate-800 hover:text-white transition group">
+          <i class="fa-solid fa-boxes-stacked w-5 text-orange-500"></i><span>Inventory Stock</span>
         </button>
-        <button data-nav="customers" onclick="showTab('customers')" class="nav-item w-full flex items-center space-x-3 px-3 py-2.5 rounded-lg text-slate-700 hover:bg-slate-100 hover:text-slate-900 transition group">
-          <i class="fa-solid fa-store w-5 text-black-500"></i><span>Customer / Shops</span>
+        <button onclick="showTab('customers')" class="w-full flex items-center space-x-3 px-3 py-2.5 rounded-lg hover:bg-slate-800 hover:text-white transition group">
+          <i class="fa-solid fa-store w-5 text-orange-500"></i><span>Customer / Shops</span>
         </button>
-        <button data-nav="suppliers" onclick="showTab('suppliers')" class="nav-item w-full flex items-center space-x-3 px-3 py-2.5 rounded-lg text-slate-700 hover:bg-slate-100 hover:text-slate-900 transition group">
-          <i class="fa-solid fa-truck-field w-5 text-black-500"></i><span>Suppliers Directory</span>
+        <button onclick="showTab('suppliers')" class="w-full flex items-center space-x-3 px-3 py-2.5 rounded-lg hover:bg-slate-800 hover:text-white transition group">
+          <i class="fa-solid fa-truck-field w-5 text-orange-500"></i><span>Suppliers Directory</span>
         </button>
-        <button data-nav="purchases" onclick="showTab('purchases')" class="nav-item w-full flex items-center space-x-3 px-3 py-2.5 rounded-lg text-slate-700 hover:bg-slate-100 hover:text-slate-900 transition group">
-          <i class="fa-solid fa-cart-shopping w-5 text-black-500"></i><span>Purchase Orders</span>
+        <button onclick="showTab('purchases')" class="w-full flex items-center space-x-3 px-3 py-2.5 rounded-lg hover:bg-slate-800 hover:text-white transition group">
+          <i class="fa-solid fa-cart-shopping w-5 text-orange-500"></i><span>Purchase Orders</span>
         </button>
-        <button data-nav="payouts" onclick="showTab('payouts')" class="nav-item w-full flex items-center space-x-3 px-3 py-2.5 rounded-lg text-slate-700 hover:bg-slate-100 hover:text-slate-900 transition group">
-          <i class="fa-solid fa-money-bill-transfer w-5 text-black-500"></i><span>Payment Out Vouchers</span>
+        <button onclick="showTab('payouts')" class="w-full flex items-center space-x-3 px-3 py-2.5 rounded-lg hover:bg-slate-800 hover:text-white transition group">
+          <i class="fa-solid fa-money-bill-transfer w-5 text-orange-500"></i><span>Payment Out Vouchers</span>
         </button>
-        <div class="pt-2 mt-2 border-t border-slate-200"></div>
-        <button data-nav="expenses" onclick="showTab('expenses')" class="nav-item w-full flex items-center space-x-3 px-3 py-2.5 rounded-lg text-slate-700 hover:bg-slate-100 hover:text-slate-900 transition group">
-          <i class="fa-solid fa-receipt w-5 text-black-500"></i><span>Expense</span>
+        <div class="pt-2 mt-2 border-t border-slate-800"></div>
+        <button onclick="showTab('expenses')" class="w-full flex items-center space-x-3 px-3 py-2.5 rounded-lg hover:bg-slate-800 hover:text-white transition group">
+          <i class="fa-solid fa-receipt w-5 text-rose-400"></i><span>Expense</span>
         </button>
-        <button data-nav="cashbank" onclick="showTab('cashbank')" class="nav-item w-full flex items-center space-x-3 px-3 py-2.5 rounded-lg text-slate-700 hover:bg-slate-100 hover:text-slate-900 transition group">
-          <i class="fa-solid fa-building-columns w-5 text-black-500"></i><span>Cash &amp; Bank</span>
+        <button onclick="showTab('cashbank')" class="w-full flex items-center space-x-3 px-3 py-2.5 rounded-lg hover:bg-slate-800 hover:text-white transition group">
+          <i class="fa-solid fa-building-columns w-5 text-emerald-400"></i><span>Cash &amp; Bank</span>
         </button>
-        <button data-nav="otherincome" onclick="showTab('otherincome')" class="nav-item w-full flex items-center space-x-3 px-3 py-2.5 rounded-lg text-slate-700 hover:bg-slate-100 hover:text-slate-900 transition group">
-          <i class="fa-solid fa-sack-dollar w-5 text-black-500"></i><span>Other Income</span>
+        <button onclick="showTab('otherincome')" class="w-full flex items-center space-x-3 px-3 py-2.5 rounded-lg hover:bg-slate-800 hover:text-white transition group">
+          <i class="fa-solid fa-sack-dollar w-5 text-amber-400"></i><span>Other Income</span>
         </button>
-        <button data-nav="barcode" onclick="showTab('barcode')" class="nav-item w-full flex items-center space-x-3 px-3 py-2.5 rounded-lg text-slate-700 hover:bg-slate-100 hover:text-slate-900 transition group">
-          <i class="fa-solid fa-barcode w-5 text-black-500"></i><span>Barcode Scanner</span>
+        <button onclick="showTab('barcode')" class="w-full flex items-center space-x-3 px-3 py-2.5 rounded-lg hover:bg-slate-800 hover:text-white transition group">
+          <i class="fa-solid fa-barcode w-5 text-cyan-400"></i><span>Barcode Scanner</span>
         </button>
-        <button data-nav="settings" onclick="showTab('settings')" class="nav-item w-full flex items-center space-x-3 px-3 py-2.5 rounded-lg text-slate-700 hover:bg-slate-100 hover:text-slate-900 transition group">
-          <i class="fa-solid fa-gear w-5 text-black-500"></i><span>Settings</span>
+        <button onclick="showTab('settings')" class="w-full flex items-center space-x-3 px-3 py-2.5 rounded-lg hover:bg-slate-800 hover:text-white transition group">
+          <i class="fa-solid fa-gear w-5 text-slate-300"></i><span>Settings</span>
         </button>
-        <button data-nav="help" onclick="showTab('help')" class="nav-item w-full flex items-center space-x-3 px-3 py-2.5 rounded-lg text-slate-700 hover:bg-slate-100 hover:text-slate-900 transition group">
-          <i class="fa-solid fa-circle-question w-5 text-black-500"></i><span>Help &amp; Support</span>
+        <button onclick="showTab('help')" class="w-full flex items-center space-x-3 px-3 py-2.5 rounded-lg hover:bg-slate-800 hover:text-white transition group">
+          <i class="fa-solid fa-circle-question w-5 text-orange-500"></i><span>Help &amp; Support</span>
         </button>
       </nav>
 
-      <div class="p-3 border-t border-slate-200">
+      <div class="p-3 border-t border-slate-800">
         <button onclick="logout()" class="w-full flex items-center justify-center space-x-2 px-3 py-2 bg-rose-600 hover:bg-rose-700 text-white rounded-lg font-bold transition text-xs">
           <i class="fa-solid fa-right-from-bracket"></i><span>Logout</span>
         </button>
@@ -169,7 +170,7 @@
             </div>
             <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
               <div class="text-xs font-bold uppercase text-slate-400">Total Payouts</div>
-              <div id="stat-payout" class="text-2xl font-black text-black-600 mt-1">Rs 0</div>
+              <div id="stat-payout" class="text-2xl font-black text-rose-600 mt-1">Rs 0</div>
             </div>
           </div>
 
@@ -294,6 +295,37 @@
               <h4 class="text-sm font-bold text-slate-800 mb-4">Daily Purchase Trend Comparison</h4>
               <div class="h-64"><canvas id="dailyPurchasesChart"></canvas></div>
             </div>
+          </div>
+        </div>
+
+        <div id="tab-reports" class="tab-content hidden space-y-4">
+          <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm flex flex-wrap items-end gap-3 justify-between">
+            <div>
+              <h4 id="reportTitle" class="text-sm font-extrabold text-slate-900">Select a report</h4>
+              <p id="reportSubtitle" class="text-[11px] text-slate-500 mt-0.5">Choose any report from the Reports menu in the sidebar.</p>
+            </div>
+            <div class="flex flex-wrap items-end gap-2">
+              <div>
+                <label class="block text-[10px] font-bold uppercase text-slate-400">From</label>
+                <input type="date" id="repFrom" onchange="renderReport()" class="border border-slate-300 rounded-lg px-2 py-1.5 text-xs" />
+              </div>
+              <div>
+                <label class="block text-[10px] font-bold uppercase text-slate-400">To</label>
+                <input type="date" id="repTo" onchange="renderReport()" class="border border-slate-300 rounded-lg px-2 py-1.5 text-xs" />
+              </div>
+              <input type="text" id="repSearch" oninput="renderReport()" placeholder="Search..." class="border border-slate-300 rounded-lg px-2 py-1.5 text-xs" />
+              <button onclick="clearReportFilters()" class="px-3 py-1.5 bg-slate-200 hover:bg-slate-300 text-slate-700 rounded-lg font-bold text-xs">Clear</button>
+              <button onclick="printReport()" class="px-3 py-1.5 bg-cyan-600 hover:bg-cyan-700 text-white rounded-lg font-bold text-xs shadow"><i class="fa-solid fa-print mr-1"></i> Print</button>
+            </div>
+          </div>
+          <div id="reportSummary" class="grid grid-cols-1 md:grid-cols-4 gap-4"></div>
+          <div class="bg-white rounded-xl border border-slate-200 shadow-sm overflow-x-auto">
+            <table class="w-full text-xs" id="reportTable">
+              <thead class="bg-slate-100 text-slate-600 uppercase text-[10px]">
+                <tr id="reportHead"></tr>
+              </thead>
+              <tbody id="reportBody" class="divide-y divide-slate-100"></tbody>
+            </table>
           </div>
         </div>
 
@@ -809,10 +841,7 @@
         <div class="grid grid-cols-2 gap-3">
           <div>
             <label class="block font-bold uppercase text-slate-600 mb-1">Customer / Shop Name *</label>
-            <div class="relative">
-              <input type="text" id="invCustName" autocomplete="off" placeholder="e.g. Al-Madina Medical Store" class="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-orange-500">
-              <div id="dropdown-invCustName" class="hidden absolute left-0 right-0 bg-white border border-slate-200 rounded-lg shadow-xl max-h-48 overflow-y-auto z-40 mt-1"></div>
-            </div>
+            <input type="text" id="invCustName" placeholder="e.g. Al-Madina Medical Store" class="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-orange-500">
           </div>
           <div>
             <label class="block font-bold uppercase text-slate-600 mb-1">NTN / CNIC</label>
@@ -905,10 +934,7 @@
         </div>
         <div>
           <label class="block font-bold uppercase text-slate-600 mb-1">Supplier / Pharma Company Name *</label>
-          <div class="relative">
-            <input type="text" id="pinvSupplier" autocomplete="off" placeholder="e.g. Getz Pharma / Searle" class="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-emerald-500">
-            <div id="dropdown-pinvSupplier" class="hidden absolute left-0 right-0 bg-white border border-slate-200 rounded-lg shadow-xl max-h-48 overflow-y-auto z-40 mt-1"></div>
-          </div>
+          <input type="text" id="pinvSupplier" placeholder="e.g. Getz Pharma / Searle" class="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-emerald-500">
         </div>
         <div class="relative">
           <label class="block font-bold uppercase text-slate-600 mb-1">Item / Medicine Name *</label>
@@ -942,10 +968,7 @@
       <div class="space-y-4 text-xs">
         <div>
           <label class="block font-bold uppercase text-slate-600 mb-1">Customer / Shop Name *</label>
-          <div class="relative">
-            <input type="text" id="quoCustomer" autocomplete="off" placeholder="Customer name" class="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-orange-500">
-            <div id="dropdown-quoCustomer" class="hidden absolute left-0 right-0 bg-white border border-slate-200 rounded-lg shadow-xl max-h-48 overflow-y-auto z-40 mt-1"></div>
-          </div>
+          <input type="text" id="quoCustomer" placeholder="Customer name" class="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-orange-500">
         </div>
         <div class="relative">
           <label class="block font-bold uppercase text-slate-600 mb-1">Product Name *</label>
@@ -1058,10 +1081,7 @@
         <div class="grid grid-cols-2 gap-3">
           <div>
             <label class="block font-bold uppercase text-slate-600 mb-1">Party Name *</label>
-            <div class="relative">
-              <input type="text" id="debParty" autocomplete="off" placeholder="Customer / Supplier name" class="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-orange-500">
-              <div id="dropdown-debParty" class="hidden absolute left-0 right-0 bg-white border border-slate-200 rounded-lg shadow-xl max-h-48 overflow-y-auto z-40 mt-1"></div>
-            </div>
+            <input type="text" id="debParty" placeholder="Customer / Supplier name" class="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-orange-500">
           </div>
           <div>
             <label class="block font-bold uppercase text-slate-600 mb-1">Original Invoice Ref</label>
@@ -1122,7 +1142,7 @@
         </div>
         <div class="grid grid-cols-2 gap-3">
           <div>
-            <label class="block font-bold uppercase text-slate-600 mb-1">Barcode</label>
+            <label class="block font-bold uppercase text-slate-600 mb-1">Batch Number</label>
             <input type="text" id="itemBatch" placeholder="B-9081" class="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-orange-500">
           </div>
           <div>
@@ -1271,10 +1291,7 @@
       <div class="space-y-4 text-xs">
         <div>
           <label class="block font-bold uppercase text-slate-600 mb-1">Supplier Name *</label>
-          <div class="relative">
-            <input type="text" id="purSupplier" autocomplete="off" placeholder="Supplier company" class="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-orange-500">
-            <div id="dropdown-purSupplier" class="hidden absolute left-0 right-0 bg-white border border-slate-200 rounded-lg shadow-xl max-h-48 overflow-y-auto z-40 mt-1"></div>
-          </div>
+          <input type="text" id="purSupplier" placeholder="Supplier company" class="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-orange-500">
         </div>
         <div class="relative">
           <label class="block font-bold uppercase text-slate-600 mb-1">Item Name *</label>
@@ -1302,10 +1319,7 @@
       <div class="space-y-4 text-xs">
         <div>
           <label class="block font-bold uppercase text-slate-600 mb-1">Recipient Name *</label>
-          <div class="relative">
-            <input type="text" id="payoutRecipient" autocomplete="off" placeholder="Recipient / Vendor" class="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-orange-500">
-            <div id="dropdown-payoutRecipient" class="hidden absolute left-0 right-0 bg-white border border-slate-200 rounded-lg shadow-xl max-h-48 overflow-y-auto z-40 mt-1"></div>
-          </div>
+          <input type="text" id="payoutRecipient" placeholder="Recipient / Vendor" class="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-orange-500">
         </div>
         <div>
           <label class="block font-bold uppercase text-slate-600 mb-1">Payment Mode</label>
@@ -1650,7 +1664,6 @@
       loadData();
       setupEventListeners();
       setupProductSearchDropdowns();
-      setupPartySearchDropdowns();
       const savedRole = sessionStorage.getItem('bizManagerRole');
       if (savedRole) {
         currentUserRole = savedRole;
@@ -1658,7 +1671,6 @@
         document.getElementById('appContainer').classList.remove('hidden');
         updateRoleUI();
         renderAllData();
-        showTab('dashboard');
       }
     });
 
@@ -1680,7 +1692,6 @@
       document.getElementById('appContainer').classList.remove('hidden');
       updateRoleUI();
       renderAllData();
-      showTab('dashboard');
     }
 
     function logout() {
@@ -1731,84 +1742,6 @@
         const el = document.getElementById(id);
         if (el) el.addEventListener('input', calculateDebitTotal);
       });
-    }
-    const PARTY_FIELDS = {
-      "invCustName": "customers",
-      "quoCustomer": "customers",
-      "pinvSupplier": "suppliers",
-      "purSupplier": "suppliers",
-      "debParty": "both",
-      "payoutRecipient": "both"
-    };
-
-    function setupPartySearchDropdowns() {
-      Object.keys(PARTY_FIELDS).forEach(inputId => {
-        const kind = PARTY_FIELDS[inputId];
-        const input = document.getElementById(inputId);
-        const dropdown = document.getElementById('dropdown-' + inputId);
-        if (!input || !dropdown) return;
-        let active = -1;
-        const icon = kind === 'suppliers' ? 'fa-truck-field' : 'fa-store';
-        const render = () => {
-          const q = input.value.trim().toLowerCase();
-          const all = partyOptions(kind);
-          const list = q ? all.filter(n => n.toLowerCase().includes(q)) : all;
-          active = -1;
-          if (all.length === 0) {
-            dropdown.innerHTML = `<div class="p-2 text-slate-400 text-center">No ${kind === 'suppliers' ? 'suppliers' : 'records'} added yet</div>`;
-          } else if (list.length === 0) {
-            dropdown.innerHTML = `<div class="p-2 text-slate-400 text-center">No match found</div>`;
-          } else {
-            dropdown.innerHTML = list.slice(0, 50).map((n, i) => {
-              const safe = n.replace(/'/g, "\\'");
-              const hl = n.replace(new RegExp('(' + q.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + ')', 'ig'), '<mark class="bg-orange-100 text-orange-700 p-0">$1</mark>');
-              return `<div data-idx="${i}" class="party-opt p-2 hover:bg-orange-50 hover:text-orange-600 cursor-pointer border-b border-slate-100 last:border-none font-medium" onmousedown="selectParty('${inputId}', '${safe}')"><i class="fa-solid ${icon} mr-1.5 text-orange-500"></i> ${q ? hl : n}</div>`;
-            }).join('');
-          }
-          dropdown.classList.remove('hidden');
-        };
-        const highlight = () => {
-          const opts = dropdown.querySelectorAll('.party-opt');
-          opts.forEach((o, i) => o.classList.toggle('bg-orange-50', i === active));
-          if (opts[active]) opts[active].scrollIntoView({
-            block: 'nearest'
-          });
-        };
-        input.addEventListener('focus', render);
-        input.addEventListener('input', render);
-        input.addEventListener('keydown', (e) => {
-          const opts = dropdown.querySelectorAll('.party-opt');
-          if (dropdown.classList.contains('hidden') || opts.length === 0) return;
-          if (e.key === 'ArrowDown') {
-            e.preventDefault();
-            active = (active + 1) % opts.length;
-            highlight();
-          } else if (e.key === 'ArrowUp') {
-            e.preventDefault();
-            active = (active - 1 + opts.length) % opts.length;
-            highlight();
-          } else if (e.key === 'Enter' && active > -1) {
-            e.preventDefault();
-            opts[active].dispatchEvent(new MouseEvent('mousedown'));
-          } else if (e.key === 'Escape') {
-            dropdown.classList.add('hidden');
-          }
-        });
-        document.addEventListener('click', (e) => {
-          if (e.target !== input && !dropdown.contains(e.target)) dropdown.classList.add('hidden');
-        });
-      });
-    }
-
-    function selectParty(inputId, name) {
-      const input = document.getElementById(inputId);
-      const dropdown = document.getElementById('dropdown-' + inputId);
-      if (input) {
-        input.value = name;
-        input.dispatchEvent(new Event('change'));
-      }
-      if (dropdown) dropdown.classList.add('hidden');
-      if (inputId === 'invCustName') autofillCustomer();
     }
 
     function setupProductSearchDropdowns() {
@@ -1895,15 +1828,6 @@
       };
       const titleEl = document.getElementById('currentTabTitle');
       if (titleEl) titleEl.innerText = titles[tabId] || 'Dashboard';
-      document.querySelectorAll('.nav-item').forEach(btn => {
-        const isActive = btn.dataset.nav === tabId;
-        btn.classList.toggle('bg-orange-500', isActive);
-        btn.classList.toggle('text-white', isActive);
-        btn.classList.toggle('hover:bg-orange-600', isActive);
-        btn.classList.toggle('text-slate-700', !isActive);
-        btn.classList.toggle('hover:bg-slate-100', !isActive);
-        btn.classList.toggle('hover:text-slate-900', !isActive);
-      });
     }
 
     function openModal(modalId) {
@@ -2235,8 +2159,7 @@
       for (let key in dataObj) {
         html += `<tr><td class="label">${key}:</td><td>${dataObj[key]}</td></tr>`;
       }
-      html += `</table><script>window.print();${autoClose ? 'window.close();' : ''}<\/script>
-</body></html>`;
+      html += `</table><script>window.print();${autoClose ? 'window.close();' : ''}<\/script></body></html>`;
       const w = window.open('', '_blank');
       w.document.write(html);
       w.document.close();
@@ -2355,31 +2278,6 @@
         });
       }
     }
-
-    function partyOptions(kind) {
-      const custs = (userData.customers || []).map(c => c.name).filter(Boolean);
-      const sups = (userData.suppliers || []).map(x => x.name).filter(Boolean);
-      if (kind === 'customers') return [...new Set(custs)];
-      if (kind === 'suppliers') return [...new Set(sups)];
-      return [...new Set([...custs, ...sups])];
-    }
-
-    function autofillCustomer() {
-      const el = document.getElementById('invCustName');
-      if (!el) return;
-      const c = (userData.customers || []).find(x => x.name === el.value);
-      if (!c) return;
-      const set = (id, val) => {
-        const f = document.getElementById(id);
-        if (f && val) f.value = val;
-      };
-      set('invCustNtnCnic', c.ntnCnic);
-      set('invCustAddress', c.address);
-      set('invCustPhone', c.contact);
-    }
-    document.addEventListener('input', (e) => {
-      if (e.target && e.target.id === 'invCustName') autofillCustomer();
-    });
 
     function renderAllData() {
       const totalRev = (userData.orders || []).reduce((s, o) => s + (o.amount || 0), 0);
@@ -3463,6 +3361,1055 @@
         const el = document.getElementById(id);
         if (el && !el.value) el.value = todayISO();
       });
+    });
+    /* ================= REPORTS MODULE ================= */
+    const REPORT_GROUPS = [{
+        key: 'txn',
+        label: 'Transaction Report',
+        icon: 'fa-receipt',
+        color: 'text-cyan-400',
+        items: [{
+            key: 'sale-list',
+            label: 'List to Sale'
+          },
+          {
+            key: 'drug-schedule',
+            label: 'Drug Schedule Report'
+          },
+          {
+            key: 'purchase',
+            label: 'Purchase'
+          },
+          {
+            key: 'day-book',
+            label: 'Day Book'
+          },
+          {
+            key: 'all-transaction',
+            label: 'All Transaction'
+          },
+          {
+            key: 'profit-loss',
+            label: 'Profit and Loss'
+          },
+          {
+            key: 'bill-wise-profit',
+            label: 'Bill Wise Profit'
+          },
+          {
+            key: 'cash-flow',
+            label: 'Cash Flow'
+          },
+          {
+            key: 'trial-balance',
+            label: 'Trial Balance Report'
+          },
+          {
+            key: 'balance-sheet',
+            label: 'Balance Sheet'
+          }
+        ]
+      },
+      {
+        key: 'party',
+        label: 'Party Report',
+        icon: 'fa-users',
+        color: 'text-orange-400',
+        items: [{
+            key: 'party-statement',
+            label: 'Party Statement'
+          },
+          {
+            key: 'party-pl',
+            label: 'Party Wise Profit and Loss'
+          },
+          {
+            key: 'all-party',
+            label: 'All Party'
+          },
+          {
+            key: 'party-report-by-item',
+            label: 'Party Report by Item'
+          },
+          {
+            key: 'sale-purchase-by-party',
+            label: 'Sale Purchase by Party'
+          },
+          {
+            key: 'sale-purchase-by-party-book',
+            label: 'Sale Purchase by Party Book'
+          }
+        ]
+      },
+      {
+        key: 'item',
+        label: 'Item / Stock Report',
+        icon: 'fa-boxes-stacked',
+        color: 'text-emerald-400',
+        items: [{
+            key: 'stock-summary',
+            label: 'Stock Summary'
+          },
+          {
+            key: 'item-report-by-party',
+            label: 'Item Report by Party'
+          },
+          {
+            key: 'item-pl',
+            label: 'Item Wise Profit and Loss'
+          },
+          {
+            key: 'item-category-pl',
+            label: 'Item Category Wise Profit and Loss'
+          },
+          {
+            key: 'low-stock',
+            label: 'Low Stock Summary'
+          },
+          {
+            key: 'stock-details',
+            label: 'Stock Details'
+          },
+          {
+            key: 'item-details',
+            label: 'Item Details'
+          },
+          {
+            key: 'sale-purchase-by-category',
+            label: 'Sale Purchase Report by Item Category'
+          },
+          {
+            key: 'stock-summary-by-category',
+            label: 'Stock Summary Report by Item Category'
+          },
+          {
+            key: 'item-discount',
+            label: 'Item Wise Discount'
+          }
+        ]
+      },
+      {
+        key: 'business',
+        label: 'Business Status',
+        icon: 'fa-briefcase',
+        color: 'text-indigo-400',
+        items: [{
+            key: 'bank-statement',
+            label: 'Bank Statement'
+          },
+          {
+            key: 'discount-report',
+            label: 'Discount Report'
+          }
+        ]
+      },
+      {
+        key: 'taxes',
+        label: 'Taxes',
+        icon: 'fa-percent',
+        color: 'text-rose-400',
+        items: [{
+            key: 'tax-report',
+            label: 'Tax Report'
+          },
+          {
+            key: 'tax-rate-report',
+            label: 'Tax Rate Report'
+          }
+        ]
+      },
+      {
+        key: 'expense',
+        label: 'Expense Report',
+        icon: 'fa-money-bill-wave',
+        color: 'text-amber-400',
+        items: [{
+            key: 'expense-report',
+            label: 'Expense'
+          },
+          {
+            key: 'expense-category',
+            label: 'Expense Category Report'
+          },
+          {
+            key: 'expense-item',
+            label: 'Expense Item Report'
+          }
+        ]
+      },
+      {
+        key: 'saleorder',
+        label: 'Sale Order Report',
+        icon: 'fa-clipboard-list',
+        color: 'text-sky-400',
+        items: [{
+            key: 'sale-order',
+            label: 'Sale Order'
+          },
+          {
+            key: 'sale-order-item',
+            label: 'Sale Order Item'
+          }
+        ]
+      },
+      {
+        key: 'loan',
+        label: 'Loan Accounts',
+        icon: 'fa-hand-holding-dollar',
+        color: 'text-fuchsia-400',
+        items: [{
+          key: 'loan-statement',
+          label: 'Loan Statement'
+        }]
+      }
+    ];
+    let currentReport = null;
+
+    function buildReportsNav() {
+      const host = document.getElementById('reportsNav');
+      if (!host) return;
+      host.innerHTML = `
+        <button onclick="toggleReportsMenu()" class="w-full flex items-center justify-between px-3 py-2.5 rounded-lg hover:bg-slate-800 hover:text-white transition">
+          <span class="flex items-center space-x-3"><i class="fa-solid fa-folder-tree w-5 text-cyan-400"></i><span>Reports</span></span>
+          <i id="reportsCaret" class="fa-solid fa-chevron-down text-[10px] text-slate-400"></i>
+        </button>
+        <div id="reportsMenu" class="hidden pl-2 space-y-1">
+          ${REPORT_GROUPS.map(g => `
+            <div>
+              <button onclick="toggleReportGroup('${g.key}')" class="w-full flex items-center justify-between px-3 py-2 rounded-lg hover:bg-slate-800 hover:text-white transition text-[11px]">
+                <span class="flex items-center space-x-2"><i class="fa-solid ${g.icon} w-4 ${g.color}"></i><span>${g.label}</span></span>
+                <i id="caret-${g.key}" class="fa-solid fa-chevron-right text-[9px] text-slate-500"></i>
+              </button>
+              <div id="group-${g.key}" class="hidden pl-7 space-y-0.5 py-1">
+                ${g.items.map(it => `<button data-report="${it.key}" onclick="openReport('${it.key}')" class="report-link w-full text-left px-2 py-1.5 rounded-md text-[11px] font-medium text-slate-400 hover:bg-slate-800 hover:text-white transition">${it.label}</button>`).join('')}
+              </div>
+            </div>`).join('')}
+        </div>`;
+    }
+
+    function toggleReportsMenu() {
+      const m = document.getElementById('reportsMenu');
+      const c = document.getElementById('reportsCaret');
+      if (!m) return;
+      m.classList.toggle('hidden');
+      if (c) c.classList.toggle('fa-chevron-up');
+    }
+
+    function toggleReportGroup(key) {
+      const g = document.getElementById('group-' + key);
+      const c = document.getElementById('caret-' + key);
+      if (!g) return;
+      g.classList.toggle('hidden');
+      if (c) {
+        c.classList.toggle('fa-chevron-right');
+        c.classList.toggle('fa-chevron-down');
+      }
+    }
+
+    function reportLabel(key) {
+      for (const g of REPORT_GROUPS) {
+        const it = g.items.find(i => i.key === key);
+        if (it) return {
+          label: it.label,
+          group: g.label
+        };
+      }
+      return {
+        label: 'Report',
+        group: 'Reports'
+      };
+    }
+
+    function openReport(key) {
+      currentReport = key;
+      showTab('reports');
+      document.querySelectorAll('.report-link').forEach(b => {
+        b.classList.toggle('bg-slate-800', b.dataset.report === key);
+        b.classList.toggle('text-white', b.dataset.report === key);
+      });
+      renderReport();
+    }
+
+    function clearReportFilters() {
+      ['repFrom', 'repTo', 'repSearch'].forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.value = '';
+      });
+      renderReport();
+    }
+
+    function inRange(dateStr) {
+      const from = (document.getElementById('repFrom') || {}).value;
+      const to = (document.getElementById('repTo') || {}).value;
+      if (!dateStr) return !from && !to;
+      if (from && dateStr < from) return false;
+      if (to && dateStr > to) return false;
+      return true;
+    }
+
+    function repRows(list, dateKey) {
+      return (list || []).filter(r => inRange(r[dateKey] || r.date));
+    }
+
+    function saleAmount(o) {
+      return toAmount(o.amount);
+    }
+
+    function saleCost(o) {
+      const item = (userData.inventory || []).find(i => (i.name || '').toLowerCase() === (o.prodName || '').toLowerCase());
+      const cost = item ? toAmount(item.purchasePrice) : 0;
+      return cost * (toAmount(o.qty) || 1);
+    }
+
+    function saleSubtotal(o) {
+      return toAmount(o.qty) * toAmount(o.rate);
+    }
+
+    function saleTax(o) {
+      return saleSubtotal(o) * (toAmount(o.taxPct) / 100);
+    }
+
+    function buildReport(key) {
+      ensureExtraData();
+      const orders = repRows(userData.orders, 'date');
+      const pinvs = repRows(userData.purchaseinvoices, 'date');
+      const pos = repRows(userData.purchases, 'date');
+      const expenses = repRows(userData.expenses, 'date');
+      const incomes = repRows(userData.otherincome, 'date');
+      const cashbank = repRows(userData.cashbank, 'date');
+      const payouts = repRows(userData.payouts, 'date');
+      const quotes = repRows(userData.quotations, 'date');
+      const debits = repRows(userData.debitnotes, 'date');
+      const inventory = userData.inventory || [];
+      const customers = userData.customers || [];
+      const suppliers = userData.suppliers || [];
+      const sum = (a, f) => a.reduce((s, x) => s + toAmount(f(x)), 0);
+      const saleTotal = sum(orders, saleAmount);
+      const costTotal = sum(orders, saleCost);
+      const purchaseTotal = sum(pinvs, p => p.amt) + sum(pos, p => p.amt);
+      const expTotal = sum(expenses, e => e.amount);
+      const incTotal = sum(incomes, i => i.amount);
+      const payoutTotal = sum(payouts, p => p.amount);
+      const group = (arr, keyFn, valFn) => {
+        const m = {};
+        arr.forEach(x => {
+          const k = keyFn(x) || 'Unspecified';
+          if (!m[k]) m[k] = {
+            count: 0,
+            value: 0
+          };
+          m[k].count++;
+          m[k].value += toAmount(valFn(x));
+        });
+        return m;
+      };
+      switch (key) {
+        case 'sale-list':
+          return {
+            cols: ['#', 'Invoice', 'Date', 'Customer', 'Item', 'Qty', 'Rate', 'Tax', 'Discount', 'Amount'],
+              rows: orders.map((o, i) => [i + 1, o.inv, prettyDate(o.date), o.custName, o.prodName, o.qty, money(o.rate), money(saleTax(o)), money(o.discount), money(o.amount)]),
+              summary: [
+                ['Total Invoices', orders.length],
+                ['Total Sale', money(saleTotal)],
+                ['Total Tax', money(sum(orders, saleTax))],
+                ['Total Discount', money(sum(orders, o => o.discount))]
+              ]
+          };
+        case 'drug-schedule':
+          return {
+            cols: ['#', 'Item', 'Batch', 'Schedule / HS', 'Unit', 'Stock', 'Expiry', 'Sale Price'],
+              rows: inventory.map((it, i) => [i + 1, it.name, it.batch || '-', (orders.find(o => o.prodName === it.name) || {}).hsCode || '3004.90', it.unit || '-', it.stock, prettyDate(it.expiry), money(it.salePrice)]),
+              summary: [
+                ['Total Items', inventory.length],
+                ['Total Stock Units', inventory.reduce((s, i2) => s + toAmount(i2.stock), 0)]
+              ]
+          };
+        case 'purchase': {
+          const rows = [
+            ...pinvs.map(p => ['Purchase Invoice', p.ref, prettyDate(p.date), p.supplier, p.item, p.qty, money(p.rate), money(p.amt)]),
+            ...pos.map(p => ['Purchase Order', p.ref || '-', prettyDate(p.date), p.supplier || p.party || '-', p.item || '-', p.qty || '-', money(p.rate), money(p.amt)])
+          ];
+          return {
+            cols: ['Type', 'Ref', 'Date', 'Supplier', 'Item', 'Qty', 'Rate', 'Amount'],
+            rows,
+            summary: [
+              ['Purchase Entries', rows.length],
+              ['Total Purchase', money(purchaseTotal)]
+            ]
+          };
+        }
+        case 'day-book': {
+          const rows = [
+            ...orders.map(o => [prettyDate(o.date), 'Sale', o.inv, o.custName, money(o.amount), '']),
+            ...incomes.map(i => [prettyDate(i.date), 'Other Income', i.ref, i.source, money(i.amount), '']),
+            ...pinvs.map(p => [prettyDate(p.date), 'Purchase', p.ref, p.supplier, '', money(p.amt)]),
+            ...expenses.map(e => [prettyDate(e.date), 'Expense', e.ref, e.category, '', money(e.amount)]),
+            ...payouts.map(p => [prettyDate(p.date), 'Payment Out', p.voucher || '-', p.party || p.supplier || '-', '', money(p.amount)])
+          ];
+          return {
+            cols: ['Date', 'Type', 'Ref', 'Party', 'Money In', 'Money Out'],
+            rows,
+            summary: [
+              ['Money In', money(saleTotal + incTotal)],
+              ['Money Out', money(purchaseTotal + expTotal + payoutTotal)],
+              ['Net', money(saleTotal + incTotal - purchaseTotal - expTotal - payoutTotal)]
+            ]
+          };
+        }
+        case 'all-transaction': {
+          const rows = [
+            ...orders.map(o => [prettyDate(o.date), 'Sale Invoice', o.inv, o.custName, money(o.amount)]),
+            ...quotes.map(q => [prettyDate(q.date), 'Quotation', q.qno || '-', q.customer, money(q.rate)]),
+            ...pinvs.map(p => [prettyDate(p.date), 'Purchase Invoice', p.ref, p.supplier, money(p.amt)]),
+            ...pos.map(p => [prettyDate(p.date), 'Purchase Order', p.ref || '-', p.supplier || '-', money(p.amt)]),
+            ...debits.map(d => [prettyDate(d.date), 'Debit Note', d.ref || '-', d.party || '-', money(d.amount || d.amt)]),
+            ...expenses.map(e => [prettyDate(e.date), 'Expense', e.ref, e.paidTo || e.category, money(e.amount)]),
+            ...incomes.map(i => [prettyDate(i.date), 'Other Income', i.ref, i.source, money(i.amount)]),
+            ...cashbank.map(c => [prettyDate(c.date), 'Cash/Bank ' + c.type, c.ref, c.account, money(c.amount)]),
+            ...payouts.map(p => [prettyDate(p.date), 'Payment Out', p.voucher || '-', p.party || '-', money(p.amount)])
+          ];
+          return {
+            cols: ['Date', 'Transaction', 'Ref', 'Party', 'Amount'],
+            rows,
+            summary: [
+              ['Total Transactions', rows.length]
+            ]
+          };
+        }
+        case 'profit-loss': {
+          const grossProfit = saleTotal - costTotal;
+          const net = grossProfit + incTotal - expTotal;
+          return {
+            cols: ['Particulars', 'Amount'],
+            rows: [
+              ['Sale Revenue', money(saleTotal)],
+              ['Cost of Goods Sold', money(costTotal)],
+              ['Gross Profit', money(grossProfit)],
+              ['Other Income', money(incTotal)],
+              ['Total Expenses', money(expTotal)],
+              ['Net Profit / Loss', money(net)]
+            ],
+            summary: [
+              ['Gross Profit', money(grossProfit)],
+              ['Other Income', money(incTotal)],
+              ['Expenses', money(expTotal)],
+              ['Net Profit', money(net)]
+            ]
+          };
+        }
+        case 'bill-wise-profit':
+          return {
+            cols: ['Invoice', 'Date', 'Customer', 'Sale Amount', 'Cost', 'Profit', 'Margin %'],
+              rows: orders.map(o => {
+                const amt = saleAmount(o),
+                  cost = saleCost(o),
+                  pr = amt - cost;
+                return [o.inv, prettyDate(o.date), o.custName, money(amt), money(cost), money(pr), amt ? ((pr / amt) * 100).toFixed(1) + '%' : '0%'];
+              }),
+              summary: [
+                ['Total Sale', money(saleTotal)],
+                ['Total Cost', money(costTotal)],
+                ['Total Profit', money(saleTotal - costTotal)]
+              ]
+          };
+        case 'cash-flow': {
+          let cashIn = 0,
+            cashOut = 0;
+          cashbank.forEach(c => {
+            if ((c.type || '').toLowerCase().includes('in') || (c.type || '').toLowerCase().includes('deposit')) cashIn += toAmount(c.amount);
+            else cashOut += toAmount(c.amount);
+          });
+          const rows = [
+            ['Sale Receipts', money(saleTotal), ''],
+            ['Other Income', money(incTotal), ''],
+            ['Cash / Bank Inflow', money(cashIn), ''],
+            ['Purchases', '', money(purchaseTotal)],
+            ['Expenses', '', money(expTotal)],
+            ['Payment Out Vouchers', '', money(payoutTotal)],
+            ['Cash / Bank Outflow', '', money(cashOut)]
+          ];
+          const net = saleTotal + incTotal + cashIn - purchaseTotal - expTotal - payoutTotal - cashOut;
+          return {
+            cols: ['Particulars', 'Inflow', 'Outflow'],
+            rows,
+            summary: [
+              ['Total Inflow', money(saleTotal + incTotal + cashIn)],
+              ['Total Outflow', money(purchaseTotal + expTotal + payoutTotal + cashOut)],
+              ['Net Cash Flow', money(net)]
+            ]
+          };
+        }
+        case 'trial-balance': {
+          const stockValue = inventory.reduce((s, i2) => s + toAmount(i2.stock) * toAmount(i2.purchasePrice), 0);
+          const rows = [
+            ['Sales Account', '', money(saleTotal)],
+            ['Purchase Account', money(purchaseTotal), ''],
+            ['Other Income', '', money(incTotal)],
+            ['Expenses', money(expTotal), ''],
+            ['Closing Stock', money(stockValue), ''],
+            ['Payment Out', money(payoutTotal), '']
+          ];
+          const debit = purchaseTotal + expTotal + stockValue + payoutTotal;
+          const credit = saleTotal + incTotal;
+          return {
+            cols: ['Account', 'Debit', 'Credit'],
+            rows,
+            summary: [
+              ['Total Debit', money(debit)],
+              ['Total Credit', money(credit)],
+              ['Difference', money(debit - credit)]
+            ]
+          };
+        }
+        case 'balance-sheet': {
+          const stockValue = inventory.reduce((s, i2) => s + toAmount(i2.stock) * toAmount(i2.purchasePrice), 0);
+          let cash = 0,
+            bank = 0;
+          cashbank.forEach(c => {
+            const val = ((c.type || '').toLowerCase().includes('in') || (c.type || '').toLowerCase().includes('deposit')) ? toAmount(c.amount) : -toAmount(c.amount);
+            if ((c.account || '').toLowerCase().includes('bank')) bank += val;
+            else cash += val;
+          });
+          const net = saleTotal + incTotal - costTotal - expTotal;
+          return {
+            cols: ['Assets', 'Amount', 'Liabilities & Equity', 'Amount'],
+            rows: [
+              ['Closing Stock', money(stockValue), 'Capital / Retained Earnings', money(net)],
+              ['Cash in Hand', money(cash), 'Supplier Payables', money(purchaseTotal - payoutTotal)],
+              ['Bank Balance', money(bank), '', ''],
+              ['Total Assets', money(stockValue + cash + bank), 'Total Liabilities & Equity', money(net + purchaseTotal - payoutTotal)]
+            ],
+            summary: [
+              ['Total Assets', money(stockValue + cash + bank)],
+              ['Stock Value', money(stockValue)],
+              ['Cash', money(cash)],
+              ['Bank', money(bank)]
+            ]
+          };
+        }
+        case 'party-statement': {
+          const rows = [
+            ...orders.map(o => [prettyDate(o.date), o.custName, 'Sale Invoice ' + o.inv, money(o.amount), '']),
+            ...pinvs.map(p => [prettyDate(p.date), p.supplier, 'Purchase ' + p.ref, '', money(p.amt)]),
+            ...payouts.map(p => [prettyDate(p.date), p.party || p.supplier || '-', 'Payment Out ' + (p.voucher || ''), '', money(p.amount)])
+          ].sort((a, b) => String(a[1]).localeCompare(String(b[1])));
+          return {
+            cols: ['Date', 'Party', 'Particulars', 'Debit (Sale)', 'Credit (Purchase/Paid)'],
+            rows,
+            summary: [
+              ['Statement Entries', rows.length],
+              ['Sale Side', money(saleTotal)],
+              ['Purchase Side', money(purchaseTotal + payoutTotal)]
+            ]
+          };
+        }
+        case 'party-pl': {
+          const m = {};
+          orders.forEach(o => {
+            const k = o.custName || 'Walk-in';
+            m[k] = m[k] || {
+              sale: 0,
+              cost: 0
+            };
+            m[k].sale += saleAmount(o);
+            m[k].cost += saleCost(o);
+          });
+          return {
+            cols: ['Party', 'Sale', 'Cost', 'Profit', 'Margin %'],
+            rows: Object.entries(m).map(([k, v]) => [k, money(v.sale), money(v.cost), money(v.sale - v.cost), v.sale ? (((v.sale - v.cost) / v.sale) * 100).toFixed(1) + '%' : '0%']),
+            summary: [
+              ['Parties', Object.keys(m).length],
+              ['Total Profit', money(saleTotal - costTotal)]
+            ]
+          };
+        }
+        case 'all-party': {
+          const rows = [
+            ...customers.map(c => ['Customer', c.name, c.owner || '-', c.contact || '-', c.category || '-', c.address || '-', c.ntnCnic || '-']),
+            ...suppliers.map(s => ['Supplier', s.name, s.contactPerson || s.owner || '-', s.contact || s.phone || '-', s.category || '-', s.address || '-', s.ntn || s.ntnCnic || '-'])
+          ];
+          return {
+            cols: ['Type', 'Name', 'Contact Person', 'Phone', 'Category', 'Address', 'NTN / CNIC'],
+            rows,
+            summary: [
+              ['Customers', customers.length],
+              ['Suppliers', suppliers.length]
+            ]
+          };
+        }
+        case 'party-report-by-item': {
+          const m = {};
+          orders.forEach(o => {
+            const k = (o.custName || '-') + '||' + (o.prodName || '-');
+            m[k] = m[k] || {
+              qty: 0,
+              amt: 0
+            };
+            m[k].qty += toAmount(o.qty);
+            m[k].amt += saleAmount(o);
+          });
+          return {
+            cols: ['Party', 'Item', 'Qty Sold', 'Sale Value'],
+            rows: Object.entries(m).map(([k, v]) => [k.split('||')[0], k.split('||')[1], v.qty, money(v.amt)]),
+            summary: [
+              ['Combinations', Object.keys(m).length],
+              ['Total Sale', money(saleTotal)]
+            ]
+          };
+        }
+        case 'sale-purchase-by-party': {
+          const m = {};
+          orders.forEach(o => {
+            const k = o.custName || '-';
+            m[k] = m[k] || {
+              s: 0,
+              p: 0
+            };
+            m[k].s += saleAmount(o);
+          });
+          pinvs.forEach(p => {
+            const k = p.supplier || '-';
+            m[k] = m[k] || {
+              s: 0,
+              p: 0
+            };
+            m[k].p += toAmount(p.amt);
+          });
+          return {
+            cols: ['Party', 'Total Sale', 'Total Purchase', 'Net'],
+            rows: Object.entries(m).map(([k, v]) => [k, money(v.s), money(v.p), money(v.s - v.p)]),
+            summary: [
+              ['Parties', Object.keys(m).length],
+              ['Sale', money(saleTotal)],
+              ['Purchase', money(purchaseTotal)]
+            ]
+          };
+        }
+        case 'sale-purchase-by-party-book': {
+          const rows = [
+            ...orders.map(o => [prettyDate(o.date), o.custName, 'Sale', o.inv, o.prodName, o.qty, money(o.amount)]),
+            ...pinvs.map(p => [prettyDate(p.date), p.supplier, 'Purchase', p.ref, p.item, p.qty, money(p.amt)])
+          ].sort((a, b) => String(a[1]).localeCompare(String(b[1])));
+          return {
+            cols: ['Date', 'Party', 'Type', 'Ref', 'Item', 'Qty', 'Amount'],
+            rows,
+            summary: [
+              ['Book Entries', rows.length]
+            ]
+          };
+        }
+        case 'stock-summary':
+          return {
+            cols: ['#', 'Item', 'Batch', 'Stock', 'Unit', 'Purchase Price', 'Sale Price', 'Stock Value'],
+              rows: inventory.map((it, i) => [i + 1, it.name, it.batch || '-', it.stock, it.unit || '-', money(it.purchasePrice), money(it.salePrice), money(toAmount(it.stock) * toAmount(it.purchasePrice))]),
+              summary: [
+                ['Items', inventory.length],
+                ['Stock Value', money(inventory.reduce((s, i2) => s + toAmount(i2.stock) * toAmount(i2.purchasePrice), 0))]
+              ]
+          };
+        case 'item-report-by-party': {
+          const m = {};
+          orders.forEach(o => {
+            const k = (o.prodName || '-') + '||' + (o.custName || '-');
+            m[k] = m[k] || {
+              qty: 0,
+              amt: 0
+            };
+            m[k].qty += toAmount(o.qty);
+            m[k].amt += saleAmount(o);
+          });
+          return {
+            cols: ['Item', 'Party', 'Qty', 'Value'],
+            rows: Object.entries(m).map(([k, v]) => [k.split('||')[0], k.split('||')[1], v.qty, money(v.amt)]),
+            summary: [
+              ['Rows', Object.keys(m).length]
+            ]
+          };
+        }
+        case 'item-pl': {
+          const m = {};
+          orders.forEach(o => {
+            const k = o.prodName || '-';
+            m[k] = m[k] || {
+              qty: 0,
+              sale: 0,
+              cost: 0
+            };
+            m[k].qty += toAmount(o.qty);
+            m[k].sale += saleAmount(o);
+            m[k].cost += saleCost(o);
+          });
+          return {
+            cols: ['Item', 'Qty Sold', 'Sale', 'Cost', 'Profit'],
+            rows: Object.entries(m).map(([k, v]) => [k, v.qty, money(v.sale), money(v.cost), money(v.sale - v.cost)]),
+            summary: [
+              ['Items Sold', Object.keys(m).length],
+              ['Total Profit', money(saleTotal - costTotal)]
+            ]
+          };
+        }
+        case 'item-category-pl': {
+          const catOf = n => {
+            const it = inventory.find(i2 => (i2.name || '').toLowerCase() === (n || '').toLowerCase());
+            return (it && (it.category || it.unit)) || 'General';
+          };
+          const m = {};
+          orders.forEach(o => {
+            const k = catOf(o.prodName);
+            m[k] = m[k] || {
+              sale: 0,
+              cost: 0
+            };
+            m[k].sale += saleAmount(o);
+            m[k].cost += saleCost(o);
+          });
+          return {
+            cols: ['Category', 'Sale', 'Cost', 'Profit'],
+            rows: Object.entries(m).map(([k, v]) => [k, money(v.sale), money(v.cost), money(v.sale - v.cost)]),
+            summary: [
+              ['Categories', Object.keys(m).length]
+            ]
+          };
+        }
+        case 'low-stock': {
+          const low = inventory.filter(i2 => toAmount(i2.stock) <= 5);
+          return {
+            cols: ['Item', 'Batch', 'Stock', 'Unit', 'Reorder Needed', 'Sale Price'],
+            rows: low.map(i2 => [i2.name, i2.batch || '-', i2.stock, i2.unit || '-', Math.max(0, 20 - toAmount(i2.stock)), money(i2.salePrice)]),
+            summary: [
+              ['Low Stock Items', low.length]
+            ]
+          };
+        }
+        case 'stock-details': {
+          const rows = inventory.map(i2 => {
+            const sold = orders.filter(o => (o.prodName || '').toLowerCase() === (i2.name || '').toLowerCase()).reduce((s, o) => s + toAmount(o.qty), 0);
+            const bought = pinvs.filter(p => (p.item || '').toLowerCase() === (i2.name || '').toLowerCase()).reduce((s, p) => s + toAmount(p.qty), 0);
+            return [i2.name, i2.batch || '-', bought, sold, i2.stock, prettyDate(i2.expiry), money(toAmount(i2.stock) * toAmount(i2.purchasePrice))];
+          });
+          return {
+            cols: ['Item', 'Batch', 'Purchased Qty', 'Sold Qty', 'Current Stock', 'Expiry', 'Value'],
+            rows,
+            summary: [
+              ['Items', inventory.length]
+            ]
+          };
+        }
+        case 'item-details':
+          return {
+            cols: ['Item', 'Batch', 'Unit', 'Stock', 'Purchase Price', 'Sale Price', 'Margin', 'Expiry'],
+              rows: inventory.map(i2 => [i2.name, i2.batch || '-', i2.unit || '-', i2.stock, money(i2.purchasePrice), money(i2.salePrice), money(toAmount(i2.salePrice) - toAmount(i2.purchasePrice)), prettyDate(i2.expiry)]),
+              summary: [
+                ['Items', inventory.length]
+              ]
+          };
+        case 'sale-purchase-by-category': {
+          const catOf = n => {
+            const it = inventory.find(i2 => (i2.name || '').toLowerCase() === (n || '').toLowerCase());
+            return (it && (it.category || it.unit)) || 'General';
+          };
+          const m = {};
+          orders.forEach(o => {
+            const k = catOf(o.prodName);
+            m[k] = m[k] || {
+              s: 0,
+              p: 0
+            };
+            m[k].s += saleAmount(o);
+          });
+          pinvs.forEach(p => {
+            const k = catOf(p.item);
+            m[k] = m[k] || {
+              s: 0,
+              p: 0
+            };
+            m[k].p += toAmount(p.amt);
+          });
+          return {
+            cols: ['Item Category', 'Sale', 'Purchase', 'Net'],
+            rows: Object.entries(m).map(([k, v]) => [k, money(v.s), money(v.p), money(v.s - v.p)]),
+            summary: [
+              ['Categories', Object.keys(m).length]
+            ]
+          };
+        }
+        case 'stock-summary-by-category': {
+          const m = {};
+          inventory.forEach(i2 => {
+            const k = i2.category || i2.unit || 'General';
+            m[k] = m[k] || {
+              items: 0,
+              qty: 0,
+              value: 0
+            };
+            m[k].items++;
+            m[k].qty += toAmount(i2.stock);
+            m[k].value += toAmount(i2.stock) * toAmount(i2.purchasePrice);
+          });
+          return {
+            cols: ['Category', 'Items', 'Total Qty', 'Stock Value'],
+            rows: Object.entries(m).map(([k, v]) => [k, v.items, v.qty, money(v.value)]),
+            summary: [
+              ['Categories', Object.keys(m).length]
+            ]
+          };
+        }
+        case 'item-discount': {
+          const m = {};
+          orders.forEach(o => {
+            const k = o.prodName || '-';
+            m[k] = m[k] || {
+              d: 0,
+              s: 0
+            };
+            m[k].d += toAmount(o.discount);
+            m[k].s += saleAmount(o);
+          });
+          return {
+            cols: ['Item', 'Total Discount', 'Sale Value', 'Discount %'],
+            rows: Object.entries(m).map(([k, v]) => [k, money(v.d), money(v.s), v.s ? ((v.d / (v.s + v.d)) * 100).toFixed(1) + '%' : '0%']),
+            summary: [
+              ['Total Discount', money(sum(orders, o => o.discount))]
+            ]
+          };
+        }
+        case 'bank-statement': {
+          const bankRows = cashbank.filter(c => (c.account || '').toLowerCase().includes('bank'));
+          let bal = 0;
+          const rows = bankRows.slice().reverse().map(c => {
+            const isIn = (c.type || '').toLowerCase().includes('in') || (c.type || '').toLowerCase().includes('deposit');
+            bal += isIn ? toAmount(c.amount) : -toAmount(c.amount);
+            return [prettyDate(c.date), c.ref, c.desc || '-', c.type, isIn ? money(c.amount) : '', isIn ? '' : money(c.amount), money(bal)];
+          });
+          return {
+            cols: ['Date', 'Ref', 'Description', 'Type', 'Deposit', 'Withdrawal', 'Balance'],
+            rows,
+            summary: [
+              ['Bank Entries', rows.length],
+              ['Closing Balance', money(bal)]
+            ]
+          };
+        }
+        case 'discount-report':
+          return {
+            cols: ['Invoice', 'Date', 'Customer', 'Item', 'Sale Amount', 'Discount'],
+              rows: orders.filter(o => toAmount(o.discount) > 0).map(o => [o.inv, prettyDate(o.date), o.custName, o.prodName, money(o.amount), money(o.discount)]),
+              summary: [
+                ['Total Discount', money(sum(orders, o => o.discount))]
+              ]
+          };
+        case 'tax-report':
+          return {
+            cols: ['Invoice', 'Date', 'Customer', 'Taxable Value', 'Tax %', 'Tax Amount', 'Total'],
+              rows: orders.map(o => [o.inv, prettyDate(o.date), o.custName, money(saleSubtotal(o)), (toAmount(o.taxPct)) + '%', money(saleTax(o)), money(o.amount)]),
+              summary: [
+                ['Taxable Value', money(sum(orders, saleSubtotal))],
+                ['Total Tax', money(sum(orders, saleTax))]
+              ]
+          };
+        case 'tax-rate-report': {
+          const m = {};
+          orders.forEach(o => {
+            const k = (toAmount(o.taxPct)) + '%';
+            m[k] = m[k] || {
+              bills: 0,
+              taxable: 0,
+              tax: 0
+            };
+            m[k].bills++;
+            m[k].taxable += saleSubtotal(o);
+            m[k].tax += saleTax(o);
+          });
+          return {
+            cols: ['Tax Rate', 'Bills', 'Taxable Value', 'Tax Collected'],
+            rows: Object.entries(m).map(([k, v]) => [k, v.bills, money(v.taxable), money(v.tax)]),
+            summary: [
+              ['Rates Used', Object.keys(m).length],
+              ['Total Tax', money(sum(orders, saleTax))]
+            ]
+          };
+        }
+        case 'expense-report':
+          return {
+            cols: ['Ref', 'Date', 'Category', 'Description', 'Paid To', 'Mode', 'Amount'],
+              rows: expenses.map(e => [e.ref, prettyDate(e.date), e.category, e.desc || '-', e.paidTo || '-', e.mode || '-', money(e.amount)]),
+              summary: [
+                ['Entries', expenses.length],
+                ['Total Expense', money(expTotal)]
+              ]
+          };
+        case 'expense-category': {
+          const m = group(expenses, e => e.category, e => e.amount);
+          return {
+            cols: ['Category', 'Entries', 'Total Amount', 'Share %'],
+            rows: Object.entries(m).map(([k, v]) => [k, v.count, money(v.value), expTotal ? ((v.value / expTotal) * 100).toFixed(1) + '%' : '0%']),
+            summary: [
+              ['Categories', Object.keys(m).length],
+              ['Total Expense', money(expTotal)]
+            ]
+          };
+        }
+        case 'expense-item': {
+          const m = group(expenses, e => e.desc || e.paidTo || e.category, e => e.amount);
+          return {
+            cols: ['Expense Item', 'Count', 'Total Amount'],
+            rows: Object.entries(m).map(([k, v]) => [k, v.count, money(v.value)]),
+            summary: [
+              ['Items', Object.keys(m).length],
+              ['Total', money(expTotal)]
+            ]
+          };
+        }
+        case 'sale-order': {
+          const rows = [
+            ...quotes.map(q => ['Quotation', q.qno || '-', prettyDate(q.date), q.customer, q.product, money(q.rate)]),
+            ...orders.map(o => ['Sale Invoice', o.inv, prettyDate(o.date), o.custName, o.prodName, money(o.amount)])
+          ];
+          return {
+            cols: ['Type', 'Order No', 'Date', 'Customer', 'Item', 'Amount'],
+            rows,
+            summary: [
+              ['Orders', rows.length],
+              ['Sale Value', money(saleTotal)]
+            ]
+          };
+        }
+        case 'sale-order-item': {
+          const m = {};
+          orders.forEach(o => {
+            const k = o.prodName || '-';
+            m[k] = m[k] || {
+              q: 0,
+              a: 0,
+              c: 0
+            };
+            m[k].q += toAmount(o.qty);
+            m[k].a += saleAmount(o);
+            m[k].c++;
+          });
+          quotes.forEach(q => {
+            const k = q.product || '-';
+            m[k] = m[k] || {
+              q: 0,
+              a: 0,
+              c: 0
+            };
+            m[k].c++;
+          });
+          return {
+            cols: ['Item', 'Orders', 'Qty Ordered', 'Order Value'],
+            rows: Object.entries(m).map(([k, v]) => [k, v.c, v.q, money(v.a)]),
+            summary: [
+              ['Items Ordered', Object.keys(m).length]
+            ]
+          };
+        }
+        case 'loan-statement': {
+          const loans = cashbank.filter(c => ((c.desc || '') + ' ' + (c.account || '') + ' ' + (c.type || '')).toLowerCase().includes('loan'));
+          let bal = 0;
+          const rows = loans.slice().reverse().map(c => {
+            const isIn = (c.type || '').toLowerCase().includes('in') || (c.type || '').toLowerCase().includes('deposit');
+            bal += isIn ? toAmount(c.amount) : -toAmount(c.amount);
+            return [prettyDate(c.date), c.ref, c.desc || 'Loan entry', c.account, isIn ? money(c.amount) : '', isIn ? '' : money(c.amount), money(bal)];
+          });
+          return {
+            cols: ['Date', 'Ref', 'Particulars', 'Account', 'Loan Received', 'Loan Repaid', 'Balance'],
+            rows,
+            summary: [
+              ['Loan Entries', rows.length],
+              ['Outstanding Balance', money(bal)]
+            ],
+            note: 'Loan entries are picked from Cash & Bank records whose description, account or type contains the word "loan".'
+          };
+        }
+        default:
+          return {
+            cols: ['Info'], rows: [
+              ['Select a report from the sidebar.']
+            ], summary: []
+          };
+      }
+    }
+
+    function renderReport() {
+      if (!currentReport) return;
+      const meta = reportLabel(currentReport);
+      const data = buildReport(currentReport);
+      const q = ((document.getElementById('repSearch') || {}).value || '').toLowerCase();
+      const rows = q ? data.rows.filter(r => r.join(' ').toLowerCase().includes(q)) : data.rows;
+      const t = document.getElementById('reportTitle');
+      const st = document.getElementById('reportSubtitle');
+      if (t) t.innerText = meta.label;
+      if (st) st.innerText = meta.group + (data.note ? ' — ' + data.note : ' — ' + rows.length + ' record(s)');
+      const head = document.getElementById('reportHead');
+      if (head) head.innerHTML = data.cols.map(c => `<th class="p-3 text-left font-bold">${escapeHtml(String(c))}</th>`).join('');
+      const body = document.getElementById('reportBody');
+      if (body) {
+        body.innerHTML = rows.length ?
+          rows.map(r => `<tr class="hover:bg-slate-50">${r.map(c => `<td class="p-3 text-slate-700">${escapeHtml(String(c === undefined || c === null ? '' : c))}</td>`).join('')}</tr>`).join('') :
+          `<tr><td colspan="${data.cols.length}" class="p-6 text-center text-slate-400">No records found for this report / date range.</td></tr>`;
+      }
+      const sm = document.getElementById('reportSummary');
+      if (sm) sm.innerHTML = (data.summary || []).map(([k, v]) => `
+        <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm border-l-4 border-l-cyan-500">
+          <div class="text-[10px] font-bold uppercase text-slate-400">${escapeHtml(String(k))}</div>
+          <div class="text-lg font-black text-slate-900 mt-1">${escapeHtml(String(v))}</div>
+        </div>`).join('');
+    }
+
+    function printReport() {
+      if (!currentReport) {
+        alert('Please select a report first.');
+        return;
+      }
+      const s = getSettings();
+      const meta = reportLabel(currentReport);
+      const data = buildReport(currentReport);
+      const from = (document.getElementById('repFrom') || {}).value;
+      const to = (document.getElementById('repTo') || {}).value;
+      const w = window.open('', '_blank');
+      if (!w) return;
+      w.document.write(`<html><head><title>${escapeHtml(meta.label)}</title>
+        <style>
+          body{font-family:Arial,Helvetica,sans-serif;padding:24px;color:#111}
+          h1{font-size:18px;margin:0}
+          .sub{font-size:11px;color:#555;margin-top:2px}
+          .bar{border-bottom:2px solid #111;padding-bottom:10px;margin-bottom:14px;display:flex;justify-content:space-between;align-items:flex-end}
+          table{width:100%;border-collapse:collapse;font-size:11px}
+          th,td{border:1px solid #ccc;padding:6px;text-align:left}
+          th{background:#f1f5f9}
+          .sum{margin:12px 0;font-size:11px}
+          .sum span{display:inline-block;margin-right:18px;font-weight:bold}
+          .ft{margin-top:18px;font-size:10px;color:#666;text-align:center}
+        </style></head><body>
+        <div class="bar">
+          <div><h1>${escapeHtml(s.bizName || 'Payvibes')}</h1><div class="sub">${escapeHtml(s.address || '')} ${s.phone ? '| ' + escapeHtml(s.phone) : ''}</div></div>
+          <div style="text-align:right"><h1>${escapeHtml(meta.label)}</h1><div class="sub">${meta.group} | ${from || 'Start'} to ${to || 'Today'} | Printed ${prettyDate(todayISO())}</div></div>
+        </div>
+        <div class="sum">${(data.summary || []).map(([k, v]) => `<span>${escapeHtml(String(k))}: ${escapeHtml(String(v))}</span>`).join('')}</div>
+        <table><thead><tr>${data.cols.map(c => `<th>${escapeHtml(String(c))}</th>`).join('')}</tr></thead>
+        <tbody>${data.rows.map(r => `<tr>${r.map(c => `<td>${escapeHtml(String(c == null ? '' : c))}</td>`).join('')}</tr>`).join('')}</tbody></table>
+        <div class="ft">${escapeHtml(s.footer || 'Thank you for your business.')} | Support: ${escapeHtml(s.supportPhone || '+92 3086707676')}</div>
+        </body></html>`);
+      w.document.close();
+      w.focus();
+      setTimeout(() => w.print(), 400);
+    }
+    const __showTabBeforeReports = showTab;
+    showTab = function(tabId) {
+      __showTabBeforeReports(tabId);
+      if (tabId === 'reports') {
+        const t = document.getElementById('currentTabTitle');
+        if (t) t.innerText = currentReport ? reportLabel(currentReport).label : 'Reports';
+      }
+    };
+    const __renderAllBeforeReports = renderAllData;
+    renderAllData = function() {
+      __renderAllBeforeReports();
+      if (currentReport) renderReport();
+    };
+    document.addEventListener('DOMContentLoaded', () => {
+      buildReportsNav();
     });
   </script>
 </body>
