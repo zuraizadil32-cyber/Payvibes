@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="./logo.png" width="200" alt="Payvibes Logo">
+  <img src="https://raw.githubusercontent.com/zuraizadil32-cyber/Payvibes/main/logo.png" width="200" alt="Payvibes Logo">
 </p>
 
 <h1 align="center">Payvibes Management System</h1>
@@ -53,9 +53,4 @@ The Payvibes Management System is an advanced, tech-driven platform designed to 
 ---
 
 ### 🔗 Useful Links
-*(Yahan aap apne links add kar sakte hain)*
-- [Live Demo/Website](#)
-- [Documentation](#)
-- [Report an Issue](https://github.com/YOUR_USERNAME/YOUR_REPO_NAME/issues)
-
----
+- [Report an Issue](https://github.com/zuraizadil32-cyber/Payvibes/issues)
