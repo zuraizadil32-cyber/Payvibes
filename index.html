@@ -48,16 +48,16 @@
 
   <div id="appContainer" class="hidden flex h-screen overflow-hidden">
 
-    <aside class="w-64 bg-slate-900 text-slate-300 flex flex-col shadow-xl z-20">
-      <div class="p-4 border-b border-slate-800 flex items-center space-x-3">
+    <aside class="w-64 bg-white text-slate-800 flex flex-col shadow-xl z-20">
+      <div class="p-4 border-b border-slate-200 flex items-center space-x-3">
         <img src="https://raw.githubusercontent.com/zuraizadil32-cyber/Payvibes/main/logo.png" alt="Payvibes logo" class="w-10 h-10 rounded-lg object-cover shadow">
         <div>
-          <h2 class="font-extrabold text-white text-sm">Payvibes</h2>
+          <h2 class="font-extrabold text-black text-sm">Payvibes</h2>
           <span class="text-[10px] text-orange-400 font-bold uppercase tracking-wider" id="userRoleDisplay">Admin</span>
         </div>
       </div>
 
-      <nav class="flex-1 overflow-y-auto p-3 space-y-1 text-xs font-semibold">
+      <nav class="flex-1 overflow-y-auto p-3 space-y-1 text-xs font-semibold bg-white text-black">
         <button onclick="showTab('dashboard')" class="w-full flex items-center space-x-3 px-3 py-2.5 rounded-lg hover:bg-slate-800 hover:text-white transition group">
           <i class="fa-solid fa-chart-pie w-5 text-orange-500"></i><span>Dashboard</span>
         </button>
@@ -67,9 +67,15 @@
           <i id="caret-sales" class="fa-solid fa-chevron-right text-[9px] text-slate-500"></i>
         </button>
         <div id="menu-sales" class="hidden pl-7 space-y-0.5 py-1">
-          <button onclick="showTab('quotations')" class="w-full text-left px-2 py-1.5 rounded-md text-[11px] font-medium text-slate-400 hover:bg-slate-800 flex items-center hover:text-white transition"><i class="fa-solid fa-file-lines text-orange-400 w-4 mr-2"></i>Estimates &amp; Quotations</button>
-          <button onclick="showTab('orders')" class="w-full text-left px-2 py-1.5 rounded-md text-[11px] font-medium text-slate-400 hover:bg-slate-800 flex items-center hover:text-white transition"><i class="fa-solid fa-file-invoice-dollar text-orange-400 w-4 mr-2"></i>Sales Invoices</button>
-          <button onclick="showTab('debitnotes')" class="w-full text-left px-2 py-1.5 rounded-md text-[11px] font-medium text-slate-400 hover:bg-slate-800 flex items-center hover:text-white transition"><i class="fa-solid fa-rotate-left text-rose-400 w-4 mr-2"></i>Sales Returns</button>
+          <button onclick="showTab('quotations')" class="w-full flex items-center space-x-3 px-3 py-2.5 rounded-lg hover:bg-slate-800 hover:text-white transition group">
+    <i class="fa-solid fa-file-lines text-orange-400 w-4 mr-2"></i>Estimates &amp; Quotations
+</button>
+          <button onclick="showTab('orders')" class="w-full flex items-center space-x-3 px-3 py-2.5 rounded-lg hover:bg-slate-800 hover:text-white transition group">
+    <i class="fa-solid fa-file-invoice-dollar text-orange-400 w-4 mr-2"></i>Sales Invoices
+</button>
+          <button onclick="showTab('debitnotes')" class="w-full flex items-center space-x-3 px-3 py-2.5 rounded-lg hover:bg-slate-800 hover:text-white transition group">
+    <i class="fa-solid fa-rotate-left text-rose-400 w-4 mr-2"></i>Sales Returns
+</button>
         </div>
 
         <button onclick="toggleSideMenu('purch')" class="w-full flex items-center justify-between px-3 py-2.5 rounded-lg hover:bg-slate-800 hover:text-white transition">
@@ -77,11 +83,21 @@
           <i id="caret-purch" class="fa-solid fa-chevron-right text-[9px] text-slate-500"></i>
         </button>
         <div id="menu-purch" class="hidden pl-7 space-y-0.5 py-1">
-          <button onclick="showTab('purchaseinvoices')" class="w-full text-left px-2 py-1.5 rounded-md text-[11px] font-medium text-slate-400 hover:bg-slate-800 flex items-center hover:text-white transition"><i class="fa-solid fa-receipt text-emerald-400 w-4 mr-2"></i>Purchase Bills</button>
-          <button onclick="showTab('payouts')" class="w-full text-left px-2 py-1.5 rounded-md text-[11px] font-medium text-slate-400 hover:bg-slate-800 flex items-center hover:text-white transition"><i class="fa-solid fa-money-bill-transfer text-purple-400 w-4 mr-2"></i>Outgoing Payments</button>
-          <button onclick="showTab('expenses')" class="w-full text-left px-2 py-1.5 rounded-md text-[11px] font-medium text-slate-400 hover:bg-slate-800 flex items-center hover:text-white transition"><i class="fa-solid fa-wallet text-amber-400 w-4 mr-2"></i>Expenses</button>
-          <button onclick="showTab('purchases')" class="w-full text-left px-2 py-1.5 rounded-md text-[11px] font-medium text-slate-400 hover:bg-slate-800 flex items-center hover:text-white transition"><i class="fa-solid fa-clipboard-list text-emerald-400 w-4 mr-2"></i>Purchase Orders</button>
-          <button onclick="showTab('debitnotes')" class="w-full text-left px-2 py-1.5 rounded-md text-[11px] font-medium text-slate-400 hover:bg-slate-800 flex items-center hover:text-white transition"><i class="fa-solid fa-rotate-left text-rose-400 w-4 mr-2"></i>Purchase Returns</button>
+          <button onclick="showTab('purchaseinvoices')" class="w-full flex items-center space-x-3 px-3 py-2.5 rounded-lg hover:bg-slate-800 hover:text-white transition group">
+    <i class="fa-solid fa-receipt text-emerald-400 w-4 mr-2"></i>Purchase Bills
+</button>
+<button onclick="showTab('payouts')" class="w-full flex items-center space-x-3 px-3 py-2.5 rounded-lg hover:bg-slate-800 hover:text-white transition group">
+    <i class="fa-solid fa-money-bill-transfer text-purple-400 w-4 mr-2"></i>Outgoing Payments
+</button>
+<button onclick="showTab('expenses')" class="w-full flex items-center space-x-3 px-3 py-2.5 rounded-lg hover:bg-slate-800 hover:text-white transition group">
+    <i class="fa-solid fa-wallet text-amber-400 w-4 mr-2"></i>Expenses
+</button>
+<button onclick="showTab('purchases')" class="w-full flex items-center space-x-3 px-3 py-2.5 rounded-lg hover:bg-slate-800 hover:text-white transition group">
+    <i class="fa-solid fa-clipboard-list text-emerald-400 w-4 mr-2"></i>Purchase Orders
+</button>
+<button onclick="showTab('debitnotes')" class="w-full flex items-center space-x-3 px-3 py-2.5 rounded-lg hover:bg-slate-800 hover:text-white transition group">
+    <i class="fa-solid fa-rotate-left text-rose-400 w-4 mr-2"></i>Purchase Returns
+</button>
         </div>
 
         <button onclick="showTab('dailyreports')" class="w-full flex items-center space-x-3 px-3 py-2.5 rounded-lg hover:bg-slate-800 hover:text-white transition group">
@@ -93,9 +109,15 @@
           <i id="caret-grow" class="fa-solid fa-chevron-right text-[9px] text-slate-500"></i>
         </button>
         <div id="menu-grow" class="hidden pl-7 space-y-0.5 py-1">
-          <button onclick="showTab('googleprofile')" class="w-full text-left px-2 py-1.5 rounded-md text-[11px] font-medium text-slate-400 hover:bg-slate-800 flex items-center hover:text-white transition"><i class="fa-brands fa-google text-pink-400 w-4 mr-2"></i>Google Profile Manager</button>
-          <button onclick="showTab('marketingtools')" class="w-full text-left px-2 py-1.5 rounded-md text-[11px] font-medium text-slate-400 hover:bg-slate-800 flex items-center hover:text-white transition"><i class="fa-solid fa-bullhorn text-pink-400 w-4 mr-2"></i>Marketing tools</button>
-          <button onclick="showTab('onlinestore')" class="w-full text-left px-2 py-1.5 rounded-md text-[11px] font-medium text-slate-400 hover:bg-slate-800 flex items-center hover:text-white transition"><i class="fa-solid fa-shop text-pink-400 w-4 mr-2"></i>Online store</button>
+          <button onclick="showTab('googleprofile')" class="w-full flex items-center space-x-3 px-3 py-2.5 rounded-lg hover:bg-slate-800 hover:text-white transition group">
+    <i class="fa-brands fa-google text-pink-400 w-4 mr-2"></i>Google Profile Manager
+</button>
+<button onclick="showTab('marketingtools')" class="w-full flex items-center space-x-3 px-3 py-2.5 rounded-lg hover:bg-slate-800 hover:text-white transition group">
+    <i class="fa-solid fa-bullhorn text-pink-400 w-4 mr-2"></i>Marketing tools
+</button>
+<button onclick="showTab('onlinestore')" class="w-full flex items-center space-x-3 px-3 py-2.5 rounded-lg hover:bg-slate-800 hover:text-white transition group">
+    <i class="fa-solid fa-shop text-pink-400 w-4 mr-2"></i> My Online store
+</button>
         </div>
         <button onclick="showTab('patients')" class="w-full flex items-center space-x-3 px-3 py-2.5 rounded-lg hover:bg-slate-800 hover:text-white transition group">
           <i class="fa-solid fa-hospital-user w-5 text-orange-500"></i><span>Patient Records</span>
@@ -109,7 +131,6 @@
         <button onclick="showTab('suppliers')" class="w-full flex items-center space-x-3 px-3 py-2.5 rounded-lg hover:bg-slate-800 hover:text-white transition group">
           <i class="fa-solid fa-truck-field w-5 text-orange-500"></i><span>Suppliers Directory</span>
         </button>
-        <div class="pt-2 mt-2 border-t border-slate-800"></div>
         <button onclick="showTab('cashbank')" class="w-full flex items-center space-x-3 px-3 py-2.5 rounded-lg hover:bg-slate-800 hover:text-white transition group">
           <i class="fa-solid fa-building-columns w-5 text-emerald-400"></i><span>Cash &amp; Bank</span>
         </button>
