@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -65,24 +66,39 @@
         <button onclick="showTab('dashboard')" class="w-full flex items-center space-x-3 px-3 py-2.5 rounded-lg hover:bg-slate-800 hover:text-white transition group">
           <i class="fa-solid fa-chart-pie w-5 text-orange-500"></i><span>Dashboard</span>
         </button>
-        <button onclick="showTab('orders')" class="w-full flex items-center space-x-3 px-3 py-2.5 rounded-lg hover:bg-slate-800 hover:text-white transition group">
-          <i class="fa-solid fa-file-invoice-dollar w-5 text-orange-500"></i><span>Sales Invoices</span>
+
+        <button onclick="toggleSideMenu('sales')" class="w-full flex items-center justify-between px-3 py-2.5 rounded-lg hover:bg-slate-800 hover:text-white transition">
+          <span class="flex items-center space-x-3"><i class="fa-solid fa-file-invoice-dollar w-5 text-orange-500"></i><span>Sales</span></span>
+          <i id="caret-sales" class="fa-solid fa-chevron-right text-[9px] text-slate-500"></i>
         </button>
-        <button onclick="showTab('purchaseinvoices')" class="w-full flex items-center space-x-3 px-3 py-2.5 rounded-lg hover:bg-slate-800 hover:text-white transition group">
-          <i class="fa-solid fa-file-invoice w-5 text-emerald-400"></i><span>Purchase Invoices</span>
+        <div id="menu-sales" class="hidden pl-7 space-y-0.5 py-1">
+          <button onclick="showTab('quotations')" class="w-full text-left px-2 py-1.5 rounded-md text-[11px] font-medium text-slate-400 hover:bg-slate-800 hover:text-white transition">Estimates &amp; Quotations</button>
+          <button onclick="showTab('orders')" class="w-full text-left px-2 py-1.5 rounded-md text-[11px] font-medium text-slate-400 hover:bg-slate-800 hover:text-white transition">Sales Invoices</button>
+          <button onclick="showTab('orders')" class="w-full text-left px-2 py-1.5 rounded-md text-[11px] font-medium text-slate-400 hover:bg-slate-800 hover:text-white transition">Sales Orders</button>
+          <button onclick="showTab('debitnotes')" class="w-full text-left px-2 py-1.5 rounded-md text-[11px] font-medium text-slate-400 hover:bg-slate-800 hover:text-white transition">Sales Returns</button>
+          <button onclick="showTab('debitnotes')" class="w-full text-left px-2 py-1.5 rounded-md text-[11px] font-medium text-slate-400 hover:bg-slate-800 hover:text-white transition">Credit Notes</button>
+        </div>
+
+        <button onclick="toggleSideMenu('purch')" class="w-full flex items-center justify-between px-3 py-2.5 rounded-lg hover:bg-slate-800 hover:text-white transition">
+          <span class="flex items-center space-x-3"><i class="fa-solid fa-cart-shopping w-5 text-emerald-400"></i><span>Purchases</span></span>
+          <i id="caret-purch" class="fa-solid fa-chevron-right text-[9px] text-slate-500"></i>
         </button>
+        <div id="menu-purch" class="hidden pl-7 space-y-0.5 py-1">
+          <button onclick="showTab('purchaseinvoices')" class="w-full text-left px-2 py-1.5 rounded-md text-[11px] font-medium text-slate-400 hover:bg-slate-800 hover:text-white transition">Purchase Bills</button>
+          <button onclick="showTab('purchaseinvoices')" class="w-full text-left px-2 py-1.5 rounded-md text-[11px] font-medium text-slate-400 hover:bg-slate-800 hover:text-white transition">Purchase Invoices</button>
+          <button onclick="showTab('payouts')" class="w-full text-left px-2 py-1.5 rounded-md text-[11px] font-medium text-slate-400 hover:bg-slate-800 hover:text-white transition">Outgoing Payments</button>
+          <button onclick="showTab('expenses')" class="w-full text-left px-2 py-1.5 rounded-md text-[11px] font-medium text-slate-400 hover:bg-slate-800 hover:text-white transition">Expenses</button>
+          <button onclick="showTab('purchases')" class="w-full text-left px-2 py-1.5 rounded-md text-[11px] font-medium text-slate-400 hover:bg-slate-800 hover:text-white transition">Purchase Orders</button>
+          <button onclick="showTab('debitnotes')" class="w-full text-left px-2 py-1.5 rounded-md text-[11px] font-medium text-slate-400 hover:bg-slate-800 hover:text-white transition">Purchase Returns</button>
+          <button onclick="showTab('debitnotes')" class="w-full text-left px-2 py-1.5 rounded-md text-[11px] font-medium text-slate-400 hover:bg-slate-800 hover:text-white transition">Debit Notes</button>
+        </div>
+
         <button onclick="showTab('dailyreports')" class="w-full flex items-center space-x-3 px-3 py-2.5 rounded-lg hover:bg-slate-800 hover:text-white transition group">
           <i class="fa-solid fa-chart-line w-5 text-cyan-400"></i><span>Daily Reports</span>
         </button>
         <div id="reportsNav" class="space-y-1"></div>
-        <button onclick="showTab('quotations')" class="w-full flex items-center space-x-3 px-3 py-2.5 rounded-lg hover:bg-slate-800 hover:text-white transition group">
-          <i class="fa-solid fa-file-lines w-5 text-orange-500"></i><span>Quotations</span>
-        </button>
         <button onclick="showTab('patients')" class="w-full flex items-center space-x-3 px-3 py-2.5 rounded-lg hover:bg-slate-800 hover:text-white transition group">
           <i class="fa-solid fa-hospital-user w-5 text-orange-500"></i><span>Patient Records</span>
-        </button>
-        <button onclick="showTab('debitnotes')" class="w-full flex items-center space-x-3 px-3 py-2.5 rounded-lg hover:bg-slate-800 hover:text-white transition group">
-          <i class="fa-solid fa-rotate-left w-5 text-orange-500"></i><span>Debit Notes & Returns</span>
         </button>
         <button onclick="showTab('inventory')" class="w-full flex items-center space-x-3 px-3 py-2.5 rounded-lg hover:bg-slate-800 hover:text-white transition group">
           <i class="fa-solid fa-boxes-stacked w-5 text-orange-500"></i><span>Inventory Stock</span>
@@ -93,16 +109,7 @@
         <button onclick="showTab('suppliers')" class="w-full flex items-center space-x-3 px-3 py-2.5 rounded-lg hover:bg-slate-800 hover:text-white transition group">
           <i class="fa-solid fa-truck-field w-5 text-orange-500"></i><span>Suppliers Directory</span>
         </button>
-        <button onclick="showTab('purchases')" class="w-full flex items-center space-x-3 px-3 py-2.5 rounded-lg hover:bg-slate-800 hover:text-white transition group">
-          <i class="fa-solid fa-cart-shopping w-5 text-orange-500"></i><span>Purchase Orders</span>
-        </button>
-        <button onclick="showTab('payouts')" class="w-full flex items-center space-x-3 px-3 py-2.5 rounded-lg hover:bg-slate-800 hover:text-white transition group">
-          <i class="fa-solid fa-money-bill-transfer w-5 text-orange-500"></i><span>Payment Out Vouchers</span>
-        </button>
         <div class="pt-2 mt-2 border-t border-slate-800"></div>
-        <button onclick="showTab('expenses')" class="w-full flex items-center space-x-3 px-3 py-2.5 rounded-lg hover:bg-slate-800 hover:text-white transition group">
-          <i class="fa-solid fa-receipt w-5 text-rose-400"></i><span>Expense</span>
-        </button>
         <button onclick="showTab('cashbank')" class="w-full flex items-center space-x-3 px-3 py-2.5 rounded-lg hover:bg-slate-800 hover:text-white transition group">
           <i class="fa-solid fa-building-columns w-5 text-emerald-400"></i><span>Cash &amp; Bank</span>
         </button>
@@ -321,9 +328,7 @@
           <div id="reportSummary" class="grid grid-cols-1 md:grid-cols-4 gap-4"></div>
           <div class="bg-white rounded-xl border border-slate-200 shadow-sm overflow-x-auto">
             <table class="w-full text-xs" id="reportTable">
-              <thead class="bg-slate-100 text-slate-600 uppercase text-[10px]">
-                <tr id="reportHead"></tr>
-              </thead>
+              <thead class="bg-slate-100 text-slate-600 uppercase text-[10px]"><tr id="reportHead"></tr></thead>
               <tbody id="reportBody" class="divide-y divide-slate-100"></tbody>
             </table>
           </div>
@@ -567,9 +572,7 @@
                 </tr>
               </thead>
               <tbody id="expensesTableBody">
-                <tr>
-                  <td colspan="8" class="p-4 text-center text-slate-400">No expenses recorded yet.</td>
-                </tr>
+                <tr><td colspan="8" class="p-4 text-center text-slate-400">No expenses recorded yet.</td></tr>
               </tbody>
             </table>
           </div>
@@ -608,9 +611,7 @@
                 </tr>
               </thead>
               <tbody id="cashbankTableBody">
-                <tr>
-                  <td colspan="7" class="p-4 text-center text-slate-400">No cash or bank transactions yet.</td>
-                </tr>
+                <tr><td colspan="7" class="p-4 text-center text-slate-400">No cash or bank transactions yet.</td></tr>
               </tbody>
             </table>
           </div>
@@ -644,9 +645,7 @@
                 </tr>
               </thead>
               <tbody id="incomeTableBody">
-                <tr>
-                  <td colspan="7" class="p-4 text-center text-slate-400">No other income recorded yet.</td>
-                </tr>
+                <tr><td colspan="7" class="p-4 text-center text-slate-400">No other income recorded yet.</td></tr>
               </tbody>
             </table>
           </div>
@@ -657,7 +656,8 @@
             <h4 class="text-sm font-bold text-slate-800 mb-1">Barcode Scanner</h4>
             <p class="text-[11px] text-slate-500 mb-4">Place the cursor in the box and scan with your USB/Bluetooth barcode gun, or type the code and press Enter.</p>
             <div class="flex gap-2">
-              <input type="text" id="barcodeInput" placeholder="Scan or type barcode / item name..." autocomplete="off" class="flex-1 px-3 py-3 border rounded-lg text-sm font-mono focus:outline-none focus:ring-2 focus:ring-cyan-500">
+              <input type="text" id="barcodeInput" placeholder="Scan or type barcode / item name..." autocomplete="off"
+                class="flex-1 px-3 py-3 border rounded-lg text-sm font-mono focus:outline-none focus:ring-2 focus:ring-cyan-500">
               <button onclick="handleBarcodeScan()" class="px-4 py-3 bg-cyan-600 hover:bg-cyan-700 text-white rounded-lg font-bold text-xs shadow transition">
                 <i class="fa-solid fa-magnifying-glass mr-1"></i> Find Item
               </button>
@@ -680,9 +680,7 @@
                 </tr>
               </thead>
               <tbody id="scanTableBody">
-                <tr>
-                  <td colspan="5" class="p-4 text-center text-slate-400">No scans yet.</td>
-                </tr>
+                <tr><td colspan="5" class="p-4 text-center text-slate-400">No scans yet.</td></tr>
               </tbody>
             </table>
           </div>
@@ -1362,24 +1360,15 @@
           <div>
             <label class="block font-bold uppercase text-slate-600 mb-1">Category *</label>
             <select id="expCategory" class="w-full px-3 py-2 border rounded-lg bg-white">
-              <option>Rent</option>
-              <option>Utilities (Bills)</option>
-              <option>Salaries</option>
-              <option>Transport / Delivery</option>
-              <option>Marketing</option>
-              <option>Repair &amp; Maintenance</option>
-              <option>Office Supplies</option>
-              <option>Tax / Government Fee</option>
-              <option>Other</option>
+              <option>Rent</option><option>Utilities (Bills)</option><option>Salaries</option>
+              <option>Transport / Delivery</option><option>Marketing</option><option>Repair &amp; Maintenance</option>
+              <option>Office Supplies</option><option>Tax / Government Fee</option><option>Other</option>
             </select>
           </div>
           <div>
             <label class="block font-bold uppercase text-slate-600 mb-1">Payment Mode</label>
             <select id="expMode" class="w-full px-3 py-2 border rounded-lg bg-white">
-              <option>Cash</option>
-              <option>Bank</option>
-              <option>Cheque</option>
-              <option>Easypaisa / JazzCash</option>
+              <option>Cash</option><option>Bank</option><option>Cheque</option><option>Easypaisa / JazzCash</option>
             </select>
           </div>
         </div>
@@ -1424,8 +1413,7 @@
           <div>
             <label class="block font-bold uppercase text-slate-600 mb-1">Account</label>
             <select id="cbAccount" class="w-full px-3 py-2 border rounded-lg bg-white">
-              <option>Cash in Hand</option>
-              <option>Bank Account</option>
+              <option>Cash in Hand</option><option>Bank Account</option>
             </select>
           </div>
           <div>
@@ -1473,19 +1461,14 @@
           <div>
             <label class="block font-bold uppercase text-slate-600 mb-1">Income Source *</label>
             <select id="incSource" class="w-full px-3 py-2 border rounded-lg bg-white">
-              <option>Rent Received</option>
-              <option>Commission</option>
-              <option>Scrap / Empty Sale</option>
-              <option>Interest / Profit</option>
-              <option>Discount Received</option>
-              <option>Other</option>
+              <option>Rent Received</option><option>Commission</option><option>Scrap / Empty Sale</option>
+              <option>Interest / Profit</option><option>Discount Received</option><option>Other</option>
             </select>
           </div>
           <div>
             <label class="block font-bold uppercase text-slate-600 mb-1">Received In</label>
             <select id="incAccount" class="w-full px-3 py-2 border rounded-lg bg-white">
-              <option>Cash in Hand</option>
-              <option>Bank Account</option>
+              <option>Cash in Hand</option><option>Bank Account</option>
             </select>
           </div>
         </div>
@@ -2618,6 +2601,7 @@
     /* =========================================================
        PAYVIBES - Settings, Auto Numbering, New Modules & Printing
        ========================================================= */
+
     const DEFAULT_SETTINGS = {
       company: 'Payvibes Pharma & General Store',
       tagline: 'Invoicematic & Inventory Management',
@@ -2633,18 +2617,13 @@
       invPrefix: 'INV-',
       quoPrefix: 'QT-'
     };
+
     const SUPPORT_PHONE = '+92 3086707676';
+
     const COUNTER_DEFAULTS = {
-      inv: 1,
-      pinv: 1,
-      quo: 1,
-      dn: 1,
-      po: 1,
-      pv: 1,
-      exp: 1,
-      cb: 1,
-      inc: 1
+      inv: 1, pinv: 1, quo: 1, dn: 1, po: 1, pv: 1, exp: 1, cb: 1, inc: 1
     };
+
     const COUNTER_PREFIX = {
       inv: () => getSettings().invPrefix || 'INV-',
       pinv: () => 'PINV-',
@@ -2681,19 +2660,12 @@
       if (!iso) return todayISO();
       const d = new Date(iso);
       if (isNaN(d.getTime())) return iso;
-      return d.toLocaleDateString('en-GB', {
-        day: '2-digit',
-        month: 'short',
-        year: 'numeric'
-      });
+      return d.toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' });
     }
 
     function money(v) {
       const n = parseFloat(v) || 0;
-      return (getSettings().currency || 'Rs') + ' ' + n.toLocaleString('en-PK', {
-        minimumFractionDigits: 2,
-        maximumFractionDigits: 2
-      });
+      return (getSettings().currency || 'Rs') + ' ' + n.toLocaleString('en-PK', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
     }
 
     function peekNumber(key) {
@@ -2717,23 +2689,16 @@
       loadSettingsForm();
       alert('All document numbering has been reset to 1.');
     }
+
     /* ---------------- Settings form ---------------- */
+
     function loadSettingsForm() {
       const s = getSettings();
       const map = {
-        setCompany: s.company,
-        setTagline: s.tagline,
-        setAddress: s.address,
-        setPhone: s.phone,
-        setEmail: s.email,
-        setNtn: s.ntn,
-        setStrn: s.strn,
-        setCurrency: s.currency,
-        setTax: s.tax,
-        setBank: s.bank,
-        setFooter: s.footer,
-        setInvPrefix: s.invPrefix,
-        setQuoPrefix: s.quoPrefix
+        setCompany: s.company, setTagline: s.tagline, setAddress: s.address, setPhone: s.phone,
+        setEmail: s.email, setNtn: s.ntn, setStrn: s.strn, setCurrency: s.currency,
+        setTax: s.tax, setBank: s.bank, setFooter: s.footer,
+        setInvPrefix: s.invPrefix, setQuoPrefix: s.quoPrefix
       };
       Object.keys(map).forEach(id => {
         const el = document.getElementById(id);
@@ -2779,13 +2744,14 @@
         setTimeout(() => flag.classList.add('hidden'), 3000);
       }
     }
+
     /* ---------------- Amount in words ---------------- */
+
     function numberToWords(num) {
       num = Math.floor(Math.abs(parseFloat(num) || 0));
       if (num === 0) return 'Zero';
       const ones = ['', 'One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Ten',
-        'Eleven', 'Twelve', 'Thirteen', 'Fourteen', 'Fifteen', 'Sixteen', 'Seventeen', 'Eighteen', 'Nineteen'
-      ];
+        'Eleven', 'Twelve', 'Thirteen', 'Fourteen', 'Fifteen', 'Sixteen', 'Seventeen', 'Eighteen', 'Nineteen'];
       const tens = ['', '', 'Twenty', 'Thirty', 'Forty', 'Fifty', 'Sixty', 'Seventy', 'Eighty', 'Ninety'];
       const below1000 = n => {
         let str = '';
@@ -2801,11 +2767,7 @@
         return str;
       };
       let words = '';
-      const units = [
-        [10000000, 'Crore'],
-        [100000, 'Lac'],
-        [1000, 'Thousand']
-      ];
+      const units = [[10000000, 'Crore'], [100000, 'Lac'], [1000, 'Thousand']];
       units.forEach(([div, name]) => {
         if (num >= div) {
           words += below1000(Math.floor(num / div)) + name + ' ';
@@ -2815,7 +2777,9 @@
       words += below1000(num);
       return words.replace(/\s+/g, ' ').trim();
     }
+
     /* ---------------- Professional print engine ---------------- */
+
     function escapeHtml(str) {
       return String(str == null ? '' : str)
         .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
@@ -2838,32 +2802,36 @@
     function printUniversalSlip(title, dataObj, autoClose = false) {
       const s = getSettings();
       const data = Object.assign({}, dataObj);
+
       const numKey = matchKey(data, [/#$/, /^Ref/i, /Voucher/i, /Receipt/i, /Number/i]);
       const dateKey = matchKey(data, [/date/i]);
       const docNumber = numKey ? data[numKey] : '';
       const docDate = dateKey ? data[dateKey] : todayISO();
       if (numKey) delete data[numKey];
       if (dateKey) delete data[dateKey];
+
       const partyPatterns = [/customer/i, /client/i, /party/i, /supplier/i, /patient/i, /recipient/i, /shop/i, /vendor/i, /company name/i, /ntn/i, /cnic/i, /province/i, /address/i, /contact/i, /phone/i, /email/i, /doctor/i, /age/i, /gender/i, /category/i, /owner/i];
       const itemPatterns = [/product/i, /item/i, /medicine/i, /service/i, /description/i, /hs code/i, /batch/i, /expiry/i, /uom/i, /unit/i, /mode/i, /reason/i, /scheme/i, /status/i, /source/i, /account/i];
       const amountPatterns = [/total/i, /amount/i, /rate/i, /price/i, /fee/i, /tax/i, /gst/i, /discount/i, /balance/i, /credit/i, /quantity/i, /qty/i, /stock/i];
-      const party = {},
-        itemInfo = {},
-        amounts = {},
-        others = {};
+
+      const party = {}, itemInfo = {}, amounts = {}, others = {};
       Object.keys(data).forEach(k => {
         if (partyPatterns.some(p => p.test(k))) party[k] = data[k];
         else if (amountPatterns.some(p => p.test(k))) amounts[k] = data[k];
         else if (itemPatterns.some(p => p.test(k))) itemInfo[k] = data[k];
         else others[k] = data[k];
       });
+
       const descKey = matchKey(itemInfo, [/^product/i, /^item/i, /medicine/i, /^service/i, /description/i]);
       const qtyKey = matchKey(amounts, [/quantity/i, /^qty/i, /stock/i]);
       const rateKey = matchKey(amounts, [/^rate/i, /price/i]);
       const totalKey = matchKey(amounts, [/total amount/i, /^total/i, /^amount/i, /fee amount/i, /^fee/i]);
+
       const totalVal = totalKey ? toAmount(amounts[totalKey]) : (qtyKey && rateKey ? toAmount(amounts[qtyKey]) * toAmount(amounts[rateKey]) : 0);
+
       const rowsFrom = obj => Object.keys(obj).map(k =>
         `<tr><td class="k">${escapeHtml(k)}</td><td class="v">${escapeHtml(obj[k])}</td></tr>`).join('');
+
       let itemsTable = '';
       if (descKey) {
         const sub = Object.keys(itemInfo)
@@ -2885,14 +2853,18 @@
             </tbody>
           </table>`;
       }
+
       let subtotalRow = '';
       if (descKey && qtyKey && rateKey) {
         subtotalRow = `<tr><td>Subtotal</td><td class="r">${money(toAmount(amounts[qtyKey]) * toAmount(amounts[rateKey]))}</td></tr>`;
       }
+
       const summaryRows = Object.keys(amounts)
         .filter(k => k !== totalKey && (!descKey || (k !== qtyKey && k !== rateKey)))
         .map(k => `<tr><td class="k">${escapeHtml(k)}</td><td class="v r">${escapeHtml(amounts[k])}</td></tr>`).join('');
+
       const detailRows = rowsFrom(Object.assign({}, descKey ? {} : itemInfo, others));
+
       const html = `<!DOCTYPE html><html><head><meta charset="utf-8"><title>${escapeHtml(title)} ${escapeHtml(docNumber)}</title>
       <style>
         *{box-sizing:border-box}
@@ -2996,6 +2968,7 @@
       </div>
       <script>window.onload=function(){window.print();${autoClose ? 'window.close();' : ''}}<\/script>
       </body></html>`;
+
       const w = window.open('', '_blank');
       if (!w) {
         alert('Please allow pop-ups for this site so invoices can be printed.');
@@ -3004,7 +2977,9 @@
       w.document.write(html);
       w.document.close();
     }
+
     /* ---------------- Expense / Cash & Bank / Other Income ---------------- */
+
     function saveExpense() {
       const amount = parseFloat(document.getElementById('expAmount').value) || 0;
       const category = document.getElementById('expCategory').value;
@@ -3076,7 +3051,9 @@
       document.getElementById('incAmount').value = '';
       document.getElementById('incDesc').value = '';
     }
+
     /* ---------------- Barcode scanner ---------------- */
+
     function handleBarcodeScan() {
       const input = document.getElementById('barcodeInput');
       const box = document.getElementById('barcodeResult');
@@ -3089,6 +3066,7 @@
         (it.barcode && String(it.barcode).toLowerCase() === code.toLowerCase()) ||
         (it.batch && String(it.batch).toLowerCase() === code.toLowerCase()) ||
         (it.name && it.name.toLowerCase().includes(code.toLowerCase())));
+
       if (item) {
         box.innerHTML = `
           <div class="p-4 rounded-xl border border-emerald-200 bg-emerald-50">
@@ -3106,6 +3084,7 @@
       } else {
         box.innerHTML = `<div class="p-4 rounded-xl border border-rose-200 bg-rose-50 font-bold text-rose-700">No stock item matched "${code}". Add it in Inventory first.</div>`;
       }
+
       userData.scans.unshift({
         time: new Date().toLocaleString('en-GB'),
         code: code,
@@ -3135,20 +3114,20 @@
       saveData();
       renderExtras();
     }
+
     /* ---------------- Rendering for new modules ---------------- */
+
     function renderExtras() {
       ensureExtraData();
       const s = getSettings();
+
       const expTotal = userData.expenses.reduce((a, e) => a + (e.amount || 0), 0);
       const incTotal = userData.otherincome.reduce((a, e) => a + (e.amount || 0), 0);
-      const setTxt = (id, txt) => {
-        const el = document.getElementById(id);
-        if (el) el.innerText = txt;
-      };
+      const setTxt = (id, txt) => { const el = document.getElementById(id); if (el) el.innerText = txt; };
       setTxt('stat-expenseTotal', money(expTotal));
       setTxt('stat-incomeTotal', money(incTotal));
-      let cash = 0,
-        bank = 0;
+
+      let cash = 0, bank = 0;
       userData.cashbank.forEach(t => {
         const sign = t.type === 'Withdraw / Out' ? -1 : 1;
         if (t.account === 'Bank Account') bank += sign * (t.amount || 0);
@@ -3165,6 +3144,7 @@
       setTxt('stat-cashBalance', money(cash));
       setTxt('stat-bankBalance', money(bank));
       setTxt('stat-totalBalance', money(cash + bank));
+
       const expBody = document.getElementById('expensesTableBody');
       if (expBody) {
         expBody.innerHTML = userData.expenses.map((e, i) => `
@@ -3186,6 +3166,7 @@
             </td>
           </tr>`).join('') || `<tr><td colspan="8" class="p-4 text-center text-slate-400">No expenses recorded yet.</td></tr>`;
       }
+
       const cbBody = document.getElementById('cashbankTableBody');
       if (cbBody) {
         cbBody.innerHTML = userData.cashbank.map((t, i) => `
@@ -3205,6 +3186,7 @@
             </td>
           </tr>`).join('') || `<tr><td colspan="7" class="p-4 text-center text-slate-400">No cash or bank transactions yet.</td></tr>`;
       }
+
       const incBody = document.getElementById('incomeTableBody');
       if (incBody) {
         incBody.innerHTML = userData.otherincome.map((r, i) => `
@@ -3224,6 +3206,7 @@
             </td>
           </tr>`).join('') || `<tr><td colspan="7" class="p-4 text-center text-slate-400">No other income recorded yet.</td></tr>`;
       }
+
       const scanBody = document.getElementById('scanTableBody');
       if (scanBody) {
         scanBody.innerHTML = userData.scans.map(sc => `
@@ -3235,18 +3218,22 @@
             <td class="p-2 font-bold text-orange-600">${sc.price}</td>
           </tr>`).join('') || `<tr><td colspan="5" class="p-4 text-center text-slate-400">No scans yet.</td></tr>`;
       }
+
       const brand = document.querySelector('#appContainer aside h2');
       if (brand && s.company) brand.innerText = s.company;
     }
+
     /* ---------------- Hooks into the existing app ---------------- */
+
     const __origRenderAllData = renderAllData;
-    renderAllData = function() {
+    renderAllData = function () {
       ensureExtraData();
       __origRenderAllData();
       renderExtras();
     };
+
     const __origShowTab = showTab;
-    showTab = function(tabId) {
+    showTab = function (tabId) {
       __origShowTab(tabId);
       const extraTitles = {
         expenses: 'Expense Management',
@@ -3266,45 +3253,20 @@
         if (b) b.focus();
       }, 50);
     };
+
     // Auto number + today's date whenever a document modal is opened
     const MODAL_SETUP = {
-      orderModal: {
-        numField: 'invNum',
-        counter: 'inv',
-        dateField: 'invDate'
-      },
-      purchaseInvoiceModal: {
-        numField: 'pinvNum',
-        counter: 'pinv',
-        dateField: 'pinvDate'
-      },
-      quotationModal: {
-        counter: 'quo',
-        dateField: 'quoDate'
-      },
-      debitModal: {
-        numField: 'debNum',
-        counter: 'dn',
-        dateField: 'debDate'
-      },
-      expenseModal: {
-        numField: 'expNum',
-        counter: 'exp',
-        dateField: 'expDate'
-      },
-      cashbankModal: {
-        numField: 'cbNum',
-        counter: 'cb',
-        dateField: 'cbDate'
-      },
-      incomeModal: {
-        numField: 'incNum',
-        counter: 'inc',
-        dateField: 'incDate'
-      }
+      orderModal: { numField: 'invNum', counter: 'inv', dateField: 'invDate' },
+      purchaseInvoiceModal: { numField: 'pinvNum', counter: 'pinv', dateField: 'pinvDate' },
+      quotationModal: { counter: 'quo', dateField: 'quoDate' },
+      debitModal: { numField: 'debNum', counter: 'dn', dateField: 'debDate' },
+      expenseModal: { numField: 'expNum', counter: 'exp', dateField: 'expDate' },
+      cashbankModal: { numField: 'cbNum', counter: 'cb', dateField: 'cbDate' },
+      incomeModal: { numField: 'incNum', counter: 'inc', dateField: 'incDate' }
     };
+
     const __origOpenModal = openModal;
-    openModal = function(modalId) {
+    openModal = function (modalId) {
       ensureExtraData();
       const cfg = MODAL_SETUP[modalId];
       if (cfg) {
@@ -3324,11 +3286,12 @@
       }
       __origOpenModal(modalId);
     };
+
     // Make every saved document take the next sequential number (1, 2, 3, ...)
     function wrapSaveWithNumbering(fnName, collection, field, counter) {
       const orig = window[fnName];
       if (typeof orig !== 'function') return;
-      window[fnName] = function() {
+      window[fnName] = function () {
         ensureExtraData();
         const before = (userData[collection] || []).length;
         orig.apply(this, arguments);
@@ -3340,12 +3303,14 @@
         }
       };
     }
+
     wrapSaveWithNumbering('saveOrder', 'orders', 'inv', 'inv');
     wrapSaveWithNumbering('savePurchaseInvoice', 'purchaseinvoices', 'ref', 'pinv');
     wrapSaveWithNumbering('saveQuotation', 'quotations', 'qno', 'quo');
     wrapSaveWithNumbering('saveDebitNote', 'debitnotes', 'ref', 'dn');
     wrapSaveWithNumbering('savePurchase', 'purchases', 'ref', 'po');
     wrapSaveWithNumbering('savePayout', 'payouts', 'voucher', 'pv');
+
     document.addEventListener('DOMContentLoaded', () => {
       ensureExtraData();
       loadSettingsForm();
@@ -3362,207 +3327,65 @@
         if (el && !el.value) el.value = todayISO();
       });
     });
+
+
     /* ================= REPORTS MODULE ================= */
-    const REPORT_GROUPS = [{
-        key: 'txn',
-        label: 'Transaction Report',
-        icon: 'fa-receipt',
-        color: 'text-cyan-400',
-        items: [{
-            key: 'sale-list',
-            label: 'List to Sale'
-          },
-          {
-            key: 'drug-schedule',
-            label: 'Drug Schedule Report'
-          },
-          {
-            key: 'purchase',
-            label: 'Purchase'
-          },
-          {
-            key: 'day-book',
-            label: 'Day Book'
-          },
-          {
-            key: 'all-transaction',
-            label: 'All Transaction'
-          },
-          {
-            key: 'profit-loss',
-            label: 'Profit and Loss'
-          },
-          {
-            key: 'bill-wise-profit',
-            label: 'Bill Wise Profit'
-          },
-          {
-            key: 'cash-flow',
-            label: 'Cash Flow'
-          },
-          {
-            key: 'trial-balance',
-            label: 'Trial Balance Report'
-          },
-          {
-            key: 'balance-sheet',
-            label: 'Balance Sheet'
-          }
-        ]
-      },
-      {
-        key: 'party',
-        label: 'Party Report',
-        icon: 'fa-users',
-        color: 'text-orange-400',
-        items: [{
-            key: 'party-statement',
-            label: 'Party Statement'
-          },
-          {
-            key: 'party-pl',
-            label: 'Party Wise Profit and Loss'
-          },
-          {
-            key: 'all-party',
-            label: 'All Party'
-          },
-          {
-            key: 'party-report-by-item',
-            label: 'Party Report by Item'
-          },
-          {
-            key: 'sale-purchase-by-party',
-            label: 'Sale Purchase by Party'
-          },
-          {
-            key: 'sale-purchase-by-party-book',
-            label: 'Sale Purchase by Party Book'
-          }
-        ]
-      },
-      {
-        key: 'item',
-        label: 'Item / Stock Report',
-        icon: 'fa-boxes-stacked',
-        color: 'text-emerald-400',
-        items: [{
-            key: 'stock-summary',
-            label: 'Stock Summary'
-          },
-          {
-            key: 'item-report-by-party',
-            label: 'Item Report by Party'
-          },
-          {
-            key: 'item-pl',
-            label: 'Item Wise Profit and Loss'
-          },
-          {
-            key: 'item-category-pl',
-            label: 'Item Category Wise Profit and Loss'
-          },
-          {
-            key: 'low-stock',
-            label: 'Low Stock Summary'
-          },
-          {
-            key: 'stock-details',
-            label: 'Stock Details'
-          },
-          {
-            key: 'item-details',
-            label: 'Item Details'
-          },
-          {
-            key: 'sale-purchase-by-category',
-            label: 'Sale Purchase Report by Item Category'
-          },
-          {
-            key: 'stock-summary-by-category',
-            label: 'Stock Summary Report by Item Category'
-          },
-          {
-            key: 'item-discount',
-            label: 'Item Wise Discount'
-          }
-        ]
-      },
-      {
-        key: 'business',
-        label: 'Business Status',
-        icon: 'fa-briefcase',
-        color: 'text-indigo-400',
-        items: [{
-            key: 'bank-statement',
-            label: 'Bank Statement'
-          },
-          {
-            key: 'discount-report',
-            label: 'Discount Report'
-          }
-        ]
-      },
-      {
-        key: 'taxes',
-        label: 'Taxes',
-        icon: 'fa-percent',
-        color: 'text-rose-400',
-        items: [{
-            key: 'tax-report',
-            label: 'Tax Report'
-          },
-          {
-            key: 'tax-rate-report',
-            label: 'Tax Rate Report'
-          }
-        ]
-      },
-      {
-        key: 'expense',
-        label: 'Expense Report',
-        icon: 'fa-money-bill-wave',
-        color: 'text-amber-400',
-        items: [{
-            key: 'expense-report',
-            label: 'Expense'
-          },
-          {
-            key: 'expense-category',
-            label: 'Expense Category Report'
-          },
-          {
-            key: 'expense-item',
-            label: 'Expense Item Report'
-          }
-        ]
-      },
-      {
-        key: 'saleorder',
-        label: 'Sale Order Report',
-        icon: 'fa-clipboard-list',
-        color: 'text-sky-400',
-        items: [{
-            key: 'sale-order',
-            label: 'Sale Order'
-          },
-          {
-            key: 'sale-order-item',
-            label: 'Sale Order Item'
-          }
-        ]
-      },
-      {
-        key: 'loan',
-        label: 'Loan Accounts',
-        icon: 'fa-hand-holding-dollar',
-        color: 'text-fuchsia-400',
-        items: [{
-          key: 'loan-statement',
-          label: 'Loan Statement'
-        }]
-      }
+
+    const REPORT_GROUPS = [
+      { key: 'txn', label: 'Transaction Report', icon: 'fa-receipt', color: 'text-cyan-400', items: [
+        { key: 'sale-list', label: 'List to Sale' },
+        { key: 'drug-schedule', label: 'Drug Schedule Report' },
+        { key: 'purchase', label: 'Purchase' },
+        { key: 'day-book', label: 'Day Book' },
+        { key: 'all-transaction', label: 'All Transaction' },
+        { key: 'profit-loss', label: 'Profit and Loss' },
+        { key: 'bill-wise-profit', label: 'Bill Wise Profit' },
+        { key: 'cash-flow', label: 'Cash Flow' },
+        { key: 'trial-balance', label: 'Trial Balance Report' },
+        { key: 'balance-sheet', label: 'Balance Sheet' }
+      ]},
+      { key: 'party', label: 'Party Report', icon: 'fa-users', color: 'text-orange-400', items: [
+        { key: 'party-statement', label: 'Party Statement' },
+        { key: 'party-pl', label: 'Party Wise Profit and Loss' },
+        { key: 'all-party', label: 'All Party' },
+        { key: 'party-report-by-item', label: 'Party Report by Item' },
+        { key: 'sale-purchase-by-party', label: 'Sale Purchase by Party' },
+        { key: 'sale-purchase-by-party-book', label: 'Sale Purchase by Party Book' }
+      ]},
+      { key: 'item', label: 'Item / Stock Report', icon: 'fa-boxes-stacked', color: 'text-emerald-400', items: [
+        { key: 'stock-summary', label: 'Stock Summary' },
+        { key: 'item-report-by-party', label: 'Item Report by Party' },
+        { key: 'item-pl', label: 'Item Wise Profit and Loss' },
+        { key: 'item-category-pl', label: 'Item Category Wise Profit and Loss' },
+        { key: 'low-stock', label: 'Low Stock Summary' },
+        { key: 'stock-details', label: 'Stock Details' },
+        { key: 'item-details', label: 'Item Details' },
+        { key: 'sale-purchase-by-category', label: 'Sale Purchase Report by Item Category' },
+        { key: 'stock-summary-by-category', label: 'Stock Summary Report by Item Category' },
+        { key: 'item-discount', label: 'Item Wise Discount' }
+      ]},
+      { key: 'business', label: 'Business Status', icon: 'fa-briefcase', color: 'text-indigo-400', items: [
+        { key: 'bank-statement', label: 'Bank Statement' },
+        { key: 'discount-report', label: 'Discount Report' }
+      ]},
+      { key: 'taxes', label: 'Taxes', icon: 'fa-percent', color: 'text-rose-400', items: [
+        { key: 'tax-report', label: 'Tax Report' },
+        { key: 'tax-rate-report', label: 'Tax Rate Report' }
+      ]},
+      { key: 'expense', label: 'Expense Report', icon: 'fa-money-bill-wave', color: 'text-amber-400', items: [
+        { key: 'expense-report', label: 'Expense' },
+        { key: 'expense-category', label: 'Expense Category Report' },
+        { key: 'expense-item', label: 'Expense Item Report' }
+      ]},
+      { key: 'saleorder', label: 'Sale Order Report', icon: 'fa-clipboard-list', color: 'text-sky-400', items: [
+        { key: 'sale-order', label: 'Sale Order' },
+        { key: 'sale-order-item', label: 'Sale Order Item' }
+      ]},
+      { key: 'loan', label: 'Loan Accounts', icon: 'fa-hand-holding-dollar', color: 'text-fuchsia-400', items: [
+        { key: 'loan-statement', label: 'Loan Statement' }
+      ]}
     ];
+
     let currentReport = null;
 
     function buildReportsNav() {
@@ -3587,6 +3410,14 @@
         </div>`;
     }
 
+    function toggleSideMenu(key) {
+      const m = document.getElementById('menu-' + key);
+      const c = document.getElementById('caret-' + key);
+      if (!m) return;
+      m.classList.toggle('hidden');
+      if (c) { c.classList.toggle('fa-chevron-right'); c.classList.toggle('fa-chevron-down'); }
+    }
+
     function toggleReportsMenu() {
       const m = document.getElementById('reportsMenu');
       const c = document.getElementById('reportsCaret');
@@ -3600,24 +3431,15 @@
       const c = document.getElementById('caret-' + key);
       if (!g) return;
       g.classList.toggle('hidden');
-      if (c) {
-        c.classList.toggle('fa-chevron-right');
-        c.classList.toggle('fa-chevron-down');
-      }
+      if (c) { c.classList.toggle('fa-chevron-right'); c.classList.toggle('fa-chevron-down'); }
     }
 
     function reportLabel(key) {
       for (const g of REPORT_GROUPS) {
         const it = g.items.find(i => i.key === key);
-        if (it) return {
-          label: it.label,
-          group: g.label
-        };
+        if (it) return { label: it.label, group: g.label };
       }
-      return {
-        label: 'Report',
-        group: 'Reports'
-      };
+      return { label: 'Report', group: 'Reports' };
     }
 
     function openReport(key) {
@@ -3631,10 +3453,7 @@
     }
 
     function clearReportFilters() {
-      ['repFrom', 'repTo', 'repSearch'].forEach(id => {
-        const el = document.getElementById(id);
-        if (el) el.value = '';
-      });
+      ['repFrom', 'repTo', 'repSearch'].forEach(id => { const el = document.getElementById(id); if (el) el.value = ''; });
       renderReport();
     }
 
@@ -3651,23 +3470,14 @@
       return (list || []).filter(r => inRange(r[dateKey] || r.date));
     }
 
-    function saleAmount(o) {
-      return toAmount(o.amount);
-    }
-
+    function saleAmount(o) { return toAmount(o.amount); }
     function saleCost(o) {
       const item = (userData.inventory || []).find(i => (i.name || '').toLowerCase() === (o.prodName || '').toLowerCase());
       const cost = item ? toAmount(item.purchasePrice) : 0;
       return cost * (toAmount(o.qty) || 1);
     }
-
-    function saleSubtotal(o) {
-      return toAmount(o.qty) * toAmount(o.rate);
-    }
-
-    function saleTax(o) {
-      return saleSubtotal(o) * (toAmount(o.taxPct) / 100);
-    }
+    function saleSubtotal(o) { return toAmount(o.qty) * toAmount(o.rate); }
+    function saleTax(o) { return saleSubtotal(o) * (toAmount(o.taxPct) / 100); }
 
     function buildReport(key) {
       ensureExtraData();
@@ -3683,6 +3493,7 @@
       const inventory = userData.inventory || [];
       const customers = userData.customers || [];
       const suppliers = userData.suppliers || [];
+
       const sum = (a, f) => a.reduce((s, x) => s + toAmount(f(x)), 0);
       const saleTotal = sum(orders, saleAmount);
       const costTotal = sum(orders, saleCost);
@@ -3694,49 +3505,28 @@
         const m = {};
         arr.forEach(x => {
           const k = keyFn(x) || 'Unspecified';
-          if (!m[k]) m[k] = {
-            count: 0,
-            value: 0
-          };
-          m[k].count++;
-          m[k].value += toAmount(valFn(x));
+          if (!m[k]) m[k] = { count: 0, value: 0 };
+          m[k].count++; m[k].value += toAmount(valFn(x));
         });
         return m;
       };
+
       switch (key) {
         case 'sale-list':
-          return {
-            cols: ['#', 'Invoice', 'Date', 'Customer', 'Item', 'Qty', 'Rate', 'Tax', 'Discount', 'Amount'],
-              rows: orders.map((o, i) => [i + 1, o.inv, prettyDate(o.date), o.custName, o.prodName, o.qty, money(o.rate), money(saleTax(o)), money(o.discount), money(o.amount)]),
-              summary: [
-                ['Total Invoices', orders.length],
-                ['Total Sale', money(saleTotal)],
-                ['Total Tax', money(sum(orders, saleTax))],
-                ['Total Discount', money(sum(orders, o => o.discount))]
-              ]
-          };
+          return { cols: ['#', 'Invoice', 'Date', 'Customer', 'Item', 'Qty', 'Rate', 'Tax', 'Discount', 'Amount'],
+            rows: orders.map((o, i) => [i + 1, o.inv, prettyDate(o.date), o.custName, o.prodName, o.qty, money(o.rate), money(saleTax(o)), money(o.discount), money(o.amount)]),
+            summary: [['Total Invoices', orders.length], ['Total Sale', money(saleTotal)], ['Total Tax', money(sum(orders, saleTax))], ['Total Discount', money(sum(orders, o => o.discount))]] };
         case 'drug-schedule':
-          return {
-            cols: ['#', 'Item', 'Batch', 'Schedule / HS', 'Unit', 'Stock', 'Expiry', 'Sale Price'],
-              rows: inventory.map((it, i) => [i + 1, it.name, it.batch || '-', (orders.find(o => o.prodName === it.name) || {}).hsCode || '3004.90', it.unit || '-', it.stock, prettyDate(it.expiry), money(it.salePrice)]),
-              summary: [
-                ['Total Items', inventory.length],
-                ['Total Stock Units', inventory.reduce((s, i2) => s + toAmount(i2.stock), 0)]
-              ]
-          };
+          return { cols: ['#', 'Item', 'Batch', 'Schedule / HS', 'Unit', 'Stock', 'Expiry', 'Sale Price'],
+            rows: inventory.map((it, i) => [i + 1, it.name, it.batch || '-', (orders.find(o => o.prodName === it.name) || {}).hsCode || '3004.90', it.unit || '-', it.stock, prettyDate(it.expiry), money(it.salePrice)]),
+            summary: [['Total Items', inventory.length], ['Total Stock Units', inventory.reduce((s, i2) => s + toAmount(i2.stock), 0)]] };
         case 'purchase': {
           const rows = [
             ...pinvs.map(p => ['Purchase Invoice', p.ref, prettyDate(p.date), p.supplier, p.item, p.qty, money(p.rate), money(p.amt)]),
             ...pos.map(p => ['Purchase Order', p.ref || '-', prettyDate(p.date), p.supplier || p.party || '-', p.item || '-', p.qty || '-', money(p.rate), money(p.amt)])
           ];
-          return {
-            cols: ['Type', 'Ref', 'Date', 'Supplier', 'Item', 'Qty', 'Rate', 'Amount'],
-            rows,
-            summary: [
-              ['Purchase Entries', rows.length],
-              ['Total Purchase', money(purchaseTotal)]
-            ]
-          };
+          return { cols: ['Type', 'Ref', 'Date', 'Supplier', 'Item', 'Qty', 'Rate', 'Amount'], rows,
+            summary: [['Purchase Entries', rows.length], ['Total Purchase', money(purchaseTotal)]] };
         }
         case 'day-book': {
           const rows = [
@@ -3746,15 +3536,8 @@
             ...expenses.map(e => [prettyDate(e.date), 'Expense', e.ref, e.category, '', money(e.amount)]),
             ...payouts.map(p => [prettyDate(p.date), 'Payment Out', p.voucher || '-', p.party || p.supplier || '-', '', money(p.amount)])
           ];
-          return {
-            cols: ['Date', 'Type', 'Ref', 'Party', 'Money In', 'Money Out'],
-            rows,
-            summary: [
-              ['Money In', money(saleTotal + incTotal)],
-              ['Money Out', money(purchaseTotal + expTotal + payoutTotal)],
-              ['Net', money(saleTotal + incTotal - purchaseTotal - expTotal - payoutTotal)]
-            ]
-          };
+          return { cols: ['Date', 'Type', 'Ref', 'Party', 'Money In', 'Money Out'], rows,
+            summary: [['Money In', money(saleTotal + incTotal)], ['Money Out', money(purchaseTotal + expTotal + payoutTotal)], ['Net', money(saleTotal + incTotal - purchaseTotal - expTotal - payoutTotal)]] };
         }
         case 'all-transaction': {
           const rows = [
@@ -3768,57 +3551,25 @@
             ...cashbank.map(c => [prettyDate(c.date), 'Cash/Bank ' + c.type, c.ref, c.account, money(c.amount)]),
             ...payouts.map(p => [prettyDate(p.date), 'Payment Out', p.voucher || '-', p.party || '-', money(p.amount)])
           ];
-          return {
-            cols: ['Date', 'Transaction', 'Ref', 'Party', 'Amount'],
-            rows,
-            summary: [
-              ['Total Transactions', rows.length]
-            ]
-          };
+          return { cols: ['Date', 'Transaction', 'Ref', 'Party', 'Amount'], rows, summary: [['Total Transactions', rows.length]] };
         }
         case 'profit-loss': {
           const grossProfit = saleTotal - costTotal;
           const net = grossProfit + incTotal - expTotal;
-          return {
-            cols: ['Particulars', 'Amount'],
-            rows: [
-              ['Sale Revenue', money(saleTotal)],
-              ['Cost of Goods Sold', money(costTotal)],
-              ['Gross Profit', money(grossProfit)],
-              ['Other Income', money(incTotal)],
-              ['Total Expenses', money(expTotal)],
-              ['Net Profit / Loss', money(net)]
-            ],
-            summary: [
-              ['Gross Profit', money(grossProfit)],
-              ['Other Income', money(incTotal)],
-              ['Expenses', money(expTotal)],
-              ['Net Profit', money(net)]
-            ]
-          };
+          return { cols: ['Particulars', 'Amount'],
+            rows: [['Sale Revenue', money(saleTotal)], ['Cost of Goods Sold', money(costTotal)], ['Gross Profit', money(grossProfit)], ['Other Income', money(incTotal)], ['Total Expenses', money(expTotal)], ['Net Profit / Loss', money(net)]],
+            summary: [['Gross Profit', money(grossProfit)], ['Other Income', money(incTotal)], ['Expenses', money(expTotal)], ['Net Profit', money(net)]] };
         }
         case 'bill-wise-profit':
-          return {
-            cols: ['Invoice', 'Date', 'Customer', 'Sale Amount', 'Cost', 'Profit', 'Margin %'],
-              rows: orders.map(o => {
-                const amt = saleAmount(o),
-                  cost = saleCost(o),
-                  pr = amt - cost;
-                return [o.inv, prettyDate(o.date), o.custName, money(amt), money(cost), money(pr), amt ? ((pr / amt) * 100).toFixed(1) + '%' : '0%'];
-              }),
-              summary: [
-                ['Total Sale', money(saleTotal)],
-                ['Total Cost', money(costTotal)],
-                ['Total Profit', money(saleTotal - costTotal)]
-              ]
-          };
+          return { cols: ['Invoice', 'Date', 'Customer', 'Sale Amount', 'Cost', 'Profit', 'Margin %'],
+            rows: orders.map(o => {
+              const amt = saleAmount(o), cost = saleCost(o), pr = amt - cost;
+              return [o.inv, prettyDate(o.date), o.custName, money(amt), money(cost), money(pr), amt ? ((pr / amt) * 100).toFixed(1) + '%' : '0%'];
+            }),
+            summary: [['Total Sale', money(saleTotal)], ['Total Cost', money(costTotal)], ['Total Profit', money(saleTotal - costTotal)]] };
         case 'cash-flow': {
-          let cashIn = 0,
-            cashOut = 0;
-          cashbank.forEach(c => {
-            if ((c.type || '').toLowerCase().includes('in') || (c.type || '').toLowerCase().includes('deposit')) cashIn += toAmount(c.amount);
-            else cashOut += toAmount(c.amount);
-          });
+          let cashIn = 0, cashOut = 0;
+          cashbank.forEach(c => { if ((c.type || '').toLowerCase().includes('in') || (c.type || '').toLowerCase().includes('deposit')) cashIn += toAmount(c.amount); else cashOut += toAmount(c.amount); });
           const rows = [
             ['Sale Receipts', money(saleTotal), ''],
             ['Other Income', money(incTotal), ''],
@@ -3829,15 +3580,7 @@
             ['Cash / Bank Outflow', '', money(cashOut)]
           ];
           const net = saleTotal + incTotal + cashIn - purchaseTotal - expTotal - payoutTotal - cashOut;
-          return {
-            cols: ['Particulars', 'Inflow', 'Outflow'],
-            rows,
-            summary: [
-              ['Total Inflow', money(saleTotal + incTotal + cashIn)],
-              ['Total Outflow', money(purchaseTotal + expTotal + payoutTotal + cashOut)],
-              ['Net Cash Flow', money(net)]
-            ]
-          };
+          return { cols: ['Particulars', 'Inflow', 'Outflow'], rows, summary: [['Total Inflow', money(saleTotal + incTotal + cashIn)], ['Total Outflow', money(purchaseTotal + expTotal + payoutTotal + cashOut)], ['Net Cash Flow', money(net)]] };
         }
         case 'trial-balance': {
           const stockValue = inventory.reduce((s, i2) => s + toAmount(i2.stock) * toAmount(i2.purchasePrice), 0);
@@ -3851,41 +3594,24 @@
           ];
           const debit = purchaseTotal + expTotal + stockValue + payoutTotal;
           const credit = saleTotal + incTotal;
-          return {
-            cols: ['Account', 'Debit', 'Credit'],
-            rows,
-            summary: [
-              ['Total Debit', money(debit)],
-              ['Total Credit', money(credit)],
-              ['Difference', money(debit - credit)]
-            ]
-          };
+          return { cols: ['Account', 'Debit', 'Credit'], rows, summary: [['Total Debit', money(debit)], ['Total Credit', money(credit)], ['Difference', money(debit - credit)]] };
         }
         case 'balance-sheet': {
           const stockValue = inventory.reduce((s, i2) => s + toAmount(i2.stock) * toAmount(i2.purchasePrice), 0);
-          let cash = 0,
-            bank = 0;
+          let cash = 0, bank = 0;
           cashbank.forEach(c => {
             const val = ((c.type || '').toLowerCase().includes('in') || (c.type || '').toLowerCase().includes('deposit')) ? toAmount(c.amount) : -toAmount(c.amount);
-            if ((c.account || '').toLowerCase().includes('bank')) bank += val;
-            else cash += val;
+            if ((c.account || '').toLowerCase().includes('bank')) bank += val; else cash += val;
           });
           const net = saleTotal + incTotal - costTotal - expTotal;
-          return {
-            cols: ['Assets', 'Amount', 'Liabilities & Equity', 'Amount'],
+          return { cols: ['Assets', 'Amount', 'Liabilities & Equity', 'Amount'],
             rows: [
               ['Closing Stock', money(stockValue), 'Capital / Retained Earnings', money(net)],
               ['Cash in Hand', money(cash), 'Supplier Payables', money(purchaseTotal - payoutTotal)],
               ['Bank Balance', money(bank), '', ''],
               ['Total Assets', money(stockValue + cash + bank), 'Total Liabilities & Equity', money(net + purchaseTotal - payoutTotal)]
             ],
-            summary: [
-              ['Total Assets', money(stockValue + cash + bank)],
-              ['Stock Value', money(stockValue)],
-              ['Cash', money(cash)],
-              ['Bank', money(bank)]
-            ]
-          };
+            summary: [['Total Assets', money(stockValue + cash + bank)], ['Stock Value', money(stockValue)], ['Cash', money(cash)], ['Bank', money(bank)]] };
         }
         case 'party-statement': {
           const rows = [
@@ -3893,193 +3619,89 @@
             ...pinvs.map(p => [prettyDate(p.date), p.supplier, 'Purchase ' + p.ref, '', money(p.amt)]),
             ...payouts.map(p => [prettyDate(p.date), p.party || p.supplier || '-', 'Payment Out ' + (p.voucher || ''), '', money(p.amount)])
           ].sort((a, b) => String(a[1]).localeCompare(String(b[1])));
-          return {
-            cols: ['Date', 'Party', 'Particulars', 'Debit (Sale)', 'Credit (Purchase/Paid)'],
-            rows,
-            summary: [
-              ['Statement Entries', rows.length],
-              ['Sale Side', money(saleTotal)],
-              ['Purchase Side', money(purchaseTotal + payoutTotal)]
-            ]
-          };
+          return { cols: ['Date', 'Party', 'Particulars', 'Debit (Sale)', 'Credit (Purchase/Paid)'], rows,
+            summary: [['Statement Entries', rows.length], ['Sale Side', money(saleTotal)], ['Purchase Side', money(purchaseTotal + payoutTotal)]] };
         }
         case 'party-pl': {
           const m = {};
           orders.forEach(o => {
             const k = o.custName || 'Walk-in';
-            m[k] = m[k] || {
-              sale: 0,
-              cost: 0
-            };
-            m[k].sale += saleAmount(o);
-            m[k].cost += saleCost(o);
+            m[k] = m[k] || { sale: 0, cost: 0 };
+            m[k].sale += saleAmount(o); m[k].cost += saleCost(o);
           });
-          return {
-            cols: ['Party', 'Sale', 'Cost', 'Profit', 'Margin %'],
+          return { cols: ['Party', 'Sale', 'Cost', 'Profit', 'Margin %'],
             rows: Object.entries(m).map(([k, v]) => [k, money(v.sale), money(v.cost), money(v.sale - v.cost), v.sale ? (((v.sale - v.cost) / v.sale) * 100).toFixed(1) + '%' : '0%']),
-            summary: [
-              ['Parties', Object.keys(m).length],
-              ['Total Profit', money(saleTotal - costTotal)]
-            ]
-          };
+            summary: [['Parties', Object.keys(m).length], ['Total Profit', money(saleTotal - costTotal)]] };
         }
         case 'all-party': {
           const rows = [
             ...customers.map(c => ['Customer', c.name, c.owner || '-', c.contact || '-', c.category || '-', c.address || '-', c.ntnCnic || '-']),
             ...suppliers.map(s => ['Supplier', s.name, s.contactPerson || s.owner || '-', s.contact || s.phone || '-', s.category || '-', s.address || '-', s.ntn || s.ntnCnic || '-'])
           ];
-          return {
-            cols: ['Type', 'Name', 'Contact Person', 'Phone', 'Category', 'Address', 'NTN / CNIC'],
-            rows,
-            summary: [
-              ['Customers', customers.length],
-              ['Suppliers', suppliers.length]
-            ]
-          };
+          return { cols: ['Type', 'Name', 'Contact Person', 'Phone', 'Category', 'Address', 'NTN / CNIC'], rows,
+            summary: [['Customers', customers.length], ['Suppliers', suppliers.length]] };
         }
         case 'party-report-by-item': {
           const m = {};
           orders.forEach(o => {
             const k = (o.custName || '-') + '||' + (o.prodName || '-');
-            m[k] = m[k] || {
-              qty: 0,
-              amt: 0
-            };
-            m[k].qty += toAmount(o.qty);
-            m[k].amt += saleAmount(o);
+            m[k] = m[k] || { qty: 0, amt: 0 };
+            m[k].qty += toAmount(o.qty); m[k].amt += saleAmount(o);
           });
-          return {
-            cols: ['Party', 'Item', 'Qty Sold', 'Sale Value'],
+          return { cols: ['Party', 'Item', 'Qty Sold', 'Sale Value'],
             rows: Object.entries(m).map(([k, v]) => [k.split('||')[0], k.split('||')[1], v.qty, money(v.amt)]),
-            summary: [
-              ['Combinations', Object.keys(m).length],
-              ['Total Sale', money(saleTotal)]
-            ]
-          };
+            summary: [['Combinations', Object.keys(m).length], ['Total Sale', money(saleTotal)]] };
         }
         case 'sale-purchase-by-party': {
           const m = {};
-          orders.forEach(o => {
-            const k = o.custName || '-';
-            m[k] = m[k] || {
-              s: 0,
-              p: 0
-            };
-            m[k].s += saleAmount(o);
-          });
-          pinvs.forEach(p => {
-            const k = p.supplier || '-';
-            m[k] = m[k] || {
-              s: 0,
-              p: 0
-            };
-            m[k].p += toAmount(p.amt);
-          });
-          return {
-            cols: ['Party', 'Total Sale', 'Total Purchase', 'Net'],
+          orders.forEach(o => { const k = o.custName || '-'; m[k] = m[k] || { s: 0, p: 0 }; m[k].s += saleAmount(o); });
+          pinvs.forEach(p => { const k = p.supplier || '-'; m[k] = m[k] || { s: 0, p: 0 }; m[k].p += toAmount(p.amt); });
+          return { cols: ['Party', 'Total Sale', 'Total Purchase', 'Net'],
             rows: Object.entries(m).map(([k, v]) => [k, money(v.s), money(v.p), money(v.s - v.p)]),
-            summary: [
-              ['Parties', Object.keys(m).length],
-              ['Sale', money(saleTotal)],
-              ['Purchase', money(purchaseTotal)]
-            ]
-          };
+            summary: [['Parties', Object.keys(m).length], ['Sale', money(saleTotal)], ['Purchase', money(purchaseTotal)]] };
         }
         case 'sale-purchase-by-party-book': {
           const rows = [
             ...orders.map(o => [prettyDate(o.date), o.custName, 'Sale', o.inv, o.prodName, o.qty, money(o.amount)]),
             ...pinvs.map(p => [prettyDate(p.date), p.supplier, 'Purchase', p.ref, p.item, p.qty, money(p.amt)])
           ].sort((a, b) => String(a[1]).localeCompare(String(b[1])));
-          return {
-            cols: ['Date', 'Party', 'Type', 'Ref', 'Item', 'Qty', 'Amount'],
-            rows,
-            summary: [
-              ['Book Entries', rows.length]
-            ]
-          };
+          return { cols: ['Date', 'Party', 'Type', 'Ref', 'Item', 'Qty', 'Amount'], rows, summary: [['Book Entries', rows.length]] };
         }
         case 'stock-summary':
-          return {
-            cols: ['#', 'Item', 'Batch', 'Stock', 'Unit', 'Purchase Price', 'Sale Price', 'Stock Value'],
-              rows: inventory.map((it, i) => [i + 1, it.name, it.batch || '-', it.stock, it.unit || '-', money(it.purchasePrice), money(it.salePrice), money(toAmount(it.stock) * toAmount(it.purchasePrice))]),
-              summary: [
-                ['Items', inventory.length],
-                ['Stock Value', money(inventory.reduce((s, i2) => s + toAmount(i2.stock) * toAmount(i2.purchasePrice), 0))]
-              ]
-          };
+          return { cols: ['#', 'Item', 'Batch', 'Stock', 'Unit', 'Purchase Price', 'Sale Price', 'Stock Value'],
+            rows: inventory.map((it, i) => [i + 1, it.name, it.batch || '-', it.stock, it.unit || '-', money(it.purchasePrice), money(it.salePrice), money(toAmount(it.stock) * toAmount(it.purchasePrice))]),
+            summary: [['Items', inventory.length], ['Stock Value', money(inventory.reduce((s, i2) => s + toAmount(i2.stock) * toAmount(i2.purchasePrice), 0))]] };
         case 'item-report-by-party': {
           const m = {};
           orders.forEach(o => {
             const k = (o.prodName || '-') + '||' + (o.custName || '-');
-            m[k] = m[k] || {
-              qty: 0,
-              amt: 0
-            };
-            m[k].qty += toAmount(o.qty);
-            m[k].amt += saleAmount(o);
+            m[k] = m[k] || { qty: 0, amt: 0 };
+            m[k].qty += toAmount(o.qty); m[k].amt += saleAmount(o);
           });
-          return {
-            cols: ['Item', 'Party', 'Qty', 'Value'],
-            rows: Object.entries(m).map(([k, v]) => [k.split('||')[0], k.split('||')[1], v.qty, money(v.amt)]),
-            summary: [
-              ['Rows', Object.keys(m).length]
-            ]
-          };
+          return { cols: ['Item', 'Party', 'Qty', 'Value'], rows: Object.entries(m).map(([k, v]) => [k.split('||')[0], k.split('||')[1], v.qty, money(v.amt)]), summary: [['Rows', Object.keys(m).length]] };
         }
         case 'item-pl': {
           const m = {};
           orders.forEach(o => {
             const k = o.prodName || '-';
-            m[k] = m[k] || {
-              qty: 0,
-              sale: 0,
-              cost: 0
-            };
-            m[k].qty += toAmount(o.qty);
-            m[k].sale += saleAmount(o);
-            m[k].cost += saleCost(o);
+            m[k] = m[k] || { qty: 0, sale: 0, cost: 0 };
+            m[k].qty += toAmount(o.qty); m[k].sale += saleAmount(o); m[k].cost += saleCost(o);
           });
-          return {
-            cols: ['Item', 'Qty Sold', 'Sale', 'Cost', 'Profit'],
+          return { cols: ['Item', 'Qty Sold', 'Sale', 'Cost', 'Profit'],
             rows: Object.entries(m).map(([k, v]) => [k, v.qty, money(v.sale), money(v.cost), money(v.sale - v.cost)]),
-            summary: [
-              ['Items Sold', Object.keys(m).length],
-              ['Total Profit', money(saleTotal - costTotal)]
-            ]
-          };
+            summary: [['Items Sold', Object.keys(m).length], ['Total Profit', money(saleTotal - costTotal)]] };
         }
         case 'item-category-pl': {
-          const catOf = n => {
-            const it = inventory.find(i2 => (i2.name || '').toLowerCase() === (n || '').toLowerCase());
-            return (it && (it.category || it.unit)) || 'General';
-          };
+          const catOf = n => { const it = inventory.find(i2 => (i2.name || '').toLowerCase() === (n || '').toLowerCase()); return (it && (it.category || it.unit)) || 'General'; };
           const m = {};
-          orders.forEach(o => {
-            const k = catOf(o.prodName);
-            m[k] = m[k] || {
-              sale: 0,
-              cost: 0
-            };
-            m[k].sale += saleAmount(o);
-            m[k].cost += saleCost(o);
-          });
-          return {
-            cols: ['Category', 'Sale', 'Cost', 'Profit'],
-            rows: Object.entries(m).map(([k, v]) => [k, money(v.sale), money(v.cost), money(v.sale - v.cost)]),
-            summary: [
-              ['Categories', Object.keys(m).length]
-            ]
-          };
+          orders.forEach(o => { const k = catOf(o.prodName); m[k] = m[k] || { sale: 0, cost: 0 }; m[k].sale += saleAmount(o); m[k].cost += saleCost(o); });
+          return { cols: ['Category', 'Sale', 'Cost', 'Profit'], rows: Object.entries(m).map(([k, v]) => [k, money(v.sale), money(v.cost), money(v.sale - v.cost)]), summary: [['Categories', Object.keys(m).length]] };
         }
         case 'low-stock': {
           const low = inventory.filter(i2 => toAmount(i2.stock) <= 5);
-          return {
-            cols: ['Item', 'Batch', 'Stock', 'Unit', 'Reorder Needed', 'Sale Price'],
+          return { cols: ['Item', 'Batch', 'Stock', 'Unit', 'Reorder Needed', 'Sale Price'],
             rows: low.map(i2 => [i2.name, i2.batch || '-', i2.stock, i2.unit || '-', Math.max(0, 20 - toAmount(i2.stock)), money(i2.salePrice)]),
-            summary: [
-              ['Low Stock Items', low.length]
-            ]
-          };
+            summary: [['Low Stock Items', low.length]] };
         }
         case 'stock-details': {
           const rows = inventory.map(i2 => {
@@ -4087,91 +3709,34 @@
             const bought = pinvs.filter(p => (p.item || '').toLowerCase() === (i2.name || '').toLowerCase()).reduce((s, p) => s + toAmount(p.qty), 0);
             return [i2.name, i2.batch || '-', bought, sold, i2.stock, prettyDate(i2.expiry), money(toAmount(i2.stock) * toAmount(i2.purchasePrice))];
           });
-          return {
-            cols: ['Item', 'Batch', 'Purchased Qty', 'Sold Qty', 'Current Stock', 'Expiry', 'Value'],
-            rows,
-            summary: [
-              ['Items', inventory.length]
-            ]
-          };
+          return { cols: ['Item', 'Batch', 'Purchased Qty', 'Sold Qty', 'Current Stock', 'Expiry', 'Value'], rows, summary: [['Items', inventory.length]] };
         }
         case 'item-details':
-          return {
-            cols: ['Item', 'Batch', 'Unit', 'Stock', 'Purchase Price', 'Sale Price', 'Margin', 'Expiry'],
-              rows: inventory.map(i2 => [i2.name, i2.batch || '-', i2.unit || '-', i2.stock, money(i2.purchasePrice), money(i2.salePrice), money(toAmount(i2.salePrice) - toAmount(i2.purchasePrice)), prettyDate(i2.expiry)]),
-              summary: [
-                ['Items', inventory.length]
-              ]
-          };
+          return { cols: ['Item', 'Batch', 'Unit', 'Stock', 'Purchase Price', 'Sale Price', 'Margin', 'Expiry'],
+            rows: inventory.map(i2 => [i2.name, i2.batch || '-', i2.unit || '-', i2.stock, money(i2.purchasePrice), money(i2.salePrice), money(toAmount(i2.salePrice) - toAmount(i2.purchasePrice)), prettyDate(i2.expiry)]),
+            summary: [['Items', inventory.length]] };
         case 'sale-purchase-by-category': {
-          const catOf = n => {
-            const it = inventory.find(i2 => (i2.name || '').toLowerCase() === (n || '').toLowerCase());
-            return (it && (it.category || it.unit)) || 'General';
-          };
+          const catOf = n => { const it = inventory.find(i2 => (i2.name || '').toLowerCase() === (n || '').toLowerCase()); return (it && (it.category || it.unit)) || 'General'; };
           const m = {};
-          orders.forEach(o => {
-            const k = catOf(o.prodName);
-            m[k] = m[k] || {
-              s: 0,
-              p: 0
-            };
-            m[k].s += saleAmount(o);
-          });
-          pinvs.forEach(p => {
-            const k = catOf(p.item);
-            m[k] = m[k] || {
-              s: 0,
-              p: 0
-            };
-            m[k].p += toAmount(p.amt);
-          });
-          return {
-            cols: ['Item Category', 'Sale', 'Purchase', 'Net'],
-            rows: Object.entries(m).map(([k, v]) => [k, money(v.s), money(v.p), money(v.s - v.p)]),
-            summary: [
-              ['Categories', Object.keys(m).length]
-            ]
-          };
+          orders.forEach(o => { const k = catOf(o.prodName); m[k] = m[k] || { s: 0, p: 0 }; m[k].s += saleAmount(o); });
+          pinvs.forEach(p => { const k = catOf(p.item); m[k] = m[k] || { s: 0, p: 0 }; m[k].p += toAmount(p.amt); });
+          return { cols: ['Item Category', 'Sale', 'Purchase', 'Net'], rows: Object.entries(m).map(([k, v]) => [k, money(v.s), money(v.p), money(v.s - v.p)]), summary: [['Categories', Object.keys(m).length]] };
         }
         case 'stock-summary-by-category': {
           const m = {};
           inventory.forEach(i2 => {
             const k = i2.category || i2.unit || 'General';
-            m[k] = m[k] || {
-              items: 0,
-              qty: 0,
-              value: 0
-            };
-            m[k].items++;
-            m[k].qty += toAmount(i2.stock);
-            m[k].value += toAmount(i2.stock) * toAmount(i2.purchasePrice);
+            m[k] = m[k] || { items: 0, qty: 0, value: 0 };
+            m[k].items++; m[k].qty += toAmount(i2.stock); m[k].value += toAmount(i2.stock) * toAmount(i2.purchasePrice);
           });
-          return {
-            cols: ['Category', 'Items', 'Total Qty', 'Stock Value'],
-            rows: Object.entries(m).map(([k, v]) => [k, v.items, v.qty, money(v.value)]),
-            summary: [
-              ['Categories', Object.keys(m).length]
-            ]
-          };
+          return { cols: ['Category', 'Items', 'Total Qty', 'Stock Value'], rows: Object.entries(m).map(([k, v]) => [k, v.items, v.qty, money(v.value)]), summary: [['Categories', Object.keys(m).length]] };
         }
         case 'item-discount': {
           const m = {};
-          orders.forEach(o => {
-            const k = o.prodName || '-';
-            m[k] = m[k] || {
-              d: 0,
-              s: 0
-            };
-            m[k].d += toAmount(o.discount);
-            m[k].s += saleAmount(o);
-          });
-          return {
-            cols: ['Item', 'Total Discount', 'Sale Value', 'Discount %'],
+          orders.forEach(o => { const k = o.prodName || '-'; m[k] = m[k] || { d: 0, s: 0 }; m[k].d += toAmount(o.discount); m[k].s += saleAmount(o); });
+          return { cols: ['Item', 'Total Discount', 'Sale Value', 'Discount %'],
             rows: Object.entries(m).map(([k, v]) => [k, money(v.d), money(v.s), v.s ? ((v.d / (v.s + v.d)) * 100).toFixed(1) + '%' : '0%']),
-            summary: [
-              ['Total Discount', money(sum(orders, o => o.discount))]
-            ]
-          };
+            summary: [['Total Discount', money(sum(orders, o => o.discount))]] };
         }
         case 'bank-statement': {
           const bankRows = cashbank.filter(c => (c.account || '').toLowerCase().includes('bank'));
@@ -4181,128 +3746,51 @@
             bal += isIn ? toAmount(c.amount) : -toAmount(c.amount);
             return [prettyDate(c.date), c.ref, c.desc || '-', c.type, isIn ? money(c.amount) : '', isIn ? '' : money(c.amount), money(bal)];
           });
-          return {
-            cols: ['Date', 'Ref', 'Description', 'Type', 'Deposit', 'Withdrawal', 'Balance'],
-            rows,
-            summary: [
-              ['Bank Entries', rows.length],
-              ['Closing Balance', money(bal)]
-            ]
-          };
+          return { cols: ['Date', 'Ref', 'Description', 'Type', 'Deposit', 'Withdrawal', 'Balance'], rows, summary: [['Bank Entries', rows.length], ['Closing Balance', money(bal)]] };
         }
         case 'discount-report':
-          return {
-            cols: ['Invoice', 'Date', 'Customer', 'Item', 'Sale Amount', 'Discount'],
-              rows: orders.filter(o => toAmount(o.discount) > 0).map(o => [o.inv, prettyDate(o.date), o.custName, o.prodName, money(o.amount), money(o.discount)]),
-              summary: [
-                ['Total Discount', money(sum(orders, o => o.discount))]
-              ]
-          };
+          return { cols: ['Invoice', 'Date', 'Customer', 'Item', 'Sale Amount', 'Discount'],
+            rows: orders.filter(o => toAmount(o.discount) > 0).map(o => [o.inv, prettyDate(o.date), o.custName, o.prodName, money(o.amount), money(o.discount)]),
+            summary: [['Total Discount', money(sum(orders, o => o.discount))]] };
         case 'tax-report':
-          return {
-            cols: ['Invoice', 'Date', 'Customer', 'Taxable Value', 'Tax %', 'Tax Amount', 'Total'],
-              rows: orders.map(o => [o.inv, prettyDate(o.date), o.custName, money(saleSubtotal(o)), (toAmount(o.taxPct)) + '%', money(saleTax(o)), money(o.amount)]),
-              summary: [
-                ['Taxable Value', money(sum(orders, saleSubtotal))],
-                ['Total Tax', money(sum(orders, saleTax))]
-              ]
-          };
+          return { cols: ['Invoice', 'Date', 'Customer', 'Taxable Value', 'Tax %', 'Tax Amount', 'Total'],
+            rows: orders.map(o => [o.inv, prettyDate(o.date), o.custName, money(saleSubtotal(o)), (toAmount(o.taxPct)) + '%', money(saleTax(o)), money(o.amount)]),
+            summary: [['Taxable Value', money(sum(orders, saleSubtotal))], ['Total Tax', money(sum(orders, saleTax))]] };
         case 'tax-rate-report': {
           const m = {};
           orders.forEach(o => {
             const k = (toAmount(o.taxPct)) + '%';
-            m[k] = m[k] || {
-              bills: 0,
-              taxable: 0,
-              tax: 0
-            };
-            m[k].bills++;
-            m[k].taxable += saleSubtotal(o);
-            m[k].tax += saleTax(o);
+            m[k] = m[k] || { bills: 0, taxable: 0, tax: 0 };
+            m[k].bills++; m[k].taxable += saleSubtotal(o); m[k].tax += saleTax(o);
           });
-          return {
-            cols: ['Tax Rate', 'Bills', 'Taxable Value', 'Tax Collected'],
-            rows: Object.entries(m).map(([k, v]) => [k, v.bills, money(v.taxable), money(v.tax)]),
-            summary: [
-              ['Rates Used', Object.keys(m).length],
-              ['Total Tax', money(sum(orders, saleTax))]
-            ]
-          };
+          return { cols: ['Tax Rate', 'Bills', 'Taxable Value', 'Tax Collected'], rows: Object.entries(m).map(([k, v]) => [k, v.bills, money(v.taxable), money(v.tax)]), summary: [['Rates Used', Object.keys(m).length], ['Total Tax', money(sum(orders, saleTax))]] };
         }
         case 'expense-report':
-          return {
-            cols: ['Ref', 'Date', 'Category', 'Description', 'Paid To', 'Mode', 'Amount'],
-              rows: expenses.map(e => [e.ref, prettyDate(e.date), e.category, e.desc || '-', e.paidTo || '-', e.mode || '-', money(e.amount)]),
-              summary: [
-                ['Entries', expenses.length],
-                ['Total Expense', money(expTotal)]
-              ]
-          };
+          return { cols: ['Ref', 'Date', 'Category', 'Description', 'Paid To', 'Mode', 'Amount'],
+            rows: expenses.map(e => [e.ref, prettyDate(e.date), e.category, e.desc || '-', e.paidTo || '-', e.mode || '-', money(e.amount)]),
+            summary: [['Entries', expenses.length], ['Total Expense', money(expTotal)]] };
         case 'expense-category': {
           const m = group(expenses, e => e.category, e => e.amount);
-          return {
-            cols: ['Category', 'Entries', 'Total Amount', 'Share %'],
+          return { cols: ['Category', 'Entries', 'Total Amount', 'Share %'],
             rows: Object.entries(m).map(([k, v]) => [k, v.count, money(v.value), expTotal ? ((v.value / expTotal) * 100).toFixed(1) + '%' : '0%']),
-            summary: [
-              ['Categories', Object.keys(m).length],
-              ['Total Expense', money(expTotal)]
-            ]
-          };
+            summary: [['Categories', Object.keys(m).length], ['Total Expense', money(expTotal)]] };
         }
         case 'expense-item': {
           const m = group(expenses, e => e.desc || e.paidTo || e.category, e => e.amount);
-          return {
-            cols: ['Expense Item', 'Count', 'Total Amount'],
-            rows: Object.entries(m).map(([k, v]) => [k, v.count, money(v.value)]),
-            summary: [
-              ['Items', Object.keys(m).length],
-              ['Total', money(expTotal)]
-            ]
-          };
+          return { cols: ['Expense Item', 'Count', 'Total Amount'], rows: Object.entries(m).map(([k, v]) => [k, v.count, money(v.value)]), summary: [['Items', Object.keys(m).length], ['Total', money(expTotal)]] };
         }
         case 'sale-order': {
           const rows = [
             ...quotes.map(q => ['Quotation', q.qno || '-', prettyDate(q.date), q.customer, q.product, money(q.rate)]),
             ...orders.map(o => ['Sale Invoice', o.inv, prettyDate(o.date), o.custName, o.prodName, money(o.amount)])
           ];
-          return {
-            cols: ['Type', 'Order No', 'Date', 'Customer', 'Item', 'Amount'],
-            rows,
-            summary: [
-              ['Orders', rows.length],
-              ['Sale Value', money(saleTotal)]
-            ]
-          };
+          return { cols: ['Type', 'Order No', 'Date', 'Customer', 'Item', 'Amount'], rows, summary: [['Orders', rows.length], ['Sale Value', money(saleTotal)]] };
         }
         case 'sale-order-item': {
           const m = {};
-          orders.forEach(o => {
-            const k = o.prodName || '-';
-            m[k] = m[k] || {
-              q: 0,
-              a: 0,
-              c: 0
-            };
-            m[k].q += toAmount(o.qty);
-            m[k].a += saleAmount(o);
-            m[k].c++;
-          });
-          quotes.forEach(q => {
-            const k = q.product || '-';
-            m[k] = m[k] || {
-              q: 0,
-              a: 0,
-              c: 0
-            };
-            m[k].c++;
-          });
-          return {
-            cols: ['Item', 'Orders', 'Qty Ordered', 'Order Value'],
-            rows: Object.entries(m).map(([k, v]) => [k, v.c, v.q, money(v.a)]),
-            summary: [
-              ['Items Ordered', Object.keys(m).length]
-            ]
-          };
+          orders.forEach(o => { const k = o.prodName || '-'; m[k] = m[k] || { q: 0, a: 0, c: 0 }; m[k].q += toAmount(o.qty); m[k].a += saleAmount(o); m[k].c++; });
+          quotes.forEach(q => { const k = q.product || '-'; m[k] = m[k] || { q: 0, a: 0, c: 0 }; m[k].c++; });
+          return { cols: ['Item', 'Orders', 'Qty Ordered', 'Order Value'], rows: Object.entries(m).map(([k, v]) => [k, v.c, v.q, money(v.a)]), summary: [['Items Ordered', Object.keys(m).length]] };
         }
         case 'loan-statement': {
           const loans = cashbank.filter(c => ((c.desc || '') + ' ' + (c.account || '') + ' ' + (c.type || '')).toLowerCase().includes('loan'));
@@ -4312,22 +3800,12 @@
             bal += isIn ? toAmount(c.amount) : -toAmount(c.amount);
             return [prettyDate(c.date), c.ref, c.desc || 'Loan entry', c.account, isIn ? money(c.amount) : '', isIn ? '' : money(c.amount), money(bal)];
           });
-          return {
-            cols: ['Date', 'Ref', 'Particulars', 'Account', 'Loan Received', 'Loan Repaid', 'Balance'],
-            rows,
-            summary: [
-              ['Loan Entries', rows.length],
-              ['Outstanding Balance', money(bal)]
-            ],
-            note: 'Loan entries are picked from Cash & Bank records whose description, account or type contains the word "loan".'
-          };
+          return { cols: ['Date', 'Ref', 'Particulars', 'Account', 'Loan Received', 'Loan Repaid', 'Balance'], rows,
+            summary: [['Loan Entries', rows.length], ['Outstanding Balance', money(bal)]],
+            note: 'Loan entries are picked from Cash & Bank records whose description, account or type contains the word "loan".' };
         }
         default:
-          return {
-            cols: ['Info'], rows: [
-              ['Select a report from the sidebar.']
-            ], summary: []
-          };
+          return { cols: ['Info'], rows: [['Select a report from the sidebar.']], summary: [] };
       }
     }
 
@@ -4337,17 +3815,19 @@
       const data = buildReport(currentReport);
       const q = ((document.getElementById('repSearch') || {}).value || '').toLowerCase();
       const rows = q ? data.rows.filter(r => r.join(' ').toLowerCase().includes(q)) : data.rows;
+
       const t = document.getElementById('reportTitle');
       const st = document.getElementById('reportSubtitle');
       if (t) t.innerText = meta.label;
       if (st) st.innerText = meta.group + (data.note ? ' — ' + data.note : ' — ' + rows.length + ' record(s)');
+
       const head = document.getElementById('reportHead');
       if (head) head.innerHTML = data.cols.map(c => `<th class="p-3 text-left font-bold">${escapeHtml(String(c))}</th>`).join('');
       const body = document.getElementById('reportBody');
       if (body) {
-        body.innerHTML = rows.length ?
-          rows.map(r => `<tr class="hover:bg-slate-50">${r.map(c => `<td class="p-3 text-slate-700">${escapeHtml(String(c === undefined || c === null ? '' : c))}</td>`).join('')}</tr>`).join('') :
-          `<tr><td colspan="${data.cols.length}" class="p-6 text-center text-slate-400">No records found for this report / date range.</td></tr>`;
+        body.innerHTML = rows.length
+          ? rows.map(r => `<tr class="hover:bg-slate-50">${r.map(c => `<td class="p-3 text-slate-700">${escapeHtml(String(c === undefined || c === null ? '' : c))}</td>`).join('')}</tr>`).join('')
+          : `<tr><td colspan="${data.cols.length}" class="p-6 text-center text-slate-400">No records found for this report / date range.</td></tr>`;
       }
       const sm = document.getElementById('reportSummary');
       if (sm) sm.innerHTML = (data.summary || []).map(([k, v]) => `
@@ -4358,10 +3838,7 @@
     }
 
     function printReport() {
-      if (!currentReport) {
-        alert('Please select a report first.');
-        return;
-      }
+      if (!currentReport) { alert('Please select a report first.'); return; }
       const s = getSettings();
       const meta = reportLabel(currentReport);
       const data = buildReport(currentReport);
@@ -4395,22 +3872,26 @@
       w.focus();
       setTimeout(() => w.print(), 400);
     }
+
     const __showTabBeforeReports = showTab;
-    showTab = function(tabId) {
+    showTab = function (tabId) {
       __showTabBeforeReports(tabId);
       if (tabId === 'reports') {
         const t = document.getElementById('currentTabTitle');
         if (t) t.innerText = currentReport ? reportLabel(currentReport).label : 'Reports';
       }
     };
+
     const __renderAllBeforeReports = renderAllData;
-    renderAllData = function() {
+    renderAllData = function () {
       __renderAllBeforeReports();
       if (currentReport) renderReport();
     };
+
     document.addEventListener('DOMContentLoaded', () => {
       buildReportsNav();
     });
+
   </script>
 </body>
 
